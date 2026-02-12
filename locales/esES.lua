@@ -2,7 +2,7 @@
 -- Profession Shopping List: esES.lua --
 ----------------------------------------
 -- Spanish (Spain) localisation
--- Translator(s):
+-- Translator(s): Ferran Carril
 
 -- Initialisation
 if GetLocale() ~= "esES" then return end
@@ -10,10 +10,10 @@ local appName, app = ...
 local L = app.locales
 
 -- Main window
--- L.WINDOW_BUTTON_CLOSE =					"Close the window"
--- L.WINDOW_BUTTON_LOCK =					"Lock the window"
--- L.WINDOW_BUTTON_UNLOCK =				"Unlock the window"
--- L.WINDOW_BUTTON_SETTINGS =				"Open the settings"
+L.WINDOW_BUTTON_CLOSE =					"Cerrar ventana"
+L.WINDOW_BUTTON_LOCK =					"Bloquear ventana"
+L.WINDOW_BUTTON_UNLOCK =				"Desbloquear ventana"
+L.WINDOW_BUTTON_SETTINGS =				"Abrir opciones"
 -- L.WINDOW_BUTTON_CLEAR =					"Clear all tracked recipes"
 -- L.WINDOW_BUTTON_AUCTIONATOR =			"Update the Auctionator shopping list\n" ..
 -- 										"The shopping list is automatically generated when opening the Auction House"
@@ -182,18 +182,18 @@ local L = app.locales
 -- Settings
 -- L.SETTINGS_TOOLTIP =					app.NameLong .. "\n|cffFFFFFF" .. app.IconLMB .. ": Toggle the window\n" .. app.IconRMB .. ": " .. L.WINDOW_BUTTON_SETTINGS
 
--- L.SETTINGS_VERSION =					GAME_VERSION_LABEL .. ":"	-- "Version"
--- L.SETTINGS_SUPPORT_TEXTLONG =			"Developing this addon takes a significant amount of time and effort.\nPlease consider financially supporting the developer."
--- L.SETTINGS_SUPPORT_TEXT =				"Support"
--- L.SETTINGS_SUPPORT_BUTTON =				"Buy Me a Coffee"	-- Brand name, if there isn't a localised version, keep it the way it is
--- L.SETTINGS_SUPPORT_DESC =				"Thank you!"
--- L.SETTINGS_HELP_TEXT =					"Feedback & Help"
--- L.SETTINGS_HELP_BUTTON =				"Discord"	-- Brand name, if there isn't a localised version, keep it the way it is
--- L.SETTINGS_HELP_DESC =					"Join the Discord server."
--- L.SETTINGS_URL_COPY =					"Ctrl+C to copy:"
--- L.SETTINGS_URL_COPIED =					"Link copied to clipboard"
+L.SETTINGS_VERSION =					GAME_VERSION_LABEL .. ":"	-- "Version"
+L.SETTINGS_SUPPORT_TEXTLONG =			"Desarrollar este addon requiere una cantidad significativa de tiempo y esfuerzo.\nPor favor, considera apoyar financieramente al desarrollador."
+L.SETTINGS_SUPPORT_TEXT =				"Apoyar"
+L.SETTINGS_SUPPORT_BUTTON =				"Buy Me a Coffee"	-- Brand name, if there isn't a localised version, keep it the way it is
+L.SETTINGS_SUPPORT_DESC =				"¡Gracias!"
+L.SETTINGS_HELP_TEXT =					"Comentarios y Ayuda"
+L.SETTINGS_HELP_BUTTON =				"Discord"	-- Brand name, if there isn't a localised version, keep it the way it is
+L.SETTINGS_HELP_DESC =					"Únete al servidor de Discord."
+L.SETTINGS_URL_COPY =					"Ctrl+C para copiar:"
+L.SETTINGS_URL_COPIED =					"Enlace copiado al portapapeles"
 
--- L.SETTINGS_KEYSLASH_TITLE =				SETTINGS_KEYBINDINGS_LABEL .. " & Slash Commands"	-- "Keybindings"
+L.SETTINGS_KEYSLASH_TITLE =				SETTINGS_KEYBINDINGS_LABEL .. " y Comandos"	-- "Keybindings"
 -- _G["BINDING_NAME_PSL_TOGGLEWINDOW"] =	app.NameShort .. ": Toggle Window"
 -- L.SETTINGS_SLASH_TOGGLE =				"Toggle the tracking window"
 -- L.SETTINGS_SLASH_RESETPOS =				"Reset the tracking window position"
