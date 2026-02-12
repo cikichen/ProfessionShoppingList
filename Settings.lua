@@ -127,14 +127,14 @@ function app:CreateSettings()
 	})
 
 	local icon = LibStub("LibDBIcon-1.0", true)
-	icon:Register("ProfessionShoppingList", miniButton, ProfessionShoppingList_Settings)
+	icon:Register(appName, miniButton, ProfessionShoppingList_Settings)
 
 	if ProfessionShoppingList_Settings["minimapIcon"] then
 		ProfessionShoppingList_Settings["hide"] = false
-		icon:Show("ProfessionShoppingList")
+		icon:Show(appName)
 	else
 		ProfessionShoppingList_Settings["hide"] = true
-		icon:Hide("ProfessionShoppingList")
+		icon:Hide(appName)
 	end
 
 	-- Settings page
@@ -299,10 +299,10 @@ function app:CreateSettings()
 	setting:SetValueChangedCallback(function()
 		if ProfessionShoppingList_Settings["minimapIcon"] then
 			ProfessionShoppingList_Settings["hide"] = false
-			icon:Show("ProfessionShoppingList")
+			icon:Show(appName)
 		else
 			ProfessionShoppingList_Settings["hide"] = true
-			icon:Hide("ProfessionShoppingList")
+			icon:Hide(appName)
 		end
 	end)
 
