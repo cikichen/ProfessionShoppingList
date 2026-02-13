@@ -143,7 +143,7 @@ function app:TrackUnlearnedMogs()
 
 				-- If the appearance is unlearned, track the recipe (taking our collection mode into account)
 				if not api:IsAppearanceCollected(itemLink) or (ProfessionShoppingList_Settings["collectMode"] == 2 and not api:IsSourceCollected(itemLink)) then
-					app:TrackRecipe(recipeID, 1)
+					api:TrackRecipe(recipeID, 1)
 					added = added + 1
 				end
 

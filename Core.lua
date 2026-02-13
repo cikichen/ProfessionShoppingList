@@ -140,7 +140,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 				-- Only run if the recipeID is cached and the quantity is an actual number
 				if ProfessionShoppingList_Library[recipeID] then
 					if type(recipeQuantity) == "number" and recipeQuantity ~= 0 then
-						app:TrackRecipe(recipeID, recipeQuantity)
+						api:TrackRecipe(recipeID, recipeQuantity)
 					else
 						app:Print(L.INVALID_RECIPEQUANTITY)
 					end
@@ -156,12 +156,12 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 				-- Only run if the recipeID is tracked and the quantity is an actual number (with a maximum of the amount of recipes tracked)
 				if ProfessionShoppingList_Data.Recipes[recipeID] then
 					if part2 == "all" then
-						app:UntrackRecipe(recipeID, 0)
+						api:UntrackRecipe(recipeID, 0)
 
 						-- Show window
 						app:ShowWindow()
 					elseif type(recipeQuantity) == "number" and recipeQuantity ~= 0 and recipeQuantity <= ProfessionShoppingList_Data.Recipes[recipeID].quantity then
-						app:UntrackRecipe(recipeID, recipeQuantity)
+						api:UntrackRecipe(recipeID, recipeQuantity)
 
 						-- Show window
 						app:ShowWindow()
@@ -210,7 +210,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 								end
 								-- Add the recipe
 								if numTrack >= 1 then
-									app:TrackRecipe(assetID, numTrack)
+									api:TrackRecipe(assetID, numTrack)
 								end
 							end
 						end
@@ -238,7 +238,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 
 							-- If the criteria has not yet been completed, add the recipe
 							if completed == false then
-								app:TrackRecipe(assetID, 1)
+								api:TrackRecipe(assetID, 1)
 							end
 						end
 					else

@@ -38,7 +38,7 @@ function app:CreateCraftingOrdersAssets()
 		app.TrackPlaceOrderButton = app:MakeButton(ProfessionsCustomerOrdersFrame.Form, L.TRACK)
 		app.TrackPlaceOrderButton:SetPoint("TOPLEFT", ProfessionsCustomerOrdersFrame.Form, "TOPLEFT", 12, -73)
 		app.TrackPlaceOrderButton:SetScript("OnClick", function()
-			app:TrackRecipe(app.SelectedRecipe.PlaceOrder.recipeID, 1, app.SelectedRecipe.PlaceOrder.recraft)
+			api:TrackRecipe(app.SelectedRecipe.PlaceOrder.recipeID, 1, app.SelectedRecipe.PlaceOrder.recraft)
 		end)
 	end
 
@@ -47,7 +47,7 @@ function app:CreateCraftingOrdersAssets()
 		app.UntrackPlaceOrderButton = app:MakeButton(ProfessionsCustomerOrdersFrame.Form, L.UNTRACK)
 		app.UntrackPlaceOrderButton:SetPoint("TOPLEFT", app.TrackPlaceOrderButton, "TOPRIGHT", 2, 0)
 		app.UntrackPlaceOrderButton:SetScript("OnClick", function()
-			app:UntrackRecipe(app.SelectedRecipe.PlaceOrder.recipeID, 1)
+			api:UntrackRecipe(app.SelectedRecipe.PlaceOrder.recipeID, 1)
 
 			-- Show windows
 			app:ShowWindow()
@@ -297,7 +297,7 @@ app.Event:Register("CRAFTINGORDERS_FULFILL_ORDER_RESPONSE", function(result, ord
 		for k, v in pairs(ProfessionShoppingList_Data.Recipes) do
 			if tonumber(string.match(k, ":(%d+):")) == orderID then
 				-- Remove 1 tracked recipe when it has been crafted (if the option is enabled)
-				app:UntrackRecipe(k, 1)
+				api:UntrackRecipe(k, 1)
 				break
 			end
 		end

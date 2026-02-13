@@ -778,9 +778,9 @@ function app:UpdateRecipes()
 				if button == "RightButton" then
 					-- Untrack the recipe
 					if IsControlKeyDown() then
-						app:UntrackRecipe(recipeInfo.recipeID, 0)
+						api:UntrackRecipe(recipeInfo.recipeID, 0)
 					else
-						app:UntrackRecipe(recipeInfo.recipeID, 1)
+						api:UntrackRecipe(recipeInfo.recipeID, 1)
 					end
 				-- Left-click on recipe
 				elseif button == "LeftButton" then
@@ -936,7 +936,7 @@ function app:UpdateRecipes()
 					if ProfessionShoppingList_Data.Recipes[recipeID] then amount = math.max(0, (amount - ProfessionShoppingList_Data.Recipes[recipeID].quantity)) end
 
 					-- Track the recipe (don't track if 0)
-					if amount > 0 then app:TrackRecipe(recipeID, amount) end
+					if amount > 0 then api:TrackRecipe(recipeID, amount) end
 				end
 
 				-- Control+click on reagent
@@ -2001,7 +2001,7 @@ end
 --------------------------------
 
 -- Track recipe
-function app:TrackRecipe(recipeID, recipeQuantity, recraft, orderID)
+function api:TrackRecipe(recipeID, recipeQuantity, recraft, orderID)
 	local originalRecipeID = recipeID
 
 	-- 2 = Salvage, recipes without reagents | Disable these, cause they shouldn't be tracked
@@ -2037,13 +2037,13 @@ function app:TrackRecipe(recipeID, recipeQuantity, recraft, orderID)
 		if itemID ~= nil then
 			-- Cache item
 			if not C_Item.IsItemDataCachedByID(itemID) then
-				app:Debug("app:TrackRecipe(" .. itemID .. ")")
+				app:Debug("api:TrackRecipe(" .. itemID .. ")")
 
 				C_Item.RequestLoadItemDataByID(itemID)
 				local item = Item:CreateFromItemID(itemID)
 
 				item:ContinueOnItemLoad(function()
-					app:TrackRecipe(recipeID, recipeQuantity, recraft or false, orderID)
+					api:TrackRecipe(recipeID, recipeQuantity, recraft or false, orderID)
 				end)
 
 				return
@@ -2189,7 +2189,7 @@ function app:TrackRecipe(recipeID, recipeQuantity, recraft, orderID)
 end
 
 -- Untrack recipe
-function app:UntrackRecipe(recipeID, recipeQuantity)
+function api:UntrackRecipe(recipeID, recipeQuantity)
 	if ProfessionShoppingList_Data.Recipes[recipeID] ~= nil then
 		-- Clear all recipes if quantity was set to 0
 		if recipeQuantity == 0 then ProfessionShoppingList_Data.Recipes[recipeID].quantity = 0 end
@@ -2225,7 +2225,7 @@ end
 -- Replace the in-game tracking of shift+clicking a recipe with PSL's
 app.Event:Register("TRACKED_RECIPE_UPDATE", function(recipeID, tracked)
 	if tracked then
-		app:TrackRecipe(recipeID, 1, false)
+		api:TrackRecipe(recipeID, 1, false)
 		C_TradeSkillUI.SetRecipeTracked(recipeID, false, false)
 		C_TradeSkillUI.SetRecipeTracked(recipeID, false, true)
 	end
@@ -2260,7 +2260,7 @@ app.Event:Register("UNIT_SPELLCAST_SUCCEEDED", function(unitTarget, castGUID, sp
 		-- Run only when crafting a tracked recipe, and if the remove craft option is enabled
 		if ProfessionShoppingList_Data.Recipes[spellID] and ProfessionShoppingList_Settings["removeCraft"] then
 			-- Remove 1 tracked recipe when it has been crafted (if the option is enabled)
-			app:UntrackRecipe(spellID, 1)
+			api:UntrackRecipe(spellID, 1)
 
 			-- Close window if no recipes are left and the option is enabled
 			local next = next

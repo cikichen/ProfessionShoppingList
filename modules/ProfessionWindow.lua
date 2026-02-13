@@ -36,7 +36,7 @@ function app:CreateTradeskillAssets()
 		app.TrackProfessionButton = app:MakeButton(ProfessionsFrame.CraftingPage, L.TRACK)
 		app.TrackProfessionButton:SetPoint("TOPRIGHT", ProfessionsFrame.CraftingPage.SchematicForm, "TOPRIGHT", -5, -6)
 		app.TrackProfessionButton:SetScript("OnClick", function()
-			app:TrackRecipe(app.SelectedRecipe.Profession.recipeID, 1, app.SelectedRecipe.Profession.recraft)
+			api:TrackRecipe(app.SelectedRecipe.Profession.recipeID, 1, app.SelectedRecipe.Profession.recraft)
 		end)
 	end
 
@@ -46,9 +46,9 @@ function app:CreateTradeskillAssets()
 		newValue = math.floor(self:GetNumber())
 		-- If the value is positive, change the number of recipes tracked
 		if newValue >= 0 then
-			app:UntrackRecipe(app.SelectedRecipe.Profession.recipeID, 0)
+			api:UntrackRecipe(app.SelectedRecipe.Profession.recipeID, 0)
 			if newValue > 0 then
-				app:TrackRecipe(app.SelectedRecipe.Profession.recipeID, newValue, app.SelectedRecipe.Profession.recraft)
+				api:TrackRecipe(app.SelectedRecipe.Profession.recipeID, newValue, app.SelectedRecipe.Profession.recraft)
 			end
 		end
 	end
@@ -93,7 +93,7 @@ function app:CreateTradeskillAssets()
 		app.UntrackProfessionButton:SetPoint("RIGHT", app.RecipeQuantityBox, "LEFT", -8, 0)
 		app.UntrackProfessionButton:SetFrameStrata("HIGH")
 		app.UntrackProfessionButton:SetScript("OnClick", function()
-			app:UntrackRecipe(app.SelectedRecipe.Profession.recipeID, 1)
+			api:UntrackRecipe(app.SelectedRecipe.Profession.recipeID, 1)
 
 			-- Show window
 			app:ShowWindow()
@@ -475,11 +475,11 @@ function app:CreateTradeskillAssets()
 
 			if ProfessionShoppingList_Data.Recipes[key] then
 				rootDescription:CreateButton(app.IconPSL .. " " .. app:Colour(L.UNTRACK), function()
-					app:UntrackRecipe(key, 1)
+					api:UntrackRecipe(key, 1)
 				end)
 			else
 				rootDescription:CreateButton(app.IconPSL .. " " .. app:Colour(L.TRACK), function()
-					app:TrackRecipe(ownerRegion.rowData.option.spellID, 1, ownerRegion.rowData.option.isRecraft, ownerRegion.rowData.option.orderID)
+					api:TrackRecipe(ownerRegion.rowData.option.spellID, 1, ownerRegion.rowData.option.isRecraft, ownerRegion.rowData.option.orderID)
 				end)
 			end
 		end)
@@ -502,7 +502,7 @@ function app:CreateTradeskillAssets()
 
 			if ProfessionShoppingList_Data.Recipes[key] then
 				-- Untrack the recipe
-				app:UntrackRecipe(key, 1)
+				api:UntrackRecipe(key, 1)
 
 				-- Change button text
 				app.TrackMakeOrderButton:SetText(L.TRACK)
@@ -512,7 +512,7 @@ function app:CreateTradeskillAssets()
 				app:ShowWindow()
 			else
 				-- Track the recipe
-				app:TrackRecipe(app.SelectedRecipe.MakeOrder.spellID, 1, app.SelectedRecipe.MakeOrder.isRecraft, app.SelectedRecipe.MakeOrder.orderID)
+				api:TrackRecipe(app.SelectedRecipe.MakeOrder.spellID, 1, app.SelectedRecipe.MakeOrder.isRecraft, app.SelectedRecipe.MakeOrder.orderID)
 
 				-- Change button text
 				app.TrackMakeOrderButton:SetText(L.UNTRACK)
@@ -528,13 +528,13 @@ function app:CreateTradeskillAssets()
 
 			if not checked and ProfessionShoppingList_Data.Recipes[key] then
 				-- Untrack the recipe
-				app:UntrackRecipe(key, 1)
+				api:UntrackRecipe(key, 1)
 
 				-- Show window
 				app:ShowWindow()
 			elseif checked and ProfessionShoppingList_Data.Recipes[key] == nil then
 				-- Track the recipe
-				app:TrackRecipe(orderDetails.spellID, 1, orderDetails.isRecraft, orderDetails.orderID)
+				api:TrackRecipe(orderDetails.spellID, 1, orderDetails.isRecraft, orderDetails.orderID)
 			end
 		end
 	end
