@@ -1649,20 +1649,34 @@ end)
 -- TRACKING WINDOW TAB --
 -------------------------
 
-function app:CreateTab(frame)
+function app:CreateTab(frame, tabFrame)
 	app.Tab = app.Tab or {}
 	app.Tab.IsShown = app.Tab.IsShown or {}
 	if app.Tab[frame] then return end
 	local locked
 
-	app.Tab[frame] = CreateFrame("Frame", nil, frame, "ProfessionShoppingList_Tab")
+	tabFrame.numTabs = tabFrame.numTabs + 1
+	app.Tab[frame] = CreateFrame("Frame", nil, tabFrame, "ProfessionShoppingList_Tab")
+	app.Tab[frame]:SetPoint("TOPLEFT", tabFrame, "TOPRIGHT", -2, -114)
+	tabFrame.Tabs[2] = app.Tab[frame]
+
 
 	local function showWindow()
 		app:ShowWindow()
 		app.Window:ClearAllPoints()
 		app.Window:SetPoint("TOPLEFT", frame, "TOPRIGHT", 0, -1)
 		app.Window:SetPoint("BOTTOMLEFT", frame, "BOTTOMRIGHT", 0, 0)
-		app.Tab[frame]:SetPoint("TOPLEFT", app.Window, "TOPRIGHT", -1, -50)
+
+		for i = 1, tabFrame.numTabs do
+			if tabFrame.selTab == i and i ~= 2 then
+				tabFrame.Tabs[i]:GetScript("OnMouseUp")(tabFrame.Tabs[i])
+			end
+		end
+		tabFrame.selTab = 2
+
+		tabFrame:ClearAllPoints()
+		tabFrame:SetPoint("TOPLEFT", app.Window, "TOPRIGHT")
+		tabFrame:SetPoint("BOTTOMLEFT", app.Window, "BOTTOMRIGHT")
 
 		app.Tab.IsShown[frame] = true
 		app.Tab.IsShown[0] = true
@@ -1675,11 +1689,15 @@ function app:CreateTab(frame)
 	end
 
 	local function hideWindow()
-		app.Tab[frame]:SetPoint("TOPLEFT", frame, "TOPRIGHT", 0, -52)
+		tabFrame:ClearAllPoints()
+		tabFrame:SetPoint("TOPLEFT", frame, "TOPRIGHT")
+		tabFrame:SetPoint("BOTTOMLEFT", frame, "BOTTOMRIGHT")
+
 		app.Tab.IsShown[frame] = false
 		app.Tab.IsShown[0] = false
 		api:ToggleWindow()
 		app.Tab[frame]:SetChecked(false)
+		tabFrame.selTab = 0
 
 		app.CloseButton:Enable()
 		app.UnlockButton:Enable()
@@ -1721,7 +1739,17 @@ app.Event:Register("TRADE_SKILL_SHOW", function()
 	if C_AddOns.IsAddOnLoaded("Numdelicious_QoL_Tweaks") and NumyQT_DB.modules["ProfessionButtonTab"] then return end
 
 	if ProfessionsFrame then
-		app:CreateTab(ProfessionsFrame)
+		if not ProfessionsFrameTabSideBar then
+			ProfessionsFrameTabSideBar = CreateFrame("Frame", nil, ProfessionsFrame, "")
+			ProfessionsFrameTabSideBar:SetWidth(1)
+			ProfessionsFrameTabSideBar:SetPoint("TOPLEFT", ProfessionsFrame, "TOPRIGHT")
+			ProfessionsFrameTabSideBar:SetPoint("BOTTOMLEFT", ProfessionsFrame, "BOTTOMRIGHT")
+			ProfessionsFrameTabSideBar.Tabs = {}
+			ProfessionsFrameTabSideBar.numTabs = 0
+			ProfessionsFrameTabSideBar.selTab = 0
+		end
+
+		app:CreateTab(ProfessionsFrame, ProfessionsFrameTabSideBar)
 		hooksecurefunc(ProfessionsFrame.CraftingPage.CraftingOutputLog, "FinalizeResultData", function(self)
 			if app.Tab and app.Tab.IsShown[0] then
 				ProfessionsFrame.CraftingPage.CraftingOutputLog:Cleanup()
@@ -1732,11 +1760,31 @@ app.Event:Register("TRADE_SKILL_SHOW", function()
 end)
 
 app.Event:Register("AUCTION_HOUSE_SHOW", function()
-	if AuctionHouseFrame then app:CreateTab(AuctionHouseFrame) end
+	if not AuctionHouseFrameTabSideBar then
+		AuctionHouseFrameTabSideBar = CreateFrame("Frame", nil, AuctionHouseFrame, "")
+		AuctionHouseFrameTabSideBar:SetWidth(1)
+		AuctionHouseFrameTabSideBar:SetPoint("TOPLEFT", AuctionHouseFrame, "TOPRIGHT")
+		AuctionHouseFrameTabSideBar:SetPoint("BOTTOMLEFT", AuctionHouseFrame, "BOTTOMRIGHT")
+		AuctionHouseFrameTabSideBar.Tabs = {}
+		AuctionHouseFrameTabSideBar.numTabs = 0
+		AuctionHouseFrameTabSideBar.selTab = 0
+	end
+
+	if AuctionHouseFrame then app:CreateTab(AuctionHouseFrame, AuctionHouseFrameTabSideBar) end
 end)
 
 app.Event:Register("CRAFTINGORDERS_SHOW_CUSTOMER", function()
-	if ProfessionsCustomerOrdersFrame then app:CreateTab(ProfessionsCustomerOrdersFrame) end
+	if not ProfessionsCustomerOrdersFrameTabSideBar then
+		ProfessionsCustomerOrdersFrameTabSideBar = CreateFrame("Frame", nil, ProfessionsCustomerOrdersFrame, "")
+		ProfessionsCustomerOrdersFrameTabSideBar:SetWidth(1)
+		ProfessionsCustomerOrdersFrameTabSideBar:SetPoint("TOPLEFT", ProfessionsCustomerOrdersFrame, "TOPRIGHT")
+		ProfessionsCustomerOrdersFrameTabSideBar:SetPoint("BOTTOMLEFT", ProfessionsCustomerOrdersFrame, "BOTTOMRIGHT")
+		ProfessionsCustomerOrdersFrameTabSideBar.Tabs = {}
+		ProfessionsCustomerOrdersFrameTabSideBar.numTabs = 0
+		ProfessionsCustomerOrdersFrameTabSideBar.selTab = 0
+	end
+
+	if ProfessionsCustomerOrdersFrame then app:CreateTab(ProfessionsCustomerOrdersFrame, ProfessionsCustomerOrdersFrameTabSideBar) end
 end)
 
 ------------------------

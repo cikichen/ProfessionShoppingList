@@ -33,8 +33,5 @@
 			<KeyValue key="inactiveAtlas" value="poi-workorders" type="string" />
 			<KeyValue key="tooltipText" value="|cff3FC7EBProfession Shopping List" type="string" />
 		</KeyValues>
-		<Anchors>
-			<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" x="0" y="-52" />
-		</Anchors>
 	</Frame>
 </Ui>
