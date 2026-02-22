@@ -1655,7 +1655,6 @@ function app:CreateTab(frame, tabFrame)
 	if app.Tab[frame] then return end
 	local locked
 
-	tabFrame.numTabs = tabFrame.numTabs + 1
 	app.Tab[frame] = CreateFrame("Frame", nil, tabFrame, "ProfessionShoppingList_Tab")
 	app.Tab[frame]:SetPoint("TOPLEFT", tabFrame, "TOPRIGHT", -2, -114)
 	tabFrame.Tabs[2] = app.Tab[frame]
@@ -1667,7 +1666,7 @@ function app:CreateTab(frame, tabFrame)
 		app.Window:SetPoint("TOPLEFT", frame, "TOPRIGHT", 0, -1)
 		app.Window:SetPoint("BOTTOMLEFT", frame, "BOTTOMRIGHT", 0, 0)
 
-		for i = 1, tabFrame.numTabs do
+		for i = 1, #tabFrame.Tabs do
 			if tabFrame.selTab == i and i ~= 2 then
 				tabFrame.Tabs[i]:GetScript("OnMouseUp")(tabFrame.Tabs[i])
 			end
@@ -1745,7 +1744,6 @@ app.Event:Register("TRADE_SKILL_SHOW", function()
 			ProfessionsFrameTabSideBar:SetPoint("TOPLEFT", ProfessionsFrame, "TOPRIGHT")
 			ProfessionsFrameTabSideBar:SetPoint("BOTTOMLEFT", ProfessionsFrame, "BOTTOMRIGHT")
 			ProfessionsFrameTabSideBar.Tabs = {}
-			ProfessionsFrameTabSideBar.numTabs = 0
 			ProfessionsFrameTabSideBar.selTab = 0
 		end
 
@@ -1766,7 +1764,6 @@ app.Event:Register("AUCTION_HOUSE_SHOW", function()
 		AuctionHouseFrameTabSideBar:SetPoint("TOPLEFT", AuctionHouseFrame, "TOPRIGHT")
 		AuctionHouseFrameTabSideBar:SetPoint("BOTTOMLEFT", AuctionHouseFrame, "BOTTOMRIGHT")
 		AuctionHouseFrameTabSideBar.Tabs = {}
-		AuctionHouseFrameTabSideBar.numTabs = 0
 		AuctionHouseFrameTabSideBar.selTab = 0
 	end
 
@@ -1780,7 +1777,6 @@ app.Event:Register("CRAFTINGORDERS_SHOW_CUSTOMER", function()
 		ProfessionsCustomerOrdersFrameTabSideBar:SetPoint("TOPLEFT", ProfessionsCustomerOrdersFrame, "TOPRIGHT")
 		ProfessionsCustomerOrdersFrameTabSideBar:SetPoint("BOTTOMLEFT", ProfessionsCustomerOrdersFrame, "BOTTOMRIGHT")
 		ProfessionsCustomerOrdersFrameTabSideBar.Tabs = {}
-		ProfessionsCustomerOrdersFrameTabSideBar.numTabs = 0
 		ProfessionsCustomerOrdersFrameTabSideBar.selTab = 0
 	end
 
