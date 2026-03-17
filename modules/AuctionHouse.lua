@@ -98,7 +98,7 @@ function app:CreateShoppingList()
 					elseif ProfessionShoppingList_Settings["reagentQuality"] == 2 then
 						reagentQuality = preMidnight and 3 or 2
 					elseif ProfessionShoppingList_Settings["reagentQuality"] == 1 then
-						reagentQuality = (preMidnight or noQuality) and "" or 1
+						reagentQuality = ""
 					end
 
 					-- Calculate how many we still need
