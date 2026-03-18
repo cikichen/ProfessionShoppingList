@@ -58,7 +58,7 @@ app.Event:Register("MERCHANT_SHOW", function()
 				}
 			end
 
-			for i=1, GetMerchantItemCostInfo(vendorIndex), 1 do
+			for i = 1, GetMerchantItemCostInfo(vendorIndex), 1 do
 				local itemTexture, itemValue, itemLink, currencyName = GetMerchantItemCostItem(vendorIndex, i)
 				if currencyName and itemLink then
 					local currencyID = C_CurrencyInfo.GetCurrencyIDFromLink(itemLink)

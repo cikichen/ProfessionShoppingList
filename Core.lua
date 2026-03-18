@@ -216,7 +216,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 						end
 					-- Chromatic Calibration: Cranial Cannons
 					elseif achievementID == 18906 then
-						for i=1,numCriteria,1 do
+						for i = 1, numCriteria, 1 do
 							-- Set the update handler to active, to prevent multiple list updates from freezing the game
 							app.Flag.ChangingRecipes = true
 							-- Until the last one in the series
