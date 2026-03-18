@@ -533,25 +533,24 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 						end
 					end
 
-					if not app.OrderAdjustments[v].button then app.OrderAdjustments[v].button = {} end
-
-					for i, button in pairs(app.OrderAdjustments[v].button) do
+					if not app.OrderAdjustments[v].reward then app.OrderAdjustments[v].reward = {} end
+					for i, button in ipairs(app.OrderAdjustments[v].reward) do
 						button:Hide()
 					end
 
 					for i, reward in ipairs(rewards) do
-						if not app.OrderAdjustments[v].button[i] then
-							app.OrderAdjustments[v].button[i] = CreateFrame("Button", "RewardButton", v, "UIPanelButtonTemplate")
-							app.OrderAdjustments[v].button[i]:SetWidth(20)
-							app.OrderAdjustments[v].button[i]:SetHeight(20)
-							app.OrderAdjustments[v].button[i]:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square")
-							app.OrderAdjustments[v].button[i].Text = app.OrderAdjustments[v].button[i]:CreateFontString(nil, "ARTWORK", "GameFontNormalOutline")
-							app.OrderAdjustments[v].button[i].Text:SetJustifyH("RIGHT")
-							app.OrderAdjustments[v].button[i].Text:SetTextScale(0.9)
+						if not app.OrderAdjustments[v].reward[i] then
+							app.OrderAdjustments[v].reward[i] = CreateFrame("Button", "RewardButton", v, "UIPanelButtonTemplate")
+							app.OrderAdjustments[v].reward[i]:SetWidth(20)
+							app.OrderAdjustments[v].reward[i]:SetHeight(20)
+							app.OrderAdjustments[v].reward[i]:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square")
+							app.OrderAdjustments[v].reward[i].Text = app.OrderAdjustments[v].reward[i]:CreateFontString(nil, "ARTWORK", "GameFontNormalOutline")
+							app.OrderAdjustments[v].reward[i].Text:SetJustifyH("RIGHT")
+							app.OrderAdjustments[v].reward[i].Text:SetTextScale(0.9)
 						end
-						app.OrderAdjustments[v].button[i]:Show()
-						app.OrderAdjustments[v].button[i]:SetPoint("BOTTOMLEFT", v.cells[3], "BOTTOMLEFT", -44+i*22, 0)
-						app.OrderAdjustments[v].button[i]:SetScript("OnEnter", function(self)
+						app.OrderAdjustments[v].reward[i]:Show()
+						app.OrderAdjustments[v].reward[i]:SetPoint("BOTTOMLEFT", v.cells[3], "BOTTOMLEFT", -44+i*22, 0)
+						app.OrderAdjustments[v].reward[i]:SetScript("OnEnter", function(self)
 							GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
 							if i == 1 then
 								GameTooltip:SetText(reward.link)
@@ -560,15 +559,80 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 							end
 							GameTooltip:Show()
 						end)
-						app.OrderAdjustments[v].button[i]:SetScript("OnLeave", function()
+						app.OrderAdjustments[v].reward[i]:SetScript("OnLeave", function()
 							GameTooltip:Hide()
 						end)
-						app.OrderAdjustments[v].button[i]:SetNormalTexture(reward.icon)
-						app.OrderAdjustments[v].button[i].Text:SetPoint("BOTTOMRIGHT", app.OrderAdjustments[v].button[i], "BOTTOMRIGHT", 0, 0)
+						app.OrderAdjustments[v].reward[i]:SetNormalTexture(reward.icon)
+						app.OrderAdjustments[v].reward[i].Text:SetPoint("BOTTOMRIGHT", app.OrderAdjustments[v].reward[i], "BOTTOMRIGHT", 0, 0)
 						if reward.count and reward.count > 1 then
-							app.OrderAdjustments[v].button[i].Text:SetText("|cffFFFFFF" .. reward.count)
+							app.OrderAdjustments[v].reward[i].Text:SetText("|cffFFFFFF" .. reward.count)
 						else
-							app.OrderAdjustments[v].button[i].Text:SetText("")
+							app.OrderAdjustments[v].reward[i].Text:SetText("")
+						end
+					end
+
+					-- Needed reagents
+					v.cells[4].Text:Hide()
+					v.cells[4]:EnableMouse(false)
+
+					local neededReagents = {}
+					local providedReagents = {}
+					for k, v in ipairs(data.option.reagents) do
+						if ProfessionShoppingList_Cache.ReagentTiers[v.reagentInfo.reagent.itemID] then
+							providedReagents[ProfessionShoppingList_Cache.ReagentTiers[v.reagentInfo.reagent.itemID].one] = v.reagentInfo.quantity
+							providedReagents[ProfessionShoppingList_Cache.ReagentTiers[v.reagentInfo.reagent.itemID].two] = v.reagentInfo.quantity
+							providedReagents[ProfessionShoppingList_Cache.ReagentTiers[v.reagentInfo.reagent.itemID].three] = v.reagentInfo.quantity
+						end
+					end
+
+					for _, v in ipairs(C_TradeSkillUI.GetRecipeSchematic(data.option.spellID,false).reagentSlotSchematics) do
+						if v.required then
+							for _, j in ipairs(v.reagents) do
+								if not providedReagents[j.itemID] then
+									local _, itemLink, _, _, _, _, _, _, _, fileID = C_Item.GetItemInfo(j.itemID)
+									if not itemLink then
+										app:CacheItem(j.itemID)
+										C_Timer.After(0.1, doTheThing)
+										return
+									end
+									table.insert(neededReagents, { icon = fileID, link = itemLink, count = v.quantityRequired } )
+									break
+								end
+							end
+						end
+					end
+
+					if not app.OrderAdjustments[v].reagent then app.OrderAdjustments[v].reagent = {} end
+					for i, button in ipairs(app.OrderAdjustments[v].reagent) do
+						button:Hide()
+					end
+
+					for i, reagent in pairs(neededReagents) do
+						if not app.OrderAdjustments[v].reagent[i] then
+							app.OrderAdjustments[v].reagent[i] = CreateFrame("Button", "ReagentButton", v, "UIPanelButtonTemplate")
+							app.OrderAdjustments[v].reagent[i]:SetWidth(20)
+							app.OrderAdjustments[v].reagent[i]:SetHeight(20)
+							app.OrderAdjustments[v].reagent[i]:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square")
+							app.OrderAdjustments[v].reagent[i].Text = app.OrderAdjustments[v].reagent[i]:CreateFontString(nil, "ARTWORK", "GameFontNormalOutline")
+							app.OrderAdjustments[v].reagent[i].Text:SetJustifyH("RIGHT")
+							app.OrderAdjustments[v].reagent[i].Text:SetTextScale(0.9)
+						end
+						app.OrderAdjustments[v].reagent[i]:Show()
+						app.OrderAdjustments[v].reagent[i]:SetPoint("BOTTOMLEFT", v.cells[4], "BOTTOMLEFT", -26+i*22, 0)
+						app.OrderAdjustments[v].reagent[i]:SetScript("OnEnter", function(self)
+							GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
+							GameTooltip:SetHyperlink(reagent.link)
+							GameTooltip:Show()
+						end)
+						app.OrderAdjustments[v].reagent[i]:SetScript("OnLeave", function()
+							GameTooltip:Hide()
+						end)
+						app.OrderAdjustments[v].reagent[i]:SetNormalTexture(reagent.icon)
+						app.OrderAdjustments[v].reagent[i].Text:SetPoint("BOTTOMRIGHT", app.OrderAdjustments[v].reagent[i], "BOTTOMRIGHT", 0, 0)
+						if reagent.count and reagent.count > 1 then
+							app.OrderAdjustments[v].reagent[i].Text:SetText("|cffFFFFFF" .. reagent.count)
+						else
+							app.OrderAdjustments[v].reagent[i].Text:SetText("")
 						end
 					end
 
