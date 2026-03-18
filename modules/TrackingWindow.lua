@@ -2146,6 +2146,7 @@ function api:TrackRecipe(recipeID, recipeQuantity, recraft, orderID)
 				}
 
 				recipeID = key
+				break
 			end
 		end
 
