@@ -587,17 +587,22 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 
 					for _, v in ipairs(C_TradeSkillUI.GetRecipeSchematic(data.option.spellID,false).reagentSlotSchematics) do
 						if v.required then
+							local provided = false
 							for _, j in ipairs(v.reagents) do
-								if not providedReagents[j.itemID] then
-									local _, itemLink, _, _, _, _, _, _, _, fileID = C_Item.GetItemInfo(j.itemID)
-									if not itemLink then
-										app:CacheItem(j.itemID)
-										C_Timer.After(0.1, doTheThing)
-										return
-									end
-									table.insert(neededReagents, { icon = fileID, link = itemLink, count = v.quantityRequired } )
+								if providedReagents[j.itemID] then
+									provided = true
 									break
 								end
+							end
+
+							if not provided then
+								local _, itemLink, _, _, _, _, _, _, _, fileID = C_Item.GetItemInfo(v.reagents[1].itemID)
+								if not itemLink then
+									app:CacheItem(v.reagents[1].itemID)
+									C_Timer.After(0.1, doTheThing)
+									return
+								end
+								table.insert(neededReagents, { icon = fileID, link = itemLink, count = v.quantityRequired } )
 							end
 						end
 					end
