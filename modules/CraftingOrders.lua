@@ -375,10 +375,6 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 						local calculations = {}
 						local reagents = {}
 
-						if data.option.spellID == 1228986 then
-							DevTools_Dump(data.option)
-						end
-
 						ProfessionShoppingList_Cache.FakeRecipes[key] = {
 							["spellID"] = data.option.spellID,
 							["tradeskillID"] = 1,	-- Crafting order
