@@ -25,8 +25,17 @@ end)
 function app:AddTooltipInfo()
 	local function OnTooltipSetItem(tooltip, itemData)
 		if ProfessionShoppingList_Settings["showTooltip"] then
+			local recipe = false
+			if tooltip and tooltip.lines then
+				for _, line in ipairs(tooltip.lines) do
+					if line.type == Enum.TooltipDataLineType.ItemSpellTriggerLearn then
+						recipe = true
+					end
+				end
+			end
+
 			local _, itemLink, itemID
-			if itemData and itemData.id then
+			if recipe and itemData and itemData.id then
 				itemID = itemData.id
 				_, itemLink = C_Item.GetItemInfo(itemID)
 			elseif tooltip.GetItem then
