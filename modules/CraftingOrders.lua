@@ -636,6 +636,9 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 						end
 					end
 
+					-- Nudge duration to the right
+					v.cells[5].Text:SetPoint("BOTTOMRIGHT", v.cells[5], -20, 0)
+
 					-- Recipe icons
 					if not app.OrderAdjustments[v].tracked then
 						app.OrderAdjustments[v].tracked = v:CreateFontString(nil, "ARTWORK", "GameFontNormalHuge")
