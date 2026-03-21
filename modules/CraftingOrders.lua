@@ -375,6 +375,10 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 						local calculations = {}
 						local reagents = {}
 
+						if data.option.spellID == 1228986 then
+							DevTools_Dump(data.option)
+						end
+
 						ProfessionShoppingList_Cache.FakeRecipes[key] = {
 							["spellID"] = data.option.spellID,
 							["tradeskillID"] = 1,	-- Crafting order
@@ -578,11 +582,7 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 					local neededReagents = {}
 					local providedReagents = {}
 					for k, v in ipairs(data.option.reagents) do
-						if ProfessionShoppingList_Cache.ReagentTiers[v.reagentInfo.reagent.itemID] then
-							providedReagents[ProfessionShoppingList_Cache.ReagentTiers[v.reagentInfo.reagent.itemID].one] = v.reagentInfo.quantity
-							providedReagents[ProfessionShoppingList_Cache.ReagentTiers[v.reagentInfo.reagent.itemID].two] = v.reagentInfo.quantity
-							providedReagents[ProfessionShoppingList_Cache.ReagentTiers[v.reagentInfo.reagent.itemID].three] = v.reagentInfo.quantity
-						end
+						providedReagents[v.reagentInfo.reagent.itemID] = v.reagentInfo.quantity
 					end
 
 					for _, v in ipairs(C_TradeSkillUI.GetRecipeSchematic(data.option.spellID,false).reagentSlotSchematics) do
