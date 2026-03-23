@@ -578,7 +578,9 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 					local neededReagents = {}
 					local providedReagents = {}
 					for k, v in ipairs(data.option.reagents) do
-						providedReagents[v.reagentInfo.reagent.itemID] = v.reagentInfo.quantity
+						if v.reagentInfo.reagent.itemID then
+							providedReagents[v.reagentInfo.reagent.itemID] = v.reagentInfo.quantity
+						end
 					end
 
 					for _, v in ipairs(C_TradeSkillUI.GetRecipeSchematic(data.option.spellID,false).reagentSlotSchematics) do
