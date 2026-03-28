@@ -88,7 +88,7 @@ function app:AddTooltipInfo()
 
 			if ProfessionShoppingList_Settings["showCraftTooltip"] then
 				for k, v in pairs(ProfessionShoppingList_Library) do
-					if type(v) ~= "number" and v.itemID == itemID then	-- No clue why these non-table values are here, tbh
+					if type(v) ~= "number" and v.itemID == itemID then -- No clue why these non-table values are here, tbh
 						if emptyLine == false then
 							tooltip:AddLine(" ")
 						end

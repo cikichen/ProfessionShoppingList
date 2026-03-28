@@ -23,8 +23,8 @@ app.IconLMB = "|TInterface\\TutorialFrame\\UI-Tutorial-Frame:12:12:0:0:512:512:1
 app.IconRMB = "|TInterface\\TutorialFrame\\UI-Tutorial-Frame:12:12:0:0:512:512:10:65:330:385|t"
 app.IconNew = "|A:UI-Journeys-GreatVault-Tag-new:33:49|a"
 app.IconProfession = {
-	[0] = "|TInterface\\MoneyFrame\\UI-GoldIcon:0|t",	-- Vendor
-	[1] = "|TInterface\\AddOns\\ProfessionShoppingList\\assets\\hammer-32:0|t",	-- Crafting order
+	[0] = "|TInterface\\MoneyFrame\\UI-GoldIcon:0|t", -- Vendor
+	[1] = "|TInterface\\AddOns\\ProfessionShoppingList\\assets\\hammer-32:0|t", -- Crafting order
 	[164] = "|TInterface\\Icons\\ui_profession_blacksmithing:0|t",
 	[165] = "|TInterface\\Icons\\ui_profession_leatherworking:0|t",
 	[171] = "|TInterface\\Icons\\ui_profession_alchemy:0|t",
@@ -189,69 +189,69 @@ app.slLegendaryRecipeIDs = {
 
 -- NYI recipes
 app.nyiRecipes = {
-	[2336] = true,	-- Elixir of Tongues
-	[2671] = true,	-- Rough Bronze Bracers
-	[7636] = true,	-- Green Woolen Robe
-	[8366] = true,	-- Ironforge Chain
-	[8368] = true,	-- Ironforge Gauntlets
-	[8778] = true,	-- Boots of Darkness
-	[9942] = true,	-- Mithril Scale Gloves
-	[9957] = true,	-- Orcish War Leggings
-	[9972] = true,	-- Ornate Mithril Breastplate
-	[9979] = true,	-- Ornate Mithril Boots
-	[9980] = true,	-- Ornate Mithril Helm
-	[10550] = true,	-- Nightscape Cloak
-	[12062] = true,	-- Stormcloth Pants
-	[12063] = true,	-- Stormcloth Gloves
-	[12068] = true,	-- Stormcloth Vest
-	[12083] = true,	-- Stormcloth Headband
-	[12087] = true,	-- Stormcloth Shoulders
-	[12090] = true,	-- Stormcloth Boots
-	[16960] = true,	-- Thorium Greatsword
-	[16965] = true,	-- Bleakwood Hew
-	[16967] = true,	-- Inlaid Thorium Hammer
-	[16980] = true,	-- Rune Edge
-	[16986] = true,	-- Blood Talon
-	[16987] = true,	-- Darkspear
-	[17632] = true,	-- Alchemist's Stone
-	[19106] = true,	-- Onyxia Scale Breastplate
-	[21924] = true,	-- Runecloth Robe
-	[24315] = true,	-- Heavy Netherweave Net
-	[28021] = true,	-- Arcane Dust
-	[29120] = true,	-- true,faith Vestments
-	[30342] = true,	-- Red Smoke Flare
-	[30343] = true,	-- Blue Smoke Flare
-	[30549] = true,	-- Critter Enlarger
-	[30555] = true,	-- Remote Mail Terminal
-	[35518] = true,	-- Bracers of Nimble Thought
-	[35522] = true,	-- Mantle of Nimble Thought
-	[35525] = true,	-- Swiftheal Mantle
-	[35526] = true,	-- Swiftheal Wraps
-	[35544] = true,	-- Hands of Eternal Light
-	[35548] = true,	-- Robe of Eternal Light
-	[35551] = true,	-- Sunfire Handwraps
-	[35552] = true,	-- Sunfire Robe
-	[36665] = true,	-- Netherflame Robe
-	[36667] = true,	-- Netherflame Belt
-	[36668] = true,	-- Netherflame Boots
-	[36669] = true,	-- Lifeblood Leggings
-	[36670] = true,	-- Lifeblood Belt
-	[36672] = true,	-- Lifeblood Bracers
-	[41133] = true,	-- Swiftsteel Shoulders
-	[41135] = true,	-- Dawnsteel Shoulders
-	[44438] = true,	-- Shoveltusk Soup
-	[45547] = true,	-- Succulent Orca Stew
-	[46142] = true,	-- Sunblessed Breastplate
-	[168851] = true,	-- Miniature Flying Carpet
-	[169669] = true,	-- Hexweave Cloth
-	[173415] = true,	-- Murloc Chew Toy
-	[382977] = true,	-- Pandaria Prospecting (not NYI, but returns Shadowed Alloy)
-	[382978] = true,	-- Pandaria Prospecting (not NYI, but returns Infurious Alloy)
+	[2336] = true, -- Elixir of Tongues
+	[2671] = true, -- Rough Bronze Bracers
+	[7636] = true, -- Green Woolen Robe
+	[8366] = true, -- Ironforge Chain
+	[8368] = true, -- Ironforge Gauntlets
+	[8778] = true, -- Boots of Darkness
+	[9942] = true, -- Mithril Scale Gloves
+	[9957] = true, -- Orcish War Leggings
+	[9972] = true, -- Ornate Mithril Breastplate
+	[9979] = true, -- Ornate Mithril Boots
+	[9980] = true, -- Ornate Mithril Helm
+	[10550] = true, -- Nightscape Cloak
+	[12062] = true, -- Stormcloth Pants
+	[12063] = true, -- Stormcloth Gloves
+	[12068] = true, -- Stormcloth Vest
+	[12083] = true, -- Stormcloth Headband
+	[12087] = true, -- Stormcloth Shoulders
+	[12090] = true, -- Stormcloth Boots
+	[16960] = true, -- Thorium Greatsword
+	[16965] = true, -- Bleakwood Hew
+	[16967] = true, -- Inlaid Thorium Hammer
+	[16980] = true, -- Rune Edge
+	[16986] = true, -- Blood Talon
+	[16987] = true, -- Darkspear
+	[17632] = true, -- Alchemist's Stone
+	[19106] = true, -- Onyxia Scale Breastplate
+	[21924] = true, -- Runecloth Robe
+	[24315] = true, -- Heavy Netherweave Net
+	[28021] = true, -- Arcane Dust
+	[29120] = true, -- true,faith Vestments
+	[30342] = true, -- Red Smoke Flare
+	[30343] = true, -- Blue Smoke Flare
+	[30549] = true, -- Critter Enlarger
+	[30555] = true, -- Remote Mail Terminal
+	[35518] = true, -- Bracers of Nimble Thought
+	[35522] = true, -- Mantle of Nimble Thought
+	[35525] = true, -- Swiftheal Mantle
+	[35526] = true, -- Swiftheal Wraps
+	[35544] = true, -- Hands of Eternal Light
+	[35548] = true, -- Robe of Eternal Light
+	[35551] = true, -- Sunfire Handwraps
+	[35552] = true, -- Sunfire Robe
+	[36665] = true, -- Netherflame Robe
+	[36667] = true, -- Netherflame Belt
+	[36668] = true, -- Netherflame Boots
+	[36669] = true, -- Lifeblood Leggings
+	[36670] = true, -- Lifeblood Belt
+	[36672] = true, -- Lifeblood Bracers
+	[41133] = true, -- Swiftsteel Shoulders
+	[41135] = true, -- Dawnsteel Shoulders
+	[44438] = true, -- Shoveltusk Soup
+	[45547] = true, -- Succulent Orca Stew
+	[46142] = true, -- Sunblessed Breastplate
+	[168851] = true, -- Miniature Flying Carpet
+	[169669] = true, -- Hexweave Cloth
+	[173415] = true, -- Murloc Chew Toy
+	[382977] = true, -- Pandaria Prospecting (not NYI, but returns Shadowed Alloy)
+	[382978] = true, -- Pandaria Prospecting (not NYI, but returns Infurious Alloy)
 }
 
 -- Profession Knowledge
 app.ProfessionKnowledge = {
-	[2823] = {	-- Dragonflight Alchemy
+	[2823] = { -- Dragonflight Alchemy
 		-- Vendors
 		{ quest = 71893, type = "vendor", item = 200974, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71904, type = "vendor", item = 201270, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -267,22 +267,22 @@ app.ProfessionKnowledge = {
 		{ quest = 70889, type = "renown", faction = 2510, renown = 24 },
 
 		-- Treasures
-		{ quest = 70247, type = "world", zone = 2022 },					-- Hidden Master
-		{ quest = 70274, type = "world", item = 198663, zone = 2022 },	-- Frostforged Potion
-		{ quest = 70289, type = "world", item = 198685, zone = 2022 },	-- Well Insulated Mug
-		{ quest = 70305, type = "world", item = 198710, zone = 2023 },	-- Canteen of Suspicious Water
-		{ quest = 70208, type = "world", item = 198599, zone = 2024 },	-- Experimental Decay Sample
-		{ quest = 70309, type = "world", item = 198712, zone = 2024 },	-- Small Basket of Firewater Powder
-		{ quest = 70278, type = "world", item = 203471, zone = 2025 },	-- Tasty Candy (formerly Furry Gloop)
-		{ quest = 70301, type = "world", item = 198697, zone = 2025 },	-- Contraband Concoction
-		{ quest = 75646, type = "world", item = 205211, zone = 2133 },	-- Nutrient Diluted Protofluid
-		{ quest = 75649, type = "world", item = 205212, zone = 2133 },	-- Marrow-Ripened Slime
-		{ quest = 75651, type = "world", item = 205213, zone = 2133 },	-- Suspicious Mold
-		{ quest = 78264, type = "world", item = 210184, zone = 2200 },	-- Half-Filled Dreamless Sleep Potion
-		{ quest = 78269, type = "world", item = 210185, zone = 2200 },	-- Splash Potion of Narcolepsy
-		{ quest = 78275, type = "world", item = 210190, zone = 2200 },	-- Blazeroot
+		{ quest = 70247, type = "world", zone = 2022 }, -- Hidden Master
+		{ quest = 70274, type = "world", item = 198663, zone = 2022 }, -- Frostforged Potion
+		{ quest = 70289, type = "world", item = 198685, zone = 2022 }, -- Well Insulated Mug
+		{ quest = 70305, type = "world", item = 198710, zone = 2023 }, -- Canteen of Suspicious Water
+		{ quest = 70208, type = "world", item = 198599, zone = 2024 }, -- Experimental Decay Sample
+		{ quest = 70309, type = "world", item = 198712, zone = 2024 }, -- Small Basket of Firewater Powder
+		{ quest = 70278, type = "world", item = 203471, zone = 2025 }, -- Tasty Candy (formerly Furry Gloop)
+		{ quest = 70301, type = "world", item = 198697, zone = 2025 }, -- Contraband Concoction
+		{ quest = 75646, type = "world", item = 205211, zone = 2133 }, -- Nutrient Diluted Protofluid
+		{ quest = 75649, type = "world", item = 205212, zone = 2133 }, -- Marrow-Ripened Slime
+		{ quest = 75651, type = "world", item = 205213, zone = 2133 }, -- Suspicious Mold
+		{ quest = 78264, type = "world", item = 210184, zone = 2200 }, -- Half-Filled Dreamless Sleep Potion
+		{ quest = 78269, type = "world", item = 210185, zone = 2200 }, -- Splash Potion of Narcolepsy
+		{ quest = 78275, type = "world", item = 210190, zone = 2200 }, -- Blazeroot
 	},
-	[2822] = {	-- Dragonflight Blacksmithing
+	[2822] = { -- Dragonflight Blacksmithing
 		-- Vendors
 		{ quest = 71894, type = "vendor", item = 200972, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71905, type = "vendor", item = 201268, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -298,24 +298,24 @@ app.ProfessionKnowledge = {
 		{ quest = 70909, type = "renown", faction = 2510, renown = 24 },
 
 		-- Treasures
-		{ quest = 70250, type = "world", zone = 2022 },					-- Hidden Master
-		{ quest = 70230, type = "world", item = 198791, zone = 2022 },	-- Glimmer of Blacksmithing Wisdom
-		{ quest = 70246, type = "world", item = 201007, zone = 2022 },	-- Ancient Monument
-		{ quest = 70296, type = "world", item = 201008, zone = 2022 },	-- Molten Ingot
-		{ quest = 70310, type = "world", item = 201010, zone = 2022 },	-- Qalashi Weapon Diagram
-		{ quest = 70312, type = "world", item = 201005, zone = 2022 },	-- Curious Ingots
-		{ quest = 70313, type = "world", item = 201004, zone = 2023 },	-- Ancient Spear Shards
-		{ quest = 70353, type = "world", item = 201009, zone = 2023 },	-- Falconer Gauntlet Drawings
-		{ quest = 70314, type = "world", item = 201011, zone = 2024 },	-- Spelltouched Tongs
-		{ quest = 70311, type = "world", item = 201006, zone = 2025 },	-- Draconic Flux
-		{ quest = 76078, type = "world", item = 205986, zone = 2133 },	-- Well-Worn Kiln
-		{ quest = 76079, type = "world", item = 205987, zone = 2133 },	-- Brimstone Rescue Ring
-		{ quest = 76080, type = "world", item = 205988, zone = 2133 },	-- Zaqali Elder Spear
-		{ quest = 78417, type = "world", item = 210464, zone = 2200 },	-- Amirdrassil Defender's Shield
-		{ quest = 78418, type = "world", item = 210465, zone = 2200 },	-- Deathstalker Chassis
-		{ quest = 78419, type = "world", item = 210466, zone = 2200 },	-- Flamesworn Render
+		{ quest = 70250, type = "world", zone = 2022 }, -- Hidden Master
+		{ quest = 70230, type = "world", item = 198791, zone = 2022 }, -- Glimmer of Blacksmithing Wisdom
+		{ quest = 70246, type = "world", item = 201007, zone = 2022 }, -- Ancient Monument
+		{ quest = 70296, type = "world", item = 201008, zone = 2022 }, -- Molten Ingot
+		{ quest = 70310, type = "world", item = 201010, zone = 2022 }, -- Qalashi Weapon Diagram
+		{ quest = 70312, type = "world", item = 201005, zone = 2022 }, -- Curious Ingots
+		{ quest = 70313, type = "world", item = 201004, zone = 2023 }, -- Ancient Spear Shards
+		{ quest = 70353, type = "world", item = 201009, zone = 2023 }, -- Falconer Gauntlet Drawings
+		{ quest = 70314, type = "world", item = 201011, zone = 2024 }, -- Spelltouched Tongs
+		{ quest = 70311, type = "world", item = 201006, zone = 2025 }, -- Draconic Flux
+		{ quest = 76078, type = "world", item = 205986, zone = 2133 }, -- Well-Worn Kiln
+		{ quest = 76079, type = "world", item = 205987, zone = 2133 }, -- Brimstone Rescue Ring
+		{ quest = 76080, type = "world", item = 205988, zone = 2133 }, -- Zaqali Elder Spear
+		{ quest = 78417, type = "world", item = 210464, zone = 2200 }, -- Amirdrassil Defender's Shield
+		{ quest = 78418, type = "world", item = 210465, zone = 2200 }, -- Deathstalker Chassis
+		{ quest = 78419, type = "world", item = 210466, zone = 2200 }, -- Flamesworn Render
 	},
-	[2825] = {	-- Dragonflight Enchanting
+	[2825] = { -- Dragonflight Enchanting
 		-- Vendors
 		{ quest = 71895, type = "vendor", item = 200976, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71906, type = "vendor", item = 201272, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -331,23 +331,23 @@ app.ProfessionKnowledge = {
 		{ quest = 72323, type = "renown", faction = 2511, renown = 24 },
 
 		-- Treasures
-		{ quest = 70251, type = "world", zone = 2023 },					-- Hidden Master
-		{ quest = 70272, type = "world", item = 201012, zone = 2022 },	-- Enchanted Debris
-		{ quest = 70283, type = "world", item = 198675, zone = 2022 },	-- Lava-Infused Seed
-		{ quest = 70320, type = "world", item = 198798, zone = 2022 },	-- Flashfrozen Scroll
-		{ quest = 70291, type = "world", item = 198689, zone = 2023 },	-- Stormbound Horn
-		{ quest = 70290, type = "world", item = 201013, zone = 2024 },	-- Faintly Enchanted Remains
-		{ quest = 70298, type = "world", item = 198694, zone = 2024 },	-- Enriched Earthen Shard
-		{ quest = 70336, type = "world", item = 198799, zone = 2024 },	-- Forgotten Arcane Tome
-		{ quest = 70342, type = "world", item = 198800, zone = 2025 },	-- Fractured Titanic Sphere
-		{ quest = 75508, type = "world", item = 204990, zone = 2133 },	-- Lava-Drenched Shadow Crystal
-		{ quest = 75509, type = "world", item = 204999, zone = 2133 },	-- Shimmering Aqueous Orb
-		{ quest = 75510, type = "world", item = 205001, zone = 2133 },	-- Resonating Arcane Crystal
-		{ quest = 78308, type = "world", item = 210228, zone = 2200 },	-- Pure Dream Water
-		{ quest = 78309, type = "world", item = 210231, zone = 2200 },	-- Everburning Core
-		{ quest = 78310, type = "world", item = 210234, zone = 2200 },	-- Essence of Dreams
+		{ quest = 70251, type = "world", zone = 2023 }, -- Hidden Master
+		{ quest = 70272, type = "world", item = 201012, zone = 2022 }, -- Enchanted Debris
+		{ quest = 70283, type = "world", item = 198675, zone = 2022 }, -- Lava-Infused Seed
+		{ quest = 70320, type = "world", item = 198798, zone = 2022 }, -- Flashfrozen Scroll
+		{ quest = 70291, type = "world", item = 198689, zone = 2023 }, -- Stormbound Horn
+		{ quest = 70290, type = "world", item = 201013, zone = 2024 }, -- Faintly Enchanted Remains
+		{ quest = 70298, type = "world", item = 198694, zone = 2024 }, -- Enriched Earthen Shard
+		{ quest = 70336, type = "world", item = 198799, zone = 2024 }, -- Forgotten Arcane Tome
+		{ quest = 70342, type = "world", item = 198800, zone = 2025 }, -- Fractured Titanic Sphere
+		{ quest = 75508, type = "world", item = 204990, zone = 2133 }, -- Lava-Drenched Shadow Crystal
+		{ quest = 75509, type = "world", item = 204999, zone = 2133 }, -- Shimmering Aqueous Orb
+		{ quest = 75510, type = "world", item = 205001, zone = 2133 }, -- Resonating Arcane Crystal
+		{ quest = 78308, type = "world", item = 210228, zone = 2200 }, -- Pure Dream Water
+		{ quest = 78309, type = "world", item = 210231, zone = 2200 }, -- Everburning Core
+		{ quest = 78310, type = "world", item = 210234, zone = 2200 }, -- Essence of Dreams
 	},
-	[2827] = {	-- Dragonflight Engineering
+	[2827] = { -- Dragonflight Engineering
 		-- Vendors
 		{ quest = 71896, type = "vendor", item = 200977, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71907, type = "vendor", item = 201273, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -363,22 +363,22 @@ app.ProfessionKnowledge = {
 		{ quest = 70902, type = "renown", faction = 2510, renown = 24 },
 
 		-- Treasures
-		{ quest = 70252, type = "world", zone = 2024 },					-- Hidden Master
-		{ quest = 70270, type = "world", item = 201014, zone = 2022 },	-- Boomthyr Rocket
-		{ quest = 70275, type = "world", item = 198789, zone = 2022 },	-- Intact Coil Capacitor
-		{ quest = 75180, type = "world", item = 204469, zone = 2133 },	-- Misplaced Aberrus Outflow Blueprints
-		{ quest = 75183, type = "world", item = 204470, zone = 2133 },	-- Haphazardly Discarded Bomb
-		{ quest = 75184, type = "world", item = 204471, zone = 2133 },	-- Defective Survival Pack
-		{ quest = 75186, type = "world", item = 204475, zone = 2133 },	-- Busted Wyrmhole Generator
-		{ quest = 75188, type = "world", item = 204480, zone = 2133 },	-- Inconspicuous Data Miner
-		{ quest = 75430, type = "world", item = 204850, zone = 2133 },	-- Handful of Khaz'gorite Bolts
-		{ quest = 75431, type = "world", item = 204853, zone = 2133 },	-- Discarded Dracothyst Drill
-		{ quest = 75433, type = "world", item = 204855, zone = 2133 },	-- Overclocked Determination Core
-		{ quest = 78278, type = "world", item = 210193, zone = 2200 },	-- Experimental Dreamcatcher
-		{ quest = 78279, type = "world", item = 210194, zone = 2200 },	-- Insomniotron
-		{ quest = 78281, type = "world", item = 210197, zone = 2200 },	-- Unhatched Battery
+		{ quest = 70252, type = "world", zone = 2024 }, -- Hidden Master
+		{ quest = 70270, type = "world", item = 201014, zone = 2022 }, -- Boomthyr Rocket
+		{ quest = 70275, type = "world", item = 198789, zone = 2022 }, -- Intact Coil Capacitor
+		{ quest = 75180, type = "world", item = 204469, zone = 2133 }, -- Misplaced Aberrus Outflow Blueprints
+		{ quest = 75183, type = "world", item = 204470, zone = 2133 }, -- Haphazardly Discarded Bomb
+		{ quest = 75184, type = "world", item = 204471, zone = 2133 }, -- Defective Survival Pack
+		{ quest = 75186, type = "world", item = 204475, zone = 2133 }, -- Busted Wyrmhole Generator
+		{ quest = 75188, type = "world", item = 204480, zone = 2133 }, -- Inconspicuous Data Miner
+		{ quest = 75430, type = "world", item = 204850, zone = 2133 }, -- Handful of Khaz'gorite Bolts
+		{ quest = 75431, type = "world", item = 204853, zone = 2133 }, -- Discarded Dracothyst Drill
+		{ quest = 75433, type = "world", item = 204855, zone = 2133 }, -- Overclocked Determination Core
+		{ quest = 78278, type = "world", item = 210193, zone = 2200 }, -- Experimental Dreamcatcher
+		{ quest = 78279, type = "world", item = 210194, zone = 2200 }, -- Insomniotron
+		{ quest = 78281, type = "world", item = 210197, zone = 2200 }, -- Unhatched Battery
 	},
-	[2832] = {	-- Dragonflight Herbalism
+	[2832] = { -- Dragonflight Herbalism
 		-- Vendors
 		{ quest = 71897, type = "vendor", item = 200980, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71908, type = "vendor", item = 201276, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -394,9 +394,9 @@ app.ProfessionKnowledge = {
 		{ quest = 72324, type = "renown", faction = 2511, renown = 24 },
 
 		-- Treasures
-		{ quest = 70253, type = "world", zone = 2023 },	-- Hidden Master
+		{ quest = 70253, type = "world", zone = 2023 }, -- Hidden Master
 	},
-	[2828] = {	-- Dragonflight Inscription
+	[2828] = { -- Dragonflight Inscription
 		-- Vendors
 		{ quest = 71898, type = "vendor", item = 200973, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71909, type = "vendor", item = 201269, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -412,23 +412,23 @@ app.ProfessionKnowledge = {
 		{ quest = 72334, type = "renown", faction = 2510, renown = 24 },
 
 		-- Treasures
-		{ quest = 70254, type = "world", zone = 2024 },					-- Hidden Master
-		{ quest = 70306, type = "world", item = 198704, zone = 2022 },	-- Pulsing Earth Rune
-		{ quest = 70307, type = "world", item = 198703, zone = 2023 },	-- Sign Language Reference Sheet
-		{ quest = 70293, type = "world", item = 198686, zone = 2024 },	-- Frosted Parchment
-		{ quest = 70297, type = "world", item = 198693, zone = 2024 },	-- Dusty Darkmoon Card
-		{ quest = 70248, type = "world", item = 198659, zone = 2025 },	-- Forgetful Apprentice's Tome 1
-		{ quest = 70264, type = "world", item = 198659, zone = 2025 },	-- Forgetful Apprentice's Tome 2
-		{ quest = 70287, type = "world", item = 201015, zone = 2025 },	-- Counterfeit Darkmoon Deck
-		{ quest = 70281, type = "world", item = 198669, zone = 2112 },	-- How to Train Your Whelpling
-		{ quest = 76117, type = "world", item = 206031, zone = 2133 },	-- Intricate Zaqali Runes
-		{ quest = 76120, type = "world", item = 206034, zone = 2133 },	-- Hissing Rune Draft
-		{ quest = 76121, type = "world", item = 206035, zone = 2133 },	-- Ancient Research
-		{ quest = 78411, type = "world", item = 210458, zone = 2200 },	-- Winnie's Notes on Flora and Fauna
-		{ quest = 78412, type = "world", item = 210459, zone = 2200 },	-- Grove Keeper's Pillar
-		{ quest = 78413, type = "world", item = 210460, zone = 2200 },	-- Primalist Shadowbinding Rune
+		{ quest = 70254, type = "world", zone = 2024 }, -- Hidden Master
+		{ quest = 70306, type = "world", item = 198704, zone = 2022 }, -- Pulsing Earth Rune
+		{ quest = 70307, type = "world", item = 198703, zone = 2023 }, -- Sign Language Reference Sheet
+		{ quest = 70293, type = "world", item = 198686, zone = 2024 }, -- Frosted Parchment
+		{ quest = 70297, type = "world", item = 198693, zone = 2024 }, -- Dusty Darkmoon Card
+		{ quest = 70248, type = "world", item = 198659, zone = 2025 }, -- Forgetful Apprentice's Tome 1
+		{ quest = 70264, type = "world", item = 198659, zone = 2025 }, -- Forgetful Apprentice's Tome 2
+		{ quest = 70287, type = "world", item = 201015, zone = 2025 }, -- Counterfeit Darkmoon Deck
+		{ quest = 70281, type = "world", item = 198669, zone = 2112 }, -- How to Train Your Whelpling
+		{ quest = 76117, type = "world", item = 206031, zone = 2133 }, -- Intricate Zaqali Runes
+		{ quest = 76120, type = "world", item = 206034, zone = 2133 }, -- Hissing Rune Draft
+		{ quest = 76121, type = "world", item = 206035, zone = 2133 }, -- Ancient Research
+		{ quest = 78411, type = "world", item = 210458, zone = 2200 }, -- Winnie's Notes on Flora and Fauna
+		{ quest = 78412, type = "world", item = 210459, zone = 2200 }, -- Grove Keeper's Pillar
+		{ quest = 78413, type = "world", item = 210460, zone = 2200 }, -- Primalist Shadowbinding Rune
 	},
-	[2829] = {	-- Dragonflight Jewelcrafting
+	[2829] = { -- Dragonflight Jewelcrafting
 		-- Vendors
 		{ quest = 71899, type = "vendor", item = 200978, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71910, type = "vendor", item = 201274, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -444,23 +444,23 @@ app.ProfessionKnowledge = {
 		{ quest = 72325, type = "renown", faction = 2511, renown = 24 },
 
 		-- Treasures
-		{ quest = 70255, type = "world", zone = 2024 },					-- Hidden Master
-		{ quest = 70273, type = "world", item = 201017, zone = 2022 },	-- Igneous Gem
-		{ quest = 70292, type = "world", item = 198687, zone = 2022 },	-- Closely Guarded Shiny
-		{ quest = 70263, type = "world", item = 198660, zone = 2023 },	-- Fragmented Key
-		{ quest = 70282, type = "world", item = 198670, zone = 2023 },	-- Lofty Malygite
-		{ quest = 70271, type = "world", item = 201016, zone = 2024 },	-- Harmonic Crystal Harmonizer
-		{ quest = 70277, type = "world", item = 198664, zone = 2024 },	-- Crystalline Overgrowth
-		{ quest = 70261, type = "world", item = 198656, zone = 2025 },	-- Painter's Pretty Jewel
-		{ quest = 70285, type = "world", item = 198682, zone = 2025 },	-- Alexstraszite Cluster
-		{ quest = 75652, type = "world", item = 205214, zone = 2133 },	-- Snubbed Snail Shells
-		{ quest = 75653, type = "world", item = 205216, zone = 2133 },	-- Gently Jostled Jewels
-		{ quest = 75654, type = "world", item = 205219, zone = 2133 },	-- Broken Barter Boulder
-		{ quest = 78282, type = "world", item = 210200, zone = 2200 },	-- Petrified Hope
-		{ quest = 78283, type = "world", item = 210201, zone = 2200 },	-- Handful of Pebbles
-		{ quest = 78285, type = "world", item = 210202, zone = 2200 },	-- Coalesced Dreamstone
+		{ quest = 70255, type = "world", zone = 2024 }, -- Hidden Master
+		{ quest = 70273, type = "world", item = 201017, zone = 2022 }, -- Igneous Gem
+		{ quest = 70292, type = "world", item = 198687, zone = 2022 }, -- Closely Guarded Shiny
+		{ quest = 70263, type = "world", item = 198660, zone = 2023 }, -- Fragmented Key
+		{ quest = 70282, type = "world", item = 198670, zone = 2023 }, -- Lofty Malygite
+		{ quest = 70271, type = "world", item = 201016, zone = 2024 }, -- Harmonic Crystal Harmonizer
+		{ quest = 70277, type = "world", item = 198664, zone = 2024 }, -- Crystalline Overgrowth
+		{ quest = 70261, type = "world", item = 198656, zone = 2025 }, -- Painter's Pretty Jewel
+		{ quest = 70285, type = "world", item = 198682, zone = 2025 }, -- Alexstraszite Cluster
+		{ quest = 75652, type = "world", item = 205214, zone = 2133 }, -- Snubbed Snail Shells
+		{ quest = 75653, type = "world", item = 205216, zone = 2133 }, -- Gently Jostled Jewels
+		{ quest = 75654, type = "world", item = 205219, zone = 2133 }, -- Broken Barter Boulder
+		{ quest = 78282, type = "world", item = 210200, zone = 2200 }, -- Petrified Hope
+		{ quest = 78283, type = "world", item = 210201, zone = 2200 }, -- Handful of Pebbles
+		{ quest = 78285, type = "world", item = 210202, zone = 2200 }, -- Coalesced Dreamstone
 	},
-	[2830] = {	-- Dragonflight Leatherworking
+	[2830] = { -- Dragonflight Leatherworking
 		-- Vendors
 		{ quest = 71900, type = "vendor", item = 200979, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71911, type = "vendor", item = 201275, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -476,22 +476,22 @@ app.ProfessionKnowledge = {
 		{ quest = 72326, type = "renown", faction = 2511, renown = 24 },
 
 		-- Treasures
-		{ quest = 70256, type = "world", zone = 2023 },					-- Hidden Master
-		{ quest = 70280, type = "world", item = 198667, zone = 2022 },	-- Spare Djaradin Tools
-		{ quest = 70308, type = "world", item = 198711, zone = 2022 },	-- Poacher's Pack
-		{ quest = 70266, type = "world", item = 198658, zone = 2024 },	-- Decay-Infused Tanning Oil
-		{ quest = 70269, type = "world", item = 201018, zone = 2024 },	-- Well-Danced Drum
-		{ quest = 70286, type = "world", item = 198683, zone = 2024 },	-- Treated Hides
-		{ quest = 70300, type = "world", item = 198696, zone = 2023 },	-- Wind-Blessed Hide
-		{ quest = 70294, type = "world", item = 198690, zone = 2025 },	-- Bag of Decayed Scales
-		{ quest = 75495, type = "world", item = 204986, zone = 2133 },	-- Flame-Infused Scale Oil
-		{ quest = 75496, type = "world", item = 204987, zone = 2133 },	-- Lava-Forged Leatherworker's "Knife"
-		{ quest = 75502, type = "world", item = 204988, zone = 2133 },	-- Sulfur-Soaked Skins
-		{ quest = 78298, type = "world", item = 210208, zone = 2200 },	-- Tuft of Dreamsaber Fur
-		{ quest = 78299, type = "world", item = 210211, zone = 2200 },	-- Molted Fearie Dragon Scales
-		{ quest = 78305, type = "world", item = 210215, zone = 2200 },	-- Dreamtalon Claw
+		{ quest = 70256, type = "world", zone = 2023 }, -- Hidden Master
+		{ quest = 70280, type = "world", item = 198667, zone = 2022 }, -- Spare Djaradin Tools
+		{ quest = 70308, type = "world", item = 198711, zone = 2022 }, -- Poacher's Pack
+		{ quest = 70266, type = "world", item = 198658, zone = 2024 }, -- Decay-Infused Tanning Oil
+		{ quest = 70269, type = "world", item = 201018, zone = 2024 }, -- Well-Danced Drum
+		{ quest = 70286, type = "world", item = 198683, zone = 2024 }, -- Treated Hides
+		{ quest = 70300, type = "world", item = 198696, zone = 2023 }, -- Wind-Blessed Hide
+		{ quest = 70294, type = "world", item = 198690, zone = 2025 }, -- Bag of Decayed Scales
+		{ quest = 75495, type = "world", item = 204986, zone = 2133 }, -- Flame-Infused Scale Oil
+		{ quest = 75496, type = "world", item = 204987, zone = 2133 }, -- Lava-Forged Leatherworker's "Knife"
+		{ quest = 75502, type = "world", item = 204988, zone = 2133 }, -- Sulfur-Soaked Skins
+		{ quest = 78298, type = "world", item = 210208, zone = 2200 }, -- Tuft of Dreamsaber Fur
+		{ quest = 78299, type = "world", item = 210211, zone = 2200 }, -- Molted Fearie Dragon Scales
+		{ quest = 78305, type = "world", item = 210215, zone = 2200 }, -- Dreamtalon Claw
 	},
-	[2833] = {	-- Dragonflight Mining
+	[2833] = { -- Dragonflight Mining
 		-- Vendors
 		{ quest = 71901, type = "vendor", item = 200981, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71912, type = "vendor", item = 201277, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -507,9 +507,9 @@ app.ProfessionKnowledge = {
 		{ quest = 72335, type = "renown", faction = 2510, renown = 24 },
 
 		-- Treasures
-		{ quest = 70258, type = "world", zone = 2025 },	-- Hidden Master
+		{ quest = 70258, type = "world", zone = 2025 }, -- Hidden Master
 	},
-	[2834] = {	-- Dragonflight Skinning
+	[2834] = { -- Dragonflight Skinning
 		-- Vendors
 		{ quest = 71902, type = "vendor", item = 200982, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71913, type = "vendor", item = 201278, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -525,9 +525,9 @@ app.ProfessionKnowledge = {
 		{ quest = 72327, type = "renown", faction = 2511, renown = 24 },
 
 		-- Treasures
-		{ quest = 70259, type = "world", zone = 2022 },	-- Hidden Master
+		{ quest = 70259, type = "world", zone = 2022 }, -- Hidden Master
 	},
-	[2831] = {	-- Dragonflight Tailoring
+	[2831] = { -- Dragonflight Tailoring
 		-- Vendors
 		{ quest = 71903, type = "vendor", item = 200975, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 71914, type = "vendor", item = 201271, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -543,23 +543,23 @@ app.ProfessionKnowledge = {
 		{ quest = 72336, type = "renown", faction = 2510, renown = 24 },
 
 		-- Treasures
-		{ quest = 70260, type = "world", zone = 2112 },					-- Hidden Master
-		{ quest = 70302, type = "world", item = 198699, zone = 2022 },	-- Mysterious Banner
-		{ quest = 70304, type = "world", item = 198702, zone = 2022 },	-- Itinerant Singed Fabric
-		{ quest = 70295, type = "world", item = 198692, zone = 2023 },	-- Noteworthy Scrap of Carpet
-		{ quest = 70303, type = "world", item = 201020, zone = 2023 },	-- Silky Surprise
-		{ quest = 70267, type = "world", item = 198662, zone = 2024 },	-- Intriguing Bolt of Blue Cloth
-		{ quest = 70284, type = "world", item = 198680, zone = 2024 },	-- Decaying Brackenhide Blanket
-		{ quest = 70288, type = "world", item = 198684, zone = 2025 },	-- Miniature Bronze Dragonflight Banner
-		{ quest = 70372, type = "world", item = 201019, zone = 2025 },	-- Ancient Dragonweave Bolt
-		{ quest = 76102, type = "world", item = 206019, zone = 2133 },	-- Abandoned Reserve Chute
-		{ quest = 76110, type = "world", item = 206025, zone = 2133 },	-- Used Medical Wrap Kit
-		{ quest = 76116, type = "world", item = 206030, zone = 2133 },	-- Exquisitely Embroidered Banner
-		{ quest = 78414, type = "world", item = 210461, zone = 2200 },	-- Exceedingly Soft Wildercloth
-		{ quest = 78415, type = "world", item = 210462, zone = 2200 },	-- Plush Pillow
-		{ quest = 78416, type = "world", item = 210463, zone = 2200 },	-- Snuggle Buddy
+		{ quest = 70260, type = "world", zone = 2112 }, -- Hidden Master
+		{ quest = 70302, type = "world", item = 198699, zone = 2022 }, -- Mysterious Banner
+		{ quest = 70304, type = "world", item = 198702, zone = 2022 }, -- Itinerant Singed Fabric
+		{ quest = 70295, type = "world", item = 198692, zone = 2023 }, -- Noteworthy Scrap of Carpet
+		{ quest = 70303, type = "world", item = 201020, zone = 2023 }, -- Silky Surprise
+		{ quest = 70267, type = "world", item = 198662, zone = 2024 }, -- Intriguing Bolt of Blue Cloth
+		{ quest = 70284, type = "world", item = 198680, zone = 2024 }, -- Decaying Brackenhide Blanket
+		{ quest = 70288, type = "world", item = 198684, zone = 2025 }, -- Miniature Bronze Dragonflight Banner
+		{ quest = 70372, type = "world", item = 201019, zone = 2025 }, -- Ancient Dragonweave Bolt
+		{ quest = 76102, type = "world", item = 206019, zone = 2133 }, -- Abandoned Reserve Chute
+		{ quest = 76110, type = "world", item = 206025, zone = 2133 }, -- Used Medical Wrap Kit
+		{ quest = 76116, type = "world", item = 206030, zone = 2133 }, -- Exquisitely Embroidered Banner
+		{ quest = 78414, type = "world", item = 210461, zone = 2200 }, -- Exceedingly Soft Wildercloth
+		{ quest = 78415, type = "world", item = 210462, zone = 2200 }, -- Plush Pillow
+		{ quest = 78416, type = "world", item = 210463, zone = 2200 }, -- Snuggle Buddy
 	},
-	[2871] = {	-- The War Within Alchemy
+	[2871] = { -- The War Within Alchemy
 		-- Vendors
 		{ quest = 81146, type = "vendor", item = 227409, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 81147, type = "vendor", item = 227420, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -570,19 +570,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87255, type = "vendor", item = 235865, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83840, type = "world", item = 226265, zone = 2339 },	-- Earthen Iron Powder
-		{ quest = 83841, type = "world", item = 226266, zone = 2248 },	-- Metal Frame
-		{ quest = 83842, type = "world", item = 226267, zone = 2214 },	-- Reinforced Beaker
-		{ quest = 83843, type = "world", item = 226268, zone = 2214 },	-- Engraved Stirring Rod
-		{ quest = 83844, type = "world", item = 226269, zone = 2215 },	-- Chemist's Purified Water
-		{ quest = 83845, type = "world", item = 226270, zone = 2215 },	-- Sanctified Mortar and Pestle
-		{ quest = 83847, type = "world", item = 226272, zone = 2255 },	-- Dark Apothecary's Vial
-		{ quest = 83846, type = "world", item = 226271, zone = 2213 },	-- Nerubian Mixing Salts
+		{ quest = 83840, type = "world", item = 226265, zone = 2339 }, -- Earthen Iron Powder
+		{ quest = 83841, type = "world", item = 226266, zone = 2248 }, -- Metal Frame
+		{ quest = 83842, type = "world", item = 226267, zone = 2214 }, -- Reinforced Beaker
+		{ quest = 83843, type = "world", item = 226268, zone = 2214 }, -- Engraved Stirring Rod
+		{ quest = 83844, type = "world", item = 226269, zone = 2215 }, -- Chemist's Purified Water
+		{ quest = 83845, type = "world", item = 226270, zone = 2215 }, -- Sanctified Mortar and Pestle
+		{ quest = 83847, type = "world", item = 226272, zone = 2255 }, -- Dark Apothecary's Vial
+		{ quest = 83846, type = "world", item = 226271, zone = 2213 }, -- Nerubian Mixing Salts
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3057 },
 	},
-	[2872] = {	-- The War Within Blacksmithing
+	[2872] = { -- The War Within Blacksmithing
 		-- Vendors
 		{ quest = 84226, type = "vendor", item = 227407, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 84227, type = "vendor", item = 227418, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -593,19 +593,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87266, type = "vendor", item = 235864, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83849, type = "world", item = 226277, zone = 2339 },	-- Hammer
-		{ quest = 83848, type = "world", item = 226276, zone = 2248 },	-- Ancient Earthen Anvil
-		{ quest = 83850, type = "world", item = 226278, zone = 2214 },	-- Ringing Hammer Vise
-		{ quest = 83851, type = "world", item = 226279, zone = 2214 },	-- Earthen Chisels
-		{ quest = 83852, type = "world", item = 226280, zone = 2215 },	-- Holy Flame Forge
-		{ quest = 83853, type = "world", item = 226281, zone = 2215 },	-- Radiant Tongs
-		{ quest = 83855, type = "world", item = 226283, zone = 2255 },	-- Spiderling's Wire Brush
-		{ quest = 83854, type = "world", item = 226282, zone = 2213 },	-- Nerubian Smith's Kit
+		{ quest = 83849, type = "world", item = 226277, zone = 2339 }, -- Hammer
+		{ quest = 83848, type = "world", item = 226276, zone = 2248 }, -- Ancient Earthen Anvil
+		{ quest = 83850, type = "world", item = 226278, zone = 2214 }, -- Ringing Hammer Vise
+		{ quest = 83851, type = "world", item = 226279, zone = 2214 }, -- Earthen Chisels
+		{ quest = 83852, type = "world", item = 226280, zone = 2215 }, -- Holy Flame Forge
+		{ quest = 83853, type = "world", item = 226281, zone = 2215 }, -- Radiant Tongs
+		{ quest = 83855, type = "world", item = 226283, zone = 2255 }, -- Spiderling's Wire Brush
+		{ quest = 83854, type = "world", item = 226282, zone = 2213 }, -- Nerubian Smith's Kit
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3058 },
 	},
-	[2874] = {	-- The War Within Enchanting
+	[2874] = { -- The War Within Enchanting
 		-- Vendors
 		{ quest = 81076, type = "vendor", item = 227411, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 81077, type = "vendor", item = 227422, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -616,19 +616,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87265, type = "vendor", item = 235863, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83859, type = "world", item = 226285, zone = 2339 },	-- Silver Rod
-		{ quest = 83856, type = "world", item = 226284, zone = 2248 },	-- Grinded Earthen Gem
-		{ quest = 83860, type = "world", item = 226286, zone = 2214 },	-- Soot-Coated Orb
-		{ quest = 83861, type = "world", item = 226287, zone = 2214 },	-- Animated Enchanting Dust
-		{ quest = 83862, type = "world", item = 226288, zone = 2215 },	-- Essence of Holy Fire
-		{ quest = 83863, type = "world", item = 226289, zone = 2215 },	-- Enchanted Arathi Scroll
-		{ quest = 83865, type = "world", item = 226291, zone = 2255 },	-- Void Shard
-		{ quest = 83864, type = "world", item = 226290, zone = 2213 },	-- Book of Dark Magic
+		{ quest = 83859, type = "world", item = 226285, zone = 2339 }, -- Silver Rod
+		{ quest = 83856, type = "world", item = 226284, zone = 2248 }, -- Grinded Earthen Gem
+		{ quest = 83860, type = "world", item = 226286, zone = 2214 }, -- Soot-Coated Orb
+		{ quest = 83861, type = "world", item = 226287, zone = 2214 }, -- Animated Enchanting Dust
+		{ quest = 83862, type = "world", item = 226288, zone = 2215 }, -- Essence of Holy Fire
+		{ quest = 83863, type = "world", item = 226289, zone = 2215 }, -- Enchanted Arathi Scroll
+		{ quest = 83865, type = "world", item = 226291, zone = 2255 }, -- Void Shard
+		{ quest = 83864, type = "world", item = 226290, zone = 2213 }, -- Book of Dark Magic
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3059 },
 	},
-	[2875] = {	-- The War Within Engineering
+	[2875] = { -- The War Within Engineering
 		-- Vendors
 		{ quest = 84229, type = "vendor", item = 227412, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 84230, type = "vendor", item = 227423, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -639,19 +639,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87264, type = "vendor", item = 235862, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83867, type = "world", item = 226293, zone = 2339 },	-- Spectacles
-		{ quest = 83866, type = "world", item = 226292, zone = 2248 },	-- Rock Engineer's Wrench
-		{ quest = 83868, type = "world", item = 226294, zone = 2214 },	-- Inert Mining Bomb
-		{ quest = 83869, type = "world", item = 226295, zone = 2214 },	-- Earthen Construct Blueprints
-		{ quest = 83870, type = "world", item = 226296, zone = 2215 },	-- Holy Firework Dud
-		{ quest = 83871, type = "world", item = 226297, zone = 2215 },	-- Arathi Safety Gloves
-		{ quest = 83872, type = "world", item = 226298, zone = 2255 },	-- Puppeted Mechanical Spider
-		{ quest = 83873, type = "world", item = 226299, zone = 2213 },	-- Emptied Venom Canister
+		{ quest = 83867, type = "world", item = 226293, zone = 2339 }, -- Spectacles
+		{ quest = 83866, type = "world", item = 226292, zone = 2248 }, -- Rock Engineer's Wrench
+		{ quest = 83868, type = "world", item = 226294, zone = 2214 }, -- Inert Mining Bomb
+		{ quest = 83869, type = "world", item = 226295, zone = 2214 }, -- Earthen Construct Blueprints
+		{ quest = 83870, type = "world", item = 226296, zone = 2215 }, -- Holy Firework Dud
+		{ quest = 83871, type = "world", item = 226297, zone = 2215 }, -- Arathi Safety Gloves
+		{ quest = 83872, type = "world", item = 226298, zone = 2255 }, -- Puppeted Mechanical Spider
+		{ quest = 83873, type = "world", item = 226299, zone = 2213 }, -- Emptied Venom Canister
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3060 },
 	},
-	[2877] = {	-- The War Within Herbalism
+	[2877] = { -- The War Within Herbalism
 		-- Vendors
 		{ quest = 81422, type = "vendor", item = 227415, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 81423, type = "vendor", item = 227426, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -662,19 +662,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87263, type = "vendor", item = 235861, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83875, type = "world", item = 226301, zone = 2339 },	-- Gardening Scythe
-		{ quest = 83874, type = "world", item = 226300, zone = 2248 },	-- Ancient Flower
-		{ quest = 83876, type = "world", item = 226302, zone = 2214 },	-- Earthen Digging Fork
-		{ quest = 83877, type = "world", item = 226303, zone = 2214 },	-- Fungarian Slicer's Knife
-		{ quest = 83878, type = "world", item = 226304, zone = 2215 },	-- Arathi Garden Trowel
-		{ quest = 83879, type = "world", item = 226305, zone = 2215 },	-- Arathi Herb Pruner
-		{ quest = 83880, type = "world", item = 226306, zone = 2213 },	-- Web-Entangled Lotus
-		{ quest = 83881, type = "world", item = 226307, zone = 2213 },	-- Tunneler's Shovel
+		{ quest = 83875, type = "world", item = 226301, zone = 2339 }, -- Gardening Scythe
+		{ quest = 83874, type = "world", item = 226300, zone = 2248 }, -- Ancient Flower
+		{ quest = 83876, type = "world", item = 226302, zone = 2214 }, -- Earthen Digging Fork
+		{ quest = 83877, type = "world", item = 226303, zone = 2214 }, -- Fungarian Slicer's Knife
+		{ quest = 83878, type = "world", item = 226304, zone = 2215 }, -- Arathi Garden Trowel
+		{ quest = 83879, type = "world", item = 226305, zone = 2215 }, -- Arathi Herb Pruner
+		{ quest = 83880, type = "world", item = 226306, zone = 2213 }, -- Web-Entangled Lotus
+		{ quest = 83881, type = "world", item = 226307, zone = 2213 }, -- Tunneler's Shovel
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3061 },
 	},
-	[2878] = {	-- The War Within Inscription
+	[2878] = { -- The War Within Inscription
 		-- Vendors
 		{ quest = 80749, type = "vendor", item = 227408, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 80750, type = "vendor", item = 227419, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -685,19 +685,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87262, type = "vendor", item = 235860, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83882, type = "world", item = 226308, zone = 2339 },	-- Scribe's Quill
-		{ quest = 83883, type = "world", item = 226309, zone = 2248 },	-- Historian's Dip Pen
-		{ quest = 83884, type = "world", item = 226310, zone = 2214 },	-- Runic Scroll
-		{ quest = 83885, type = "world", item = 226311, zone = 2214 },	-- Blue Earthen Pigment
-		{ quest = 83886, type = "world", item = 226312, zone = 2215 },	-- Informant's Fountain Pen
-		{ quest = 83887, type = "world", item = 226313, zone = 2215 },	-- Calligrapher's Chiseled Marker
-		{ quest = 83888, type = "world", item = 226314, zone = 2255 },	-- Nerubian Texts
-		{ quest = 83889, type = "world", item = 226315, zone = 2213 },	-- Venomancer's Ink Well
+		{ quest = 83882, type = "world", item = 226308, zone = 2339 }, -- Scribe's Quill
+		{ quest = 83883, type = "world", item = 226309, zone = 2248 }, -- Historian's Dip Pen
+		{ quest = 83884, type = "world", item = 226310, zone = 2214 }, -- Runic Scroll
+		{ quest = 83885, type = "world", item = 226311, zone = 2214 }, -- Blue Earthen Pigment
+		{ quest = 83886, type = "world", item = 226312, zone = 2215 }, -- Informant's Fountain Pen
+		{ quest = 83887, type = "world", item = 226313, zone = 2215 }, -- Calligrapher's Chiseled Marker
+		{ quest = 83888, type = "world", item = 226314, zone = 2255 }, -- Nerubian Texts
+		{ quest = 83889, type = "world", item = 226315, zone = 2213 }, -- Venomancer's Ink Well
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3062 },
 	},
-	[2879] = {	-- The War Within Jewelcrafting
+	[2879] = { -- The War Within Jewelcrafting
 		-- Vendors
 		{ quest = 81259, type = "vendor", item = 227413, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 81260, type = "vendor", item = 227424, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -708,19 +708,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87261, type = "vendor", item = 235859, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83891, type = "world", item = 226317, zone = 2339 },	-- Earthen Gem Pliers
-		{ quest = 83890, type = "world", item = 226316, zone = 2248 },	-- Gentle Jewel Hammer
-		{ quest = 83892, type = "world", item = 226318, zone = 2214 },	-- Carved Stone File
-		{ quest = 83893, type = "world", item = 226319, zone = 2214 },	-- Rune-Etched Ring Box
-		{ quest = 83894, type = "world", item = 226320, zone = 2215 },	-- Hammered Golden Chain
-		{ quest = 83895, type = "world", item = 226321, zone = 2215 },	-- Inscribed Sunstone Gem
-		{ quest = 83897, type = "world", item = 226323, zone = 2255 },	-- Hardened Jewel Setter's Vise
-		{ quest = 83896, type = "world", item = 226322, zone = 2213 },	-- Heavy Gem Sorting Gloves
+		{ quest = 83891, type = "world", item = 226317, zone = 2339 }, -- Earthen Gem Pliers
+		{ quest = 83890, type = "world", item = 226316, zone = 2248 }, -- Gentle Jewel Hammer
+		{ quest = 83892, type = "world", item = 226318, zone = 2214 }, -- Carved Stone File
+		{ quest = 83893, type = "world", item = 226319, zone = 2214 }, -- Rune-Etched Ring Box
+		{ quest = 83894, type = "world", item = 226320, zone = 2215 }, -- Hammered Golden Chain
+		{ quest = 83895, type = "world", item = 226321, zone = 2215 }, -- Inscribed Sunstone Gem
+		{ quest = 83897, type = "world", item = 226323, zone = 2255 }, -- Hardened Jewel Setter's Vise
+		{ quest = 83896, type = "world", item = 226322, zone = 2213 }, -- Heavy Gem Sorting Gloves
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3063 },
 	},
-	[2880] = {	-- The War Within Leatherworking
+	[2880] = { -- The War Within Leatherworking
 		-- Vendors
 		{ quest = 80978, type = "vendor", item = 227414, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 80979, type = "vendor", item = 227425, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -731,19 +731,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87260, type = "vendor", item = 235858, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83899, type = "world", item = 226325, zone = 2339 },	-- Stitching Clamp
-		{ quest = 83898, type = "world", item = 226324, zone = 2248 },	-- Earthen Leatherworking Knife
-		{ quest = 83900, type = "world", item = 226326, zone = 2214 },	-- Preserved Needle Kit
-		{ quest = 83901, type = "world", item = 226327, zone = 2214 },	-- Reinforced Wax Thread
-		{ quest = 83902, type = "world", item = 226328, zone = 2215 },	-- Sanctified Leatherworking Tools
-		{ quest = 83903, type = "world", item = 226329, zone = 2215 },	-- Holy Arathi Leather Strap
-		{ quest = 83905, type = "world", item = 226331, zone = 2255 },	-- Preserved Bug-Skinner Gloves
-		{ quest = 83904, type = "world", item = 226330, zone = 2213 },	-- Nerubian Hide Preserver
+		{ quest = 83899, type = "world", item = 226325, zone = 2339 }, -- Stitching Clamp
+		{ quest = 83898, type = "world", item = 226324, zone = 2248 }, -- Earthen Leatherworking Knife
+		{ quest = 83900, type = "world", item = 226326, zone = 2214 }, -- Preserved Needle Kit
+		{ quest = 83901, type = "world", item = 226327, zone = 2214 }, -- Reinforced Wax Thread
+		{ quest = 83902, type = "world", item = 226328, zone = 2215 }, -- Sanctified Leatherworking Tools
+		{ quest = 83903, type = "world", item = 226329, zone = 2215 }, -- Holy Arathi Leather Strap
+		{ quest = 83905, type = "world", item = 226331, zone = 2255 }, -- Preserved Bug-Skinner Gloves
+		{ quest = 83904, type = "world", item = 226330, zone = 2213 }, -- Nerubian Hide Preserver
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3064 },
 	},
-	[2881] = {	-- The War Within Mining
+	[2881] = { -- The War Within Mining
 		-- Vendors
 		{ quest = 81390, type = "vendor", item = 227416, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 81391, type = "vendor", item = 227427, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -754,19 +754,19 @@ app.ProfessionKnowledge = {
 		{ quest = 87259, type = "vendor", item = 235857, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83907, type = "world", item = 226333, zone = 2339 },	-- Engraved Chisel
-		{ quest = 83906, type = "world", item = 226332, zone = 2248 },	-- Ancient Earthen Pickaxe
-		{ quest = 83908, type = "world", item = 226334, zone = 2214 },	-- Ringing Hammer Shovel
-		{ quest = 83909, type = "world", item = 226335, zone = 2214 },	-- Sooty Hammer
-		{ quest = 83910, type = "world", item = 226336, zone = 2215 },	-- Gleaming Arathi Ore Nugget
-		{ quest = 83911, type = "world", item = 226337, zone = 2215 },	-- Chunk of Holy Ore
-		{ quest = 83913, type = "world", item = 226339, zone = 2255 },	-- Dark Bug-Filled Ore
-		{ quest = 83912, type = "world", item = 226338, zone = 2213 },	-- Nerubian Shale Fragments
+		{ quest = 83907, type = "world", item = 226333, zone = 2339 }, -- Engraved Chisel
+		{ quest = 83906, type = "world", item = 226332, zone = 2248 }, -- Ancient Earthen Pickaxe
+		{ quest = 83908, type = "world", item = 226334, zone = 2214 }, -- Ringing Hammer Shovel
+		{ quest = 83909, type = "world", item = 226335, zone = 2214 }, -- Sooty Hammer
+		{ quest = 83910, type = "world", item = 226336, zone = 2215 }, -- Gleaming Arathi Ore Nugget
+		{ quest = 83911, type = "world", item = 226337, zone = 2215 }, -- Chunk of Holy Ore
+		{ quest = 83913, type = "world", item = 226339, zone = 2255 }, -- Dark Bug-Filled Ore
+		{ quest = 83912, type = "world", item = 226338, zone = 2213 }, -- Nerubian Shale Fragments
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3065 },
 	},
-	[2882] = {	-- The War Within Skinning
+	[2882] = { -- The War Within Skinning
 		-- Vendors
 		{ quest = 84232, type = "vendor", item = 227417, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 84233, type = "vendor", item = 227428, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -777,20 +777,20 @@ app.ProfessionKnowledge = {
 		{ quest = 87258, type = "vendor", item = 235856, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83915, type = "world", item = 226341, zone = 2339 },	-- Preservation Kit
-		{ quest = 83914, type = "world", item = 226340, zone = 2248 },	-- Earthen Skinning Knife
-		{ quest = 83916, type = "world", item = 226342, zone = 2214 },	-- Hammer-Treated Hides
-		{ quest = 83917, type = "world", item = 226343, zone = 2214 },	-- Shiny Bug-Hide
-		{ quest = 83918, type = "world", item = 226344, zone = 2215 },	-- Pristine Fur Scraper
-		{ quest = 83919, type = "world", item = 226345, zone = 2215 },	-- Holy Bug Carapace Preserver
-		{ quest = 83921, type = "world", item = 226347, zone = 2255 },	-- Silk-Lined Shell Slicer
-		{ quest = 83920, type = "world", item = 226346, zone = 2213 },	-- Nerubian Hide Pouch
+		{ quest = 83915, type = "world", item = 226341, zone = 2339 }, -- Preservation Kit
+		{ quest = 83914, type = "world", item = 226340, zone = 2248 }, -- Earthen Skinning Knife
+		{ quest = 83916, type = "world", item = 226342, zone = 2214 }, -- Hammer-Treated Hides
+		{ quest = 83917, type = "world", item = 226343, zone = 2214 }, -- Shiny Bug-Hide
+		{ quest = 83918, type = "world", item = 226344, zone = 2215 }, -- Pristine Fur Scraper
+		{ quest = 83919, type = "world", item = 226345, zone = 2215 }, -- Holy Bug Carapace Preserver
+		{ quest = 83921, type = "world", item = 226347, zone = 2255 }, -- Silk-Lined Shell Slicer
+		{ quest = 83920, type = "world", item = 226346, zone = 2213 }, -- Nerubian Hide Pouch
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3066 },
 
 	},
-	[2883] = {	-- The War Within Tailoring
+	[2883] = { -- The War Within Tailoring
 		-- Vendors
 		{ quest = 80871, type = "vendor", item = 227410, source = ARTISANS_CONSORTIUM, sourceType = "static" },
 		{ quest = 80872, type = "vendor", item = 227421, source = ARTISANS_CONSORTIUM, sourceType = "static" },
@@ -801,204 +801,204 @@ app.ProfessionKnowledge = {
 		{ quest = 87257, type = "vendor", item = 235855, source = 2658, renown = 12 },
 
 		-- Treasures
-		{ quest = 83922, type = "world", item = 226348, zone = 2339 },	-- Seam Ripper
-		{ quest = 83923, type = "world", item = 226349, zone = 2248 },	-- Earthen Tape Measure
-		{ quest = 83924, type = "world", item = 226350, zone = 2214 },	-- Runed Earthen Pins
-		{ quest = 83925, type = "world", item = 226351, zone = 2214 },	-- Earthen Stitcher's Snips
-		{ quest = 83926, type = "world", item = 226352, zone = 2215 },	-- Arathi Rotary Cutter
-		{ quest = 83927, type = "world", item = 226353, zone = 2215 },	-- Royal Outfitter's Protractor
-		{ quest = 83928, type = "world", item = 226354, zone = 2255 },	-- Nerubian Quilt
-		{ quest = 83929, type = "world", item = 226355, zone = 2213 },	-- Nerubian's Pincushion
+		{ quest = 83922, type = "world", item = 226348, zone = 2339 }, -- Seam Ripper
+		{ quest = 83923, type = "world", item = 226349, zone = 2248 }, -- Earthen Tape Measure
+		{ quest = 83924, type = "world", item = 226350, zone = 2214 }, -- Runed Earthen Pins
+		{ quest = 83925, type = "world", item = 226351, zone = 2214 }, -- Earthen Stitcher's Snips
+		{ quest = 83926, type = "world", item = 226352, zone = 2215 }, -- Arathi Rotary Cutter
+		{ quest = 83927, type = "world", item = 226353, zone = 2215 }, -- Royal Outfitter's Protractor
+		{ quest = 83928, type = "world", item = 226354, zone = 2255 }, -- Nerubian Quilt
+		{ quest = 83929, type = "world", item = 226355, zone = 2213 }, -- Nerubian's Pincushion
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3067 },
 	},
-	[2906] = {	-- Midnight Alchemy
+	[2906] = { -- Midnight Alchemy
 		-- Vendors
-		{ quest = 93794, type = "vendor", item = 262645, source = 2699, renown = 9 },	-- Beyond the Event Horizon: Alchemy
+		{ quest = 93794, type = "vendor", item = 262645, source = 2699, renown = 9 }, -- Beyond the Event Horizon: Alchemy
 
 		-- Treasures
-		{ quest = 89118, type = "world", item = 238539, zone = 2405 },	-- Failed Experiment
-		{ quest = 89115, type = "world", item = 238536, zone = 2393 },	-- Freshly Plucked Peacebloom
-		{ quest = 89116, type = "world", item = 238537, zone = 2536 },	-- Measured Ladle
-		{ quest = 89117, type = "world", item = 238538, zone = 2393 },	-- Pristine Potion
-		{ quest = 89111, type = "world", item = 238532, zone = 2393 },	-- Vial of Eversong Oddities
-		{ quest = 89113, type = "world", item = 238534, zone = 2413 },	-- Vial of Rootlands Oddities
-		{ quest = 89112, type = "world", item = 238533, zone = 2444 },	-- Vial of Voidstorm Oddities
-		{ quest = 89114, type = "world", item = 238535, zone = 2437 },	-- Vial of Zul'Aman Oddities
+		{ quest = 89118, type = "world", item = 238539, zone = 2405 }, -- Failed Experiment
+		{ quest = 89115, type = "world", item = 238536, zone = 2393 }, -- Freshly Plucked Peacebloom
+		{ quest = 89116, type = "world", item = 238537, zone = 2536 }, -- Measured Ladle
+		{ quest = 89117, type = "world", item = 238538, zone = 2393 }, -- Pristine Potion
+		{ quest = 89111, type = "world", item = 238532, zone = 2393 }, -- Vial of Eversong Oddities
+		{ quest = 89113, type = "world", item = 238534, zone = 2413 }, -- Vial of Rootlands Oddities
+		{ quest = 89112, type = "world", item = 238533, zone = 2444 }, -- Vial of Voidstorm Oddities
+		{ quest = 89114, type = "world", item = 238535, zone = 2437 }, -- Vial of Zul'Aman Oddities
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3189 },
 	},
-	[2907] = {	-- Midnight Blacksmithing
+	[2907] = { -- Midnight Blacksmithing
 		-- Vendors
-		{ quest = 93795, type = "vendor", item = 262644, source = 2699, renown = 9 },	-- Beyond the Event Horizon: Blacksmithing
+		{ quest = 93795, type = "vendor", item = 262644, source = 2699, renown = 9 }, -- Beyond the Event Horizon: Blacksmithing
 
 		-- Treasures
-		{ quest = 89179, type = "world", item = 238542, zone = 2536 },	-- Carefully Racked Spear
-		{ quest = 89177, type = "world", item = 238540, zone = 2393 },	-- Deconstructed Forge Techniques
-		{ quest = 89180, type = "world", item = 238543, zone = 2395 },	-- Metalworking Cheat Sheet
-		{ quest = 89182, type = "world", item = 238545, zone = 2413 },	-- Rutaani Floratender's Sword
-		{ quest = 89184, type = "world", item = 238547, zone = 2393 },	-- Silvermoon Blacksmith's Hammer
-		{ quest = 89178, type = "world", item = 238541, zone = 2395 },	-- Silvermoon Smithing Kit
-		{ quest = 89183, type = "world", item = 238546, zone = 2393 },	-- Sin'dorei Master's Forgemace
-		{ quest = 89181, type = "world", item = 238544, zone = 2444 },	-- Voidstorm Defense Spear
+		{ quest = 89179, type = "world", item = 238542, zone = 2536 }, -- Carefully Racked Spear
+		{ quest = 89177, type = "world", item = 238540, zone = 2393 }, -- Deconstructed Forge Techniques
+		{ quest = 89180, type = "world", item = 238543, zone = 2395 }, -- Metalworking Cheat Sheet
+		{ quest = 89182, type = "world", item = 238545, zone = 2413 }, -- Rutaani Floratender's Sword
+		{ quest = 89184, type = "world", item = 238547, zone = 2393 }, -- Silvermoon Blacksmith's Hammer
+		{ quest = 89178, type = "world", item = 238541, zone = 2395 }, -- Silvermoon Smithing Kit
+		{ quest = 89183, type = "world", item = 238546, zone = 2393 }, -- Sin'dorei Master's Forgemace
+		{ quest = 89181, type = "world", item = 238544, zone = 2444 }, -- Voidstorm Defense Spear
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3199 },
 	},
-	[2909] = {	-- Midnight Enchanting
+	[2909] = { -- Midnight Enchanting
 		-- Vendors
-		{ quest = 92374, type = "vendor", item = 257600, source = 2710, renown = 6 },	-- Skill Issue: Enchanting
-		{ quest = 92186, type = "vendor", item = 250445, source = 3377, sourceType = "currency" },	-- Echo of Abundance: Enchanting
+		{ quest = 92374, type = "vendor", item = 257600, source = 2710, renown = 6 }, -- Skill Issue: Enchanting
+		{ quest = 92186, type = "vendor", item = 250445, source = 3377, sourceType = "currency" }, -- Echo of Abundance: Enchanting
 
 		-- Treasures
-		{ quest = 89100, type = "world", item = 238548, zone = 2536 },	-- Enchanted Amani Mask
-		{ quest = 89101, type = "world", item = 238549, zone = 2395 },	-- Enchanted Sunfire Silk
-		{ quest = 89104, type = "world", item = 238552, zone = 2413 },	-- Entropic Shard
-		{ quest = 89103, type = "world", item = 238551, zone = 2395 },	-- Everblazing Sunmote
-		{ quest = 89106, type = "world", item = 238554, zone = 2437 },	-- Loa-Blessed Dust
-		{ quest = 89105, type = "world", item = 238553, zone = 2413 },	-- Primal Essence Orb
-		{ quest = 89102, type = "world", item = 238550, zone = 2405 },	-- Pure Void Crystal
-		{ quest = 89107, type = "world", item = 238555, zone = 2395 },	-- Sin'dorei Enchanting Rod
+		{ quest = 89100, type = "world", item = 238548, zone = 2536 }, -- Enchanted Amani Mask
+		{ quest = 89101, type = "world", item = 238549, zone = 2395 }, -- Enchanted Sunfire Silk
+		{ quest = 89104, type = "world", item = 238552, zone = 2413 }, -- Entropic Shard
+		{ quest = 89103, type = "world", item = 238551, zone = 2395 }, -- Everblazing Sunmote
+		{ quest = 89106, type = "world", item = 238554, zone = 2437 }, -- Loa-Blessed Dust
+		{ quest = 89105, type = "world", item = 238553, zone = 2413 }, -- Primal Essence Orb
+		{ quest = 89102, type = "world", item = 238550, zone = 2405 }, -- Pure Void Crystal
+		{ quest = 89107, type = "world", item = 238555, zone = 2395 }, -- Sin'dorei Enchanting Rod
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3198 },
 	},
-	[2910] = {	-- Midnight Engineering
+	[2910] = { -- Midnight Engineering
 		-- Vendors
-		{ quest = 93796, type = "vendor", item = 262646, source = 2699, renown = 9 },	-- Beyond the Event Horizon: Engineering
+		{ quest = 93796, type = "vendor", item = 262646, source = 2699, renown = 9 }, -- Beyond the Event Horizon: Engineering
 
 		-- Treasures
-		{ quest = 89137, type = "world", item = 238560, zone = 2444 },	-- Ethereal Stormwrench
-		{ quest = 89136, type = "world", item = 238559, zone = 2413 },	-- Expeditious Pylon
-		{ quest = 89140, type = "world", item = 238563, zone = 2437 },	-- Handy Wrench
-		{ quest = 89135, type = "world", item = 238558, zone = 2395 },	-- Manual of Mistakes and Mishaps
-		{ quest = 89134, type = "world", item = 238557, zone = 2444 },	-- Miniaturized Transport Skiff
-		{ quest = 89138, type = "world", item = 238561, zone = 2536 },	-- Offline Helper Bot
-		{ quest = 89133, type = "world", item = 238556, zone = 2393 },	-- One Engineer's Junk
-		{ quest = 89139, type = "world", item = 238562, zone = 2393 },	-- What To Do When Nothing Works
+		{ quest = 89137, type = "world", item = 238560, zone = 2444 }, -- Ethereal Stormwrench
+		{ quest = 89136, type = "world", item = 238559, zone = 2413 }, -- Expeditious Pylon
+		{ quest = 89140, type = "world", item = 238563, zone = 2437 }, -- Handy Wrench
+		{ quest = 89135, type = "world", item = 238558, zone = 2395 }, -- Manual of Mistakes and Mishaps
+		{ quest = 89134, type = "world", item = 238557, zone = 2444 }, -- Miniaturized Transport Skiff
+		{ quest = 89138, type = "world", item = 238561, zone = 2536 }, -- Offline Helper Bot
+		{ quest = 89133, type = "world", item = 238556, zone = 2393 }, -- One Engineer's Junk
+		{ quest = 89139, type = "world", item = 238562, zone = 2393 }, -- What To Do When Nothing Works
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3197 },
 	},
-	[2912] = {	-- Midnight Herbalism
+	[2912] = { -- Midnight Herbalism
 		-- Vendors
-		{ quest = 93411, type = "vendor", item = 258410, source = 2704, renown = 5 },	-- Traditions of the Haranir: Herbalism
-		{ quest = 92174, type = "vendor", item = 250443, source = 3377, sourceType = "currency" },	-- Echo of Abundance: Herbalism
+		{ quest = 93411, type = "vendor", item = 258410, source = 2704, renown = 5 }, -- Traditions of the Haranir: Herbalism
+		{ quest = 92174, type = "vendor", item = 250443, source = 3377, sourceType = "currency" }, -- Echo of Abundance: Herbalism
 
 		-- Treasures
-		{ quest = 89162, type = "world", item = 238468, zone = 2413 },	-- Bloomed Bud
-		{ quest = 89157, type = "world", item = 238473, zone = 2413 },	-- Harvester's Sickle
-		{ quest = 89159, type = "world", item = 238471, zone = 2413 },	-- Lightbloom Root
-		{ quest = 89156, type = "world", item = 238474, zone = 2405 },	-- Peculiar Lotus
-		{ quest = 89155, type = "world", item = 238475, zone = 2413 },	-- Planting Shovel
-		{ quest = 89160, type = "world", item = 238470, zone = 2393 },	-- Simple Leaf Pruners
-		{ quest = 89161, type = "world", item = 238469, zone = 2437 },	-- Sweeping Harvester's Scythe
+		{ quest = 89162, type = "world", item = 238468, zone = 2413 }, -- Bloomed Bud
+		{ quest = 89157, type = "world", item = 238473, zone = 2413 }, -- Harvester's Sickle
+		{ quest = 89159, type = "world", item = 238471, zone = 2413 }, -- Lightbloom Root
+		{ quest = 89156, type = "world", item = 238474, zone = 2405 }, -- Peculiar Lotus
+		{ quest = 89155, type = "world", item = 238475, zone = 2413 }, -- Planting Shovel
+		{ quest = 89160, type = "world", item = 238470, zone = 2393 }, -- Simple Leaf Pruners
+		{ quest = 89161, type = "world", item = 238469, zone = 2437 }, -- Sweeping Harvester's Scythe
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3196 },
 	},
-	[2913] = {	-- Midnight Inscription
+	[2913] = { -- Midnight Inscription
 		-- Vendors
-		{ quest = 93412, type = "vendor", item = 258411, source = 2704, renown = 5 },	-- Traditions of the Haranir: Inscription
+		{ quest = 93412, type = "vendor", item = 258411, source = 2704, renown = 5 }, -- Traditions of the Haranir: Inscription
 
 		-- Treasures
-		{ quest = 89072, type = "world", item = 238577, zone = 2395 },	-- Half-Baked Techniques
-		{ quest = 89070, type = "world", item = 238575, zone = 2413 },	-- Intrepid Explorer's Marker
-		{ quest = 89068, type = "world", item = 238573, zone = 2437 },	-- Leather-Bound Techniques
-		{ quest = 89071, type = "world", item = 238576, zone = 2413 },	-- Leftover Sanguithorn Pigment
-		{ quest = 89073, type = "world", item = 238578, zone = 2393 },	-- Songwriter's Pen
-		{ quest = 89074, type = "world", item = 238579, zone = 2395 },	-- Songwriter's Quill
-		{ quest = 89069, type = "world", item = 238574, zone = 2395 },	-- Spare Ink
-		{ quest = 89067, type = "world", item = 238572, zone = 2444 },	-- Void-Touched Quill
+		{ quest = 89072, type = "world", item = 238577, zone = 2395 }, -- Half-Baked Techniques
+		{ quest = 89070, type = "world", item = 238575, zone = 2413 }, -- Intrepid Explorer's Marker
+		{ quest = 89068, type = "world", item = 238573, zone = 2437 }, -- Leather-Bound Techniques
+		{ quest = 89071, type = "world", item = 238576, zone = 2413 }, -- Leftover Sanguithorn Pigment
+		{ quest = 89073, type = "world", item = 238578, zone = 2393 }, -- Songwriter's Pen
+		{ quest = 89074, type = "world", item = 238579, zone = 2395 }, -- Songwriter's Quill
+		{ quest = 89069, type = "world", item = 238574, zone = 2395 }, -- Spare Ink
+		{ quest = 89067, type = "world", item = 238572, zone = 2444 }, -- Void-Touched Quill
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3195 },
 	},
-	[2914] = {	-- Midnight Jewelcrafting
+	[2914] = { -- Midnight Jewelcrafting
 		-- Vendors
-		{ quest = 93222, type = "vendor", item = 257599, source = 2710, renown = 6 },	-- Skill Issue: Jewelcrafting
+		{ quest = 93222, type = "vendor", item = 257599, source = 2710, renown = 6 }, -- Skill Issue: Jewelcrafting
 
 		-- Treasures
-		{ quest = 89124, type = "world", item = 238582, zone = 2393 },	-- Dual-Function Magnifiers
-		{ quest = 89128, type = "world", item = 238586, zone = 2444 },	-- Ethereal Gem Pliers
-		{ quest = 89125, type = "world", item = 238583, zone = 2395 },	-- Poorly Rounded Vial
-		{ quest = 89126, type = "world", item = 238584, zone = 2444 },	-- Shattered Glass
-		{ quest = 89129, type = "world", item = 238587, zone = 2395 },	-- Sin'dorei Gem Faceters
-		{ quest = 89122, type = "world", item = 238580, zone = 2393 },	-- Sin'dorei Masterwork Chisel
-		{ quest = 89123, type = "world", item = 238581, zone = 2444 },	-- Speculative Voidstorm Crystal
-		{ quest = 89127, type = "world", item = 238585, zone = 2393 },	-- Vintage Soul Gem
+		{ quest = 89124, type = "world", item = 238582, zone = 2393 }, -- Dual-Function Magnifiers
+		{ quest = 89128, type = "world", item = 238586, zone = 2444 }, -- Ethereal Gem Pliers
+		{ quest = 89125, type = "world", item = 238583, zone = 2395 }, -- Poorly Rounded Vial
+		{ quest = 89126, type = "world", item = 238584, zone = 2444 }, -- Shattered Glass
+		{ quest = 89129, type = "world", item = 238587, zone = 2395 }, -- Sin'dorei Gem Faceters
+		{ quest = 89122, type = "world", item = 238580, zone = 2393 }, -- Sin'dorei Masterwork Chisel
+		{ quest = 89123, type = "world", item = 238581, zone = 2444 }, -- Speculative Voidstorm Crystal
+		{ quest = 89127, type = "world", item = 238585, zone = 2393 }, -- Vintage Soul Gem
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3194 },
 	},
-	[2915] = {	-- Midnight Leatherworking
+	[2915] = { -- Midnight Leatherworking
 		-- Vendors
-		{ quest = 92371, type = "vendor", item = 250922, source = 2696, renown = 6 },	-- Whisper of the Loa: Leatherworking
+		{ quest = 92371, type = "vendor", item = 250922, source = 2696, renown = 6 }, -- Whisper of the Loa: Leatherworking
 
 		-- Treasures
-		{ quest = 89089, type = "world", item = 238588, zone = 2437 },	-- Amani Leatherworker's Tool
-		{ quest = 89096, type = "world", item = 238595, zone = 2393 },	-- Artisan's Considered Order
-		{ quest = 89092, type = "world", item = 238591, zone = 2536 },	-- Bundle of Tanner's Trinkets
-		{ quest = 89090, type = "world", item = 238589, zone = 2405 },	-- Ethereal Leatherworking Knife
-		{ quest = 89095, type = "world", item = 238594, zone = 2413 },	-- Haranir Leatherworking Knife
-		{ quest = 89094, type = "world", item = 238593, zone = 2413 },	-- Haranir Leatherworking Mallet
-		{ quest = 89093, type = "world", item = 238592, zone = 2444 },	-- Patterns: Beyond the Void
-		{ quest = 89091, type = "world", item = 238590, zone = 2437 },	-- Prestigiously Racked Hide
+		{ quest = 89089, type = "world", item = 238588, zone = 2437 }, -- Amani Leatherworker's Tool
+		{ quest = 89096, type = "world", item = 238595, zone = 2393 }, -- Artisan's Considered Order
+		{ quest = 89092, type = "world", item = 238591, zone = 2536 }, -- Bundle of Tanner's Trinkets
+		{ quest = 89090, type = "world", item = 238589, zone = 2405 }, -- Ethereal Leatherworking Knife
+		{ quest = 89095, type = "world", item = 238594, zone = 2413 }, -- Haranir Leatherworking Knife
+		{ quest = 89094, type = "world", item = 238593, zone = 2413 }, -- Haranir Leatherworking Mallet
+		{ quest = 89093, type = "world", item = 238592, zone = 2444 }, -- Patterns: Beyond the Void
+		{ quest = 89091, type = "world", item = 238590, zone = 2437 }, -- Prestigiously Racked Hide
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3193 },
 	},
-	[2916] = {	-- Midnight Mining
+	[2916] = { -- Midnight Mining
 		-- Vendors
-		{ quest = 92372, type = "vendor", item = 250924, source = 2696, renown = 6 },	-- Whisper of the Loa: Mining
-		{ quest = 92187, type = "vendor", item = 250444, source = 3377, sourceType = "currency" },	-- Echo of Abundance: Mining
+		{ quest = 92372, type = "vendor", item = 250924, source = 2696, renown = 6 }, -- Whisper of the Loa: Mining
+		{ quest = 92187, type = "vendor", item = 250444, source = 3377, sourceType = "currency" }, -- Echo of Abundance: Mining
 
 		-- Treasures
-		{ quest = 89149, type = "world", item = 238601, zone = 2536 },	-- Amani Expert's Chisel
-		{ quest = 89148, type = "world", item = 238600, zone = 2444 },	-- Glimmering Void Pearl
-		{ quest = 89146, type = "world", item = 238598, zone = 2444 },	-- Lost Voidstorm Satchel
-		{ quest = 89144, type = "world", item = 238596, zone = 2444 },	-- Miner's Guide to Voidstorm
-		{ quest = 89147, type = "world", item = 238599, zone = 2395 },	-- Solid Ore Punchers
-		{ quest = 89151, type = "world", item = 238603, zone = 2413 },	-- Spare Expedition Torch
-		{ quest = 89145, type = "world", item = 238597, zone = 2437 },	-- Spelunker's Lucky Charm
-		{ quest = 89150, type = "world", item = 238602, zone = 2405 },	-- Star Metal Deposit
+		{ quest = 89149, type = "world", item = 238601, zone = 2536 }, -- Amani Expert's Chisel
+		{ quest = 89148, type = "world", item = 238600, zone = 2444 }, -- Glimmering Void Pearl
+		{ quest = 89146, type = "world", item = 238598, zone = 2444 }, -- Lost Voidstorm Satchel
+		{ quest = 89144, type = "world", item = 238596, zone = 2444 }, -- Miner's Guide to Voidstorm
+		{ quest = 89147, type = "world", item = 238599, zone = 2395 }, -- Solid Ore Punchers
+		{ quest = 89151, type = "world", item = 238603, zone = 2413 }, -- Spare Expedition Torch
+		{ quest = 89145, type = "world", item = 238597, zone = 2437 }, -- Spelunker's Lucky Charm
+		{ quest = 89150, type = "world", item = 238602, zone = 2405 }, -- Star Metal Deposit
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3192 },
 	},
-	[2917] = {	-- Midnight Skinning
+	[2917] = { -- Midnight Skinning
 		-- Vendors
-		{ quest = 92373, type = "vendor", item = 250923, source = 2696, renown = 6 },	-- Whisper of the Loa: Skinning
-		{ quest = 92188, type = "vendor", item = 250360, source = 3377, sourceType = "currency" },	-- Echo of Abundance: Skinning
+		{ quest = 92373, type = "vendor", item = 250923, source = 2696, renown = 6 }, -- Whisper of the Loa: Skinning
+		{ quest = 92188, type = "vendor", item = 250360, source = 3377, sourceType = "currency" }, -- Echo of Abundance: Skinning
 
 		-- Treasures
-		{ quest = 89172, type = "world", item = 238634, zone = 2437 },	-- Amani Skinning Knife
-		{ quest = 89170, type = "world", item = 238632, zone = 2437 },	-- Amani Tanning Oil
-		{ quest = 89167, type = "world", item = 238629, zone = 2536 },	-- Cadre Skinning Knife
-		{ quest = 89166, type = "world", item = 238628, zone = 2413 },	-- Lightbloom Afflicted Hide
-		{ quest = 89168, type = "world", item = 238630, zone = 2413 },	-- Primal Hide
-		{ quest = 89171, type = "world", item = 238633, zone = 2393 },	-- Sin'dorei Tanning Oil
-		{ quest = 89173, type = "world", item = 238635, zone = 2395 },	-- Thalassian Skinning Knife
-		{ quest = 89169, type = "world", item = 238631, zone = 2444 },	-- Voidstorm Leather Sample
+		{ quest = 89172, type = "world", item = 238634, zone = 2437 }, -- Amani Skinning Knife
+		{ quest = 89170, type = "world", item = 238632, zone = 2437 }, -- Amani Tanning Oil
+		{ quest = 89167, type = "world", item = 238629, zone = 2536 }, -- Cadre Skinning Knife
+		{ quest = 89166, type = "world", item = 238628, zone = 2413 }, -- Lightbloom Afflicted Hide
+		{ quest = 89168, type = "world", item = 238630, zone = 2413 }, -- Primal Hide
+		{ quest = 89171, type = "world", item = 238633, zone = 2393 }, -- Sin'dorei Tanning Oil
+		{ quest = 89173, type = "world", item = 238635, zone = 2395 }, -- Thalassian Skinning Knife
+		{ quest = 89169, type = "world", item = 238631, zone = 2444 }, -- Voidstorm Leather Sample
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3191 },
 	},
-	[2918] = {	-- Midnight Tailoring
+	[2918] = { -- Midnight Tailoring
 		-- Vendors
-		{ quest = 93201, type = "vendor", item = 257601, source = 2710, renown = 6 },	-- Skill Issue: Tailoring
+		{ quest = 93201, type = "vendor", item = 257601, source = 2710, renown = 6 }, -- Skill Issue: Tailoring
 
 		-- Treasures
-		{ quest = 89078, type = "world", item = 238612, zone = 2413 },	-- A Child's Stuffy
-		{ quest = 89079, type = "world", item = 238613, zone = 2393 },	-- A Really Nice Curtain
-		{ quest = 89085, type = "world", item = 238619, zone = 2437 },	-- Artisan's Cover Comb
-		{ quest = 89082, type = "world", item = 238616, zone = 2444 },	-- Book of Sin'dorei Stitches
-		{ quest = 89084, type = "world", item = 238618, zone = 2393 },	-- Particularly Enchanting Tablecloth
-		{ quest = 89083, type = "world", item = 238617, zone = 2444 },	-- Satin Throw Pillow
-		{ quest = 89080, type = "world", item = 238614, zone = 2395 },	-- Sin'dorei Outfitter's Ruler
-		{ quest = 89081, type = "world", item = 238615, zone = 2413 },	-- Wooden Weaving Sword
+		{ quest = 89078, type = "world", item = 238612, zone = 2413 }, -- A Child's Stuffy
+		{ quest = 89079, type = "world", item = 238613, zone = 2393 }, -- A Really Nice Curtain
+		{ quest = 89085, type = "world", item = 238619, zone = 2437 }, -- Artisan's Cover Comb
+		{ quest = 89082, type = "world", item = 238616, zone = 2444 }, -- Book of Sin'dorei Stitches
+		{ quest = 89084, type = "world", item = 238618, zone = 2393 }, -- Particularly Enchanting Tablecloth
+		{ quest = 89083, type = "world", item = 238617, zone = 2444 }, -- Satin Throw Pillow
+		{ quest = 89080, type = "world", item = 238614, zone = 2395 }, -- Sin'dorei Outfitter's Ruler
+		{ quest = 89081, type = "world", item = 238615, zone = 2413 }, -- Wooden Weaving Sword
 
 		-- Catchup knowledge
 		{ quest = 0, type = "catchup", currency = 3190 },

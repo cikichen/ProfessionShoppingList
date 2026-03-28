@@ -44,7 +44,7 @@ app.Event:Register("MERCHANT_SHOW", function()
 			local key = "vendor:" .. merchant .. ":" .. itemID
 			ProfessionShoppingList_Cache.FakeRecipes[key] = {
 				["itemID"] = itemID,
-				["tradeskillID"] = 0,	-- Vendor item
+				["tradeskillID"] = 0, -- Vendor item
 				["costCopper"] = 0,
 				["costItems"] = {},
 				["costCurrency"] = {},
@@ -91,7 +91,7 @@ app.Event:Register("MERCHANT_SHOW", function()
 	end
 
 	if app.Flag.MerchantAssets == false then
-		for i = 1, 99 do	-- Works for addons that expand the vendor frame up to 99 slots
+		for i = 1, 99 do -- Works for addons that expand the vendor frame up to 99 slots
 			local itemButton = _G["MerchantItem" .. i .. "ItemButton"]
 			if itemButton then
 				itemButton:HookScript("OnClick", function() TrackMerchantItem() end)
@@ -107,7 +107,7 @@ app.Event:Register("MERCHANT_SHOW", function()
 		app.MerchantButton:SetPushedTexture("Interface\\AddOns\\ProfessionShoppingList\\assets\\buttons.blp")
 		app.MerchantButton:GetPushedTexture():SetTexCoord(219/256, 255/256, 81/128, 119/128)
 		app.MerchantButton:SetScript("OnClick", function()
-			app:ShowWindow()	-- Populate app.ReagentQuantities
+			app:ShowWindow() -- Populate app.ReagentQuantities
 
 			for itemID, quantity in pairs(app.ReagentQuantities) do
 				if type(itemID) == "number" then

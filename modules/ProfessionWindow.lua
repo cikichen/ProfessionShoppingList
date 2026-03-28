@@ -66,10 +66,10 @@ function app:CreateTradeskillAssets()
 			app.UntrackProfessionButton:Disable()
 		end)
 		app.RecipeQuantityBox:SetScript("OnEditFocusLost", function(self, newValue)
-			ebRecipeQuantityUpdate(self, newValue)	-- This triggers update which enables the buttons too soon
+			ebRecipeQuantityUpdate(self, newValue) -- This triggers update which enables the buttons too soon
 			app.TrackProfessionButton:Disable()
 			app.UntrackProfessionButton:Disable()
-			C_Timer.After(1, function()	-- Delay so clicking (un)track after using the editbox doesn't work as intended
+			C_Timer.After(1, function() -- Delay so clicking (un)track after using the editbox doesn't work as intended
 				app.TrackProfessionButton:Enable()
 				if type(newValue) == "number" and newValue >= 1 then
 					app.UntrackProfessionButton:Enable()
@@ -810,79 +810,79 @@ app.Event:Register("SPELL_DATA_LOAD_RESULT", function(spellID, success)
 	if not InCombatLockdown() then
 		-- Recipe-specific assets
 		local function recipeAssets()
-			if spellID == 444181 then	-- The War Within Thaumaturgy
+			if spellID == 444181 then -- The War Within Thaumaturgy
 				app.MillingTheWarWithin:Show()
 			else
 				app.MillingTheWarWithin:Hide()
 			end
 
-			if spellID == 430315 then	-- The War Within Milling
+			if spellID == 430315 then -- The War Within Milling
 				app.ThaumaturgyTheWarWithin:Show()
 			else
 				app.ThaumaturgyTheWarWithin:Hide()
 			end
 
-			if spellID == 382981 then	-- Dragonflight Milling
+			if spellID == 382981 then -- Dragonflight Milling
 				app.MillingDragonflight:Show()
 			else
 				app.MillingDragonflight:Hide()
 			end
 
-			if spellID == 382982 then	-- Shadowlands Milling
+			if spellID == 382982 then -- Shadowlands Milling
 				app.MillingShadowlands:Show()
 			else
 				app.MillingShadowlands:Hide()
 			end
 
-			if spellID == 382984 then	-- Battle for Azeroth Milling
+			if spellID == 382984 then -- Battle for Azeroth Milling
 				app.MillingBattleForAzeroth:Show()
 			else
 				app.MillingBattleForAzeroth:Hide()
 			end
 
-			if spellID == 382986 then	-- Legion Milling
+			if spellID == 382986 then -- Legion Milling
 				app.MillingLegion:Show()
 			else
 				app.MillingLegion:Hide()
 			end
 
-			if spellID == 382987 then	-- Warlords of Draenor Milling
+			if spellID == 382987 then -- Warlords of Draenor Milling
 				app.MillingWarlordsOfDraenor:Show()
 			else
 				app.MillingWarlordsOfDraenor:Hide()
 			end
 
-			if spellID == 382988 then	-- Mists of Pandaria Milling
+			if spellID == 382988 then -- Mists of Pandaria Milling
 				app.MillingMistsOfPandaria:Show()
 			else
 				app.MillingMistsOfPandaria:Hide()
 			end
 
-			if spellID == 382989 then	-- Cataclysm Milling
+			if spellID == 382989 then -- Cataclysm Milling
 				app.MillingCataclysm:Show()
 			else
 				app.MillingCataclysm:Hide()
 			end
 
-			if spellID == 382990 then	-- Wrath of the Lich King Milling
+			if spellID == 382990 then -- Wrath of the Lich King Milling
 				app.MillingWrathOfTheLichKing:Show()
 			else
 				app.MillingWrathOfTheLichKing:Hide()
 			end
 
-			if spellID == 382991 then	-- The Burning Crusade Milling
+			if spellID == 382991 then -- The Burning Crusade Milling
 				app.MillingTheBurningCrusade:Show()
 			else
 				app.MillingTheBurningCrusade:Hide()
 			end
 
-			if spellID == 382994 then	-- Classic Milling
+			if spellID == 382994 then -- Classic Milling
 				app.MillingClassic:Show()
 			else
 				app.MillingClassic:Hide()
 			end
 
-			if app.slLegendaryRecipeIDs[app.SelectedRecipe.Profession.recipeID] then	-- Shadowlands Legendary recipes
+			if app.slLegendaryRecipeIDs[app.SelectedRecipe.Profession.recipeID] then -- Shadowlands Legendary recipes
 				app.ShadowlandsRankText:Show()
 				app.ShadowlandsRankBox:Show()
 				app.ShadowlandsRankBox:SetText(app.slLegendaryRecipeIDs[app.SelectedRecipe.Profession.recipeID].rank)

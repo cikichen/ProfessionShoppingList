@@ -23,7 +23,7 @@ end)
 
 app.Event:Register("AUCTION_HOUSE_SHOW", function(addOnName, containsBindings)
 	app.Flag.AuctionHouseIsOpen = true
-	app:CreateShoppingList()	-- Also update our shopping list whenever we open the AH
+	app:CreateShoppingList() -- Also update our shopping list whenever we open the AH
 end)
 
 app.Event:Register("AUCTION_HOUSE_CLOSED", function(addOnName, containsBindings)

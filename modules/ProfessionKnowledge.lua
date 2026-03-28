@@ -128,7 +128,7 @@ function app:UpdateKnowledgeTracker()
 		local atlasInfo = C_Texture.GetAtlasInfo("Skillbar_Fill_Flipbook_" .. Professions.GetAtlasKitSpecifier(C_TradeSkillUI.GetChildProfessionInfo()) or "DefaultBlue")
 		local progress = knowledgeSpent / knowledgeMax
 		if progress <= 0 then
-			progress = 0.001	-- Weird overflow issue with the texture at 0
+			progress = 0.001 -- Weird overflow issue with the texture at 0
 		elseif progress > 1 then
 			progress = 1
 		end

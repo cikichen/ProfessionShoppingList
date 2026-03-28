@@ -272,8 +272,8 @@ function app:CreateWindow()
 	-- ScrollChild inside the ScrollFrame
 	local scrollChild = CreateFrame("Frame", nil, scrollFrame)
 	scrollFrame:SetScrollChild(scrollChild)
-	scrollChild:SetWidth(1)	-- This is automatically defined, so long as the attribute exists at all
-	scrollChild:SetHeight(1)	-- This is automatically defined, so long as the attribute exists at all
+	scrollChild:SetWidth(1) -- This is automatically defined, so long as the attribute exists at all
+	scrollChild:SetHeight(1) -- This is automatically defined, so long as the attribute exists at all
 	scrollChild:SetAllPoints(scrollFrame)
 	scrollChild:Show()
 	scrollFrame:SetScript("OnVerticalScroll", function() scrollChild:SetPoint("BOTTOMRIGHT", scrollFrame) end)
@@ -479,21 +479,21 @@ function app:UpdateNumbers()
 
 	local customSortList = {
 		-- Needed reagents
-		"|cnIQ6",				-- Artifact
-		"|cnIQ5",				-- Legendary
-		"|cnIQ4",				-- Epic
-		"|cnIQ3",				-- Rare
-		"|cnIQ2",				-- Uncommon
-		"|cnIQ1",				-- Common
+		"|cnIQ6", -- Artifact
+		"|cnIQ5", -- Legendary
+		"|cnIQ4", -- Epic
+		"|cnIQ3", -- Rare
+		"|cnIQ2", -- Uncommon
+		"|cnIQ1", -- Common
 		-- Subreagents
-		"|cffFF0000|r|cnIQ6",	-- Artifact
-		"|cffFF0000|r|cnIQ5",	-- Legendary
-		"|cffFF0000|r|cnIQ4",	-- Epic
-		"|cffFF0000|r|cnIQ3",	-- Rare
-		"|cffFF0000|r|cnIQ2",	-- Uncommon
-		"|cffFF0000|r|cnIQ1",	-- Common
+		"|cffFF0000|r|cnIQ6", -- Artifact
+		"|cffFF0000|r|cnIQ5", -- Legendary
+		"|cffFF0000|r|cnIQ4", -- Epic
+		"|cffFF0000|r|cnIQ3", -- Rare
+		"|cffFF0000|r|cnIQ2", -- Uncommon
+		"|cffFF0000|r|cnIQ1", -- Common
 		-- Collected reagents
-		"|cnIQ0",				-- Poor (quantity 0)
+		"|cnIQ0", -- Poor (quantity 0)
 	}
 
 	local function customSort(a, b)
@@ -699,13 +699,13 @@ function app:UpdateRecipes()
 		end)
 
 		local customSortList = {
-			"|cnIQ6",	-- Artifact
-			"|cnIQ5",	-- Legendary
-			"|cnIQ4",	-- Epic
-			"|cnIQ3",	-- Rare
-			"|cnIQ2",	-- Uncommon
-			"|cnIQ1",	-- Common
-			"|cnIQ0",	-- Poor (quantity 0)
+			"|cnIQ6", -- Artifact
+			"|cnIQ5", -- Legendary
+			"|cnIQ4", -- Epic
+			"|cnIQ3", -- Rare
+			"|cnIQ2", -- Uncommon
+			"|cnIQ1", -- Common
+			"|cnIQ0", -- Poor (quantity 0)
 		}
 
 		-- Custom comparison function based on the beginning of the string
@@ -793,11 +793,11 @@ function app:UpdateRecipes()
 						app:SearchAH(recipeInfo.link)
 					-- If Control is held also
 					elseif IsControlKeyDown() and type(recipeInfo.recipeID) == "number" then
-							C_TradeSkillUI.SetRecipeItemNameFilter("")	-- Clear search filter, which can interfere
+							C_TradeSkillUI.SetRecipeItemNameFilter("") -- Clear search filter, which can interfere
 							C_TradeSkillUI.OpenRecipe(recipeInfo.recipeID)
 					-- If Alt is held also
 					elseif IsAltKeyDown() and type(recipeInfo.recipeID) == "number" then
-						C_TradeSkillUI.SetRecipeItemNameFilter("")	-- Clear search filter, which can interfere
+						C_TradeSkillUI.SetRecipeItemNameFilter("") -- Clear search filter, which can interfere
 						C_TradeSkillUI.OpenRecipe(recipeInfo.recipeID)
 						-- Make sure the tradeskill frame is loaded
 						if C_AddOns.IsAddOnLoaded("Blizzard_Professions") then
@@ -951,7 +951,7 @@ function app:UpdateRecipes()
 					local no = 0
 
 					for recipe, recipeInfo in pairs(ProfessionShoppingList_Library) do
-						if type(recipeInfo) ~= "number" then	-- Because of old ProfessionShoppingList_Library
+						if type(recipeInfo) ~= "number" then -- Because of old ProfessionShoppingList_Library
 							local lookupItemID = itemID
 							if ProfessionShoppingList_Cache.ReagentTiers[itemID] then lookupItemID = ProfessionShoppingList_Cache.ReagentTiers[itemID].one end
 
@@ -1471,11 +1471,11 @@ function app:UpdateRecipes()
 				elseif button == "LeftButton" then
 					-- If Control is held also
 					if IsControlKeyDown() then
-						C_TradeSkillUI.SetRecipeItemNameFilter("")	-- Clear search filter, which can interfere
+						C_TradeSkillUI.SetRecipeItemNameFilter("") -- Clear search filter, which can interfere
 						C_TradeSkillUI.OpenRecipe(cooldownInfo.recipeID)
 					-- If Alt is held also
 					elseif IsAltKeyDown() then
-						C_TradeSkillUI.SetRecipeItemNameFilter("")	-- Clear search filter, which can interfere
+						C_TradeSkillUI.SetRecipeItemNameFilter("") -- Clear search filter, which can interfere
 						C_TradeSkillUI.OpenRecipe(cooldownInfo.recipeID)
 						-- Make sure the tradeskill frame is loaded
 						if C_AddOns.IsAddOnLoaded("Blizzard_Professions") then
@@ -1559,7 +1559,7 @@ function app:UpdateRecipes()
 				windowWidth = math.max(windowWidth, maxLength1)
 			end
 			if showRecipes == false or #ProfessionShoppingList_Data.Recipes < 1 then
-				windowHeight = windowHeight + 2	-- Not sure why this is needed, but whatever
+				windowHeight = windowHeight + 2 -- Not sure why this is needed, but whatever
 			end
 			if windowHeight > math.floor(GetScreenHeight()*0.8) then windowHeight = math.floor(GetScreenHeight()*0.8) end
 			if windowWidth > math.floor(GetScreenWidth()*0.8) then windowWidth = math.floor(GetScreenWidth()*0.8) end
@@ -1800,7 +1800,7 @@ function app:RegisterRecipe(recipeID)
 	local recipeLearned = C_TradeSkillUI.GetRecipeInfo(recipeID).learned
 
 	-- Create the table entry
-	if not ProfessionShoppingList_Library[recipeID] or type(ProfessionShoppingList_Library[recipeID]) == "number" then	-- I still have no idea where these number values come from
+	if not ProfessionShoppingList_Library[recipeID] or type(ProfessionShoppingList_Library[recipeID]) == "number" then -- I still have no idea where these number values come from
 		ProfessionShoppingList_Library[recipeID] = {}
 	end
 
@@ -1949,7 +1949,7 @@ function app:GetReagents(reagentVariable, recipeID, recipeQuantity, recraft)
 
 			-- Add the info to the specified variable, if it's not 0 and not a simulated recipe
 			if (ProfessionShoppingList_Data.Recipes[craftingRecipeID] and not ProfessionShoppingList_Data.Recipes[craftingRecipeID].simRecipe and reagentAmount > 0) or not ProfessionShoppingList_Data.Recipes[craftingRecipeID] then
-				if reagentID == 0 then	-- Currency
+				if reagentID == 0 then -- Currency
 					local currencyID = reagentInfo.reagents[1].currencyID
 					reagentVariable["currency:" .. currencyID] = (reagentVariable["currency:" .. currencyID] or 0) + ( reagentAmount * recipeQuantity )
 				else
@@ -2141,7 +2141,7 @@ function api:TrackRecipe(recipeID, recipeQuantity, recraft, orderID)
 
 				ProfessionShoppingList_Cache.FakeRecipes[key] = {
 					["spellID"] = recipeID,
-					["tradeskillID"] = 1,	-- Crafting order
+					["tradeskillID"] = 1, -- Crafting order
 					["reagents"] = orderInfo.reagents
 				}
 
@@ -2156,7 +2156,7 @@ function api:TrackRecipe(recipeID, recipeQuantity, recraft, orderID)
 
 			ProfessionShoppingList_Cache.FakeRecipes[key] = {
 				["spellID"] = recipeID,
-				["tradeskillID"] = 1,	-- Crafting order
+				["tradeskillID"] = 1, -- Crafting order
 				["reagents"] = app.SelectedRecipe.MakeOrder.reagents
 			}
 
@@ -2268,7 +2268,7 @@ end
 -- Clear everything except the recipe cache
 function app:Clear()
 	ProfessionShoppingList_Data.Recipes = {}
-	ProfessionShoppingList_Cache.Reagents = {}	-- Wasn't needed before, but it is with the new link formatting
+	ProfessionShoppingList_Cache.Reagents = {} -- Wasn't needed before, but it is with the new link formatting
 	ProfessionShoppingList_Cache.FakeRecipes = {}
 	ProfessionShoppingList_Cache.SimulatedRecipes = {}
 	app:UpdateRecipes()
@@ -2370,7 +2370,7 @@ app.Event:Register("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloading
 
 					-- And open the window if that setting is enabled
 					if ProfessionShoppingList_Settings["showWindowCooldown"] then
-						app:ShowWindow()	-- This can run multiple times, but that doesn't do much harm
+						app:ShowWindow() -- This can run multiple times, but that doesn't do much harm
 					end
 				end
 			end
@@ -2391,7 +2391,7 @@ app.Event:Register("UNIT_SPELLCAST_SUCCEEDED", function(unitTarget, castGUID, sp
 
 				-- Get spell cooldown info
 				local recipeName = C_TradeSkillUI.GetRecipeSchematic(spellID, false).name
-				local cooldown, isDayCooldown, charges, maxCharges = C_TradeSkillUI.GetRecipeCooldown(spellID)	-- For daily cooldowns, cooldown returns the time until midnight, after relogging it's accurate. isDayCooldown can be used to identify if it should be aligned with daily reset right away.
+				local cooldown, isDayCooldown, charges, maxCharges = C_TradeSkillUI.GetRecipeCooldown(spellID) -- For daily cooldowns, cooldown returns the time until midnight, after relogging it's accurate. isDayCooldown can be used to identify if it should be aligned with daily reset right away.
 				local recipeStart = GetServerTime()
 
 				-- Remove shared cooldowns and only leave the last one done

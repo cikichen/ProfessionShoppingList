@@ -369,7 +369,7 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 
 				local function doTheThing()
 					-- Order profit
-					if C_AddOns.IsAddOnLoaded("Auctionator") then	-- Requires Auctionator
+					if C_AddOns.IsAddOnLoaded("Auctionator") then -- Requires Auctionator
 						v.cells[3].TipMoneyDisplayFrame:Hide()
 
 						local calculations = {}
@@ -377,7 +377,7 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 
 						ProfessionShoppingList_Cache.FakeRecipes[key] = {
 							["spellID"] = data.option.spellID,
-							["tradeskillID"] = 1,	-- Crafting order
+							["tradeskillID"] = 1, -- Crafting order
 							["reagents"] = data.option.reagents
 						}
 						app:GetReagents(reagents, key, 1, false)
