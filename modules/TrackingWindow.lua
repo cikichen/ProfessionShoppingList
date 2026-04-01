@@ -2219,7 +2219,7 @@ function api:TrackRecipe(recipeID, recipeQuantity, recraft, orderID)
 			for k, v in pairs(allocationTable) do
 				if v.allocs then
 					for k2, v2 in pairs(v.allocs) do
-						if v2.reagent then
+						if v2.reagent and v2.reagent.itemID then
 							reagents[v2.reagent.itemID] = v2.quantity
 						end
 					end
