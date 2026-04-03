@@ -125,7 +125,7 @@ function app:CreateCraftingOrdersAssets()
 					local reagentID = recipeInfo[i].reagents[1].itemID
 
 					-- Add the info for tiered reagents to craftingReagentItems
-					if ProfessionShoppingList_Cache.ReagentTiers[reagentID].three ~= 0 then
+					if ProfessionShoppingList_Cache.ReagentTiers[reagentID].two ~= 0 then
 						-- Set it to the lowest quality we have enough of for this order
 						if C_Item.GetItemCount(ProfessionShoppingList_Cache.ReagentTiers[reagentID].one, true, false, true, true) >= quantityNo then
 							craftingReagentInfo[no1] = {reagent = { itemID = ProfessionShoppingList_Cache.ReagentTiers[reagentID].one}, dataSlotIndex = recipeInfo[i].dataSlotIndex, quantity = quantityNo}
