@@ -1897,7 +1897,7 @@ function app:GetReagents(reagentVariable, recipeID, recipeQuantity, recraft)
 			end
 
 			-- Adjust the numbers for crafting orders
-			if craftingOrder and (not ProfessionShoppingList_Data.Recipes[craftingRecipeID] or not ProfessionShoppingList_Data.Recipes[craftingRecipeID].simRecipe) and ProfessionShoppingList_Cache.FakeRecipes[craftingRecipeID].reagents then
+			if craftingOrder and (not ProfessionShoppingList_Data.Recipes[craftingRecipeID] or not ProfessionShoppingList_Data.Recipes[craftingRecipeID].simRecipe) and ProfessionShoppingList_Cache.FakeRecipes[craftingRecipeID] and ProfessionShoppingList_Cache.FakeRecipes[craftingRecipeID].reagents then
 				for k, v in pairs(ProfessionShoppingList_Cache.FakeRecipes[craftingRecipeID].reagents) do
 					if v.reagentInfo and v.reagentInfo.reagent and (v.reagentInfo.reagent.itemID == reagentID1 or v.reagentInfo.reagent.itemID == reagentID2 or v.reagentInfo.reagent.itemID == reagentID3) then
 						reagentAmount = reagentAmount - v.reagentInfo.quantity
