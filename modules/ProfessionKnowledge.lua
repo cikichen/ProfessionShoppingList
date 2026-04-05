@@ -52,7 +52,7 @@ function app:SpendToNextPerk()
 	if not app.Flag.SpendHook then app.Flag.SpendHook = {} end
 	if not app.Flag.SpendHook[skillLineID] then
 		hooksecurefunc(ProfessionsSpecPathMixin, "PurchaseRank", function(self)
-			if ProfessionShoppingList_Settings["spendToNextPerk"] then
+			if app.Settings["spendToNextPerk"] then
 				local nodeID = self:GetNodeID()
 				local configID = C_ProfSpecs.GetConfigIDForSkillLine(C_TradeSkillUI.GetProfessionChildSkillLineID())
 				local pathInfo = C_Traits.GetNodeInfo(configID, nodeID)

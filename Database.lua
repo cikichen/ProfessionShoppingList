@@ -14,7 +14,8 @@ _G["BINDING_NAME_PROFESSIONSHOPPINGLIST"] = app.Name
 _G["BINDING_NAME_SLACKWARE"] = "Slackware"
 
 -- Used textures
-app.IconPSL = "|TInterface\\AddOns\\ProfessionShoppingList\\assets\\icon.png:0|t"
+app.Icon = "Interface\\AddOns\\ProfessionShoppingList\\assets\\icon.png"
+app.IconPSL = "|T" .. app.Icon .. ":0|t"
 app.IconWaiting = "|TInterface\\RaidFrame\\ReadyCheck-Waiting:0|t"
 app.IconReady = "|TInterface\\RaidFrame\\ReadyCheck-Ready:0|t"
 app.IconNotReady = "|TInterface\\RaidFrame\\ReadyCheck-NotReady:0|t"

@@ -123,9 +123,9 @@ function app:CreateTradeskillAssets()
 	-- Create the Track Unlearned Mogs button
 	if not app.TrackNewMogsButton then
 		local modeText = ""
-		if ProfessionShoppingList_Settings["collectMode"] == 1 then
+		if app.Settings["collectMode"] == 1 then
 			modeText = L.MODE_APPEARANCES
-		elseif ProfessionShoppingList_Settings["collectMode"] == 2 then
+		elseif app.Settings["collectMode"] == 2 then
 			modeText = L.MODE_SOURCES
 		end
 

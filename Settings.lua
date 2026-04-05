@@ -13,119 +13,51 @@ local L = app.locales
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	if addOnName == appName then
-		if not ProfessionShoppingList_Settings then ProfessionShoppingList_Settings = {} end
-		if ProfessionShoppingList_Settings["hide"] == nil then ProfessionShoppingList_Settings["hide"] = false end
-		if ProfessionShoppingList_Settings["windowPosition"] == nil then ProfessionShoppingList_Settings["windowPosition"] = { ["left"] = 1295, ["bottom"] = 836, ["width"] = 200, ["height"] = 200, } end
-		if ProfessionShoppingList_Settings["pcWindowPosition"] == nil then ProfessionShoppingList_Settings["pcWindowPosition"] = ProfessionShoppingList_Settings["windowPosition"] end
-		if ProfessionShoppingList_Settings["windowLocked"] == nil then ProfessionShoppingList_Settings["windowLocked"] = false end
-		if ProfessionShoppingList_Settings["debug"] == nil then ProfessionShoppingList_Settings["debug"] = false end
-		if ProfessionShoppingList_Settings["useLocalReagents"] == nil then ProfessionShoppingList_Settings["useLocalReagents"] = false end
+		ProfessionShoppingList_Settings = ProfessionShoppingList_Settings or {}
+		app.Settings = ProfessionShoppingList_Settings
 
-		app:CreateLinkCopiedFrame()
+		app.Settings["hide"] = app.Settings["hide"] or false
+		app.Settings["windowPosition"] = app.Settings["windowPosition"] or { ["left"] = 1295, ["bottom"] = 836, ["width"] = 200, ["height"] = 200, }
+		app.Settings["pcWindowPosition"] = app.Settings["pcWindowPosition"] or app.Settings["windowPosition"]
+		app.Settings["windowLocked"] = app.Settings["windowLocked"] or false
+		app.Settings["debug"] = app.Settings["debug"] or false
+		app.Settings["useLocalReagents"] = app.Settings["useLocalReagents"] or false
+
+		app:CreateMinimapButton()
 		app:CreateSettings()
 
 		-- Midnight cleanup
-		if ProfessionShoppingList_Settings["backpackCount"] ~= nil then ProfessionShoppingList_Settings["backpackCount"] = nil end
-		if ProfessionShoppingList_Settings["queueSound"] ~= nil then ProfessionShoppingList_Settings["queueSound"] = nil end
-		if ProfessionShoppingList_Settings["handyNotes"] ~= nil then ProfessionShoppingList_Settings["handyNotes"] = nil end
-		if ProfessionShoppingList_Settings["underminePrices"] ~= nil then ProfessionShoppingList_Settings["underminePrices"] = nil end
-		if ProfessionShoppingList_Settings["showTokenPrice"] ~= nil then ProfessionShoppingList_Settings["showTokenPrice"] = nil end
-		if ProfessionShoppingList_Settings["tokyoDrift"] ~= nil then ProfessionShoppingList_Settings["tokyoDrift"] = nil end
+		app.Settings["backpackCount"] = nil
+		app.Settings["queueSound"] = nil
+		app.Settings["handyNotes"] = nil
+		app.Settings["underminePrices"] = nil
+		app.Settings["showTokenPrice"] = nil
+		app.Settings["tokyoDrift"] = nil
 
-		if not ProfessionShoppingList_Settings["midClean1"] then
-			if ProfessionShoppingList_Settings["reagentQuality"] == 3 then ProfessionShoppingList_Settings["reagentQuality"] = 2 end
-			if ProfessionShoppingList_Settings["includeHigher"] == 2 then ProfessionShoppingList_Settings["includeHigher"] = 1 end
-			if ProfessionShoppingList_Settings["includeHigher"] == 3 then ProfessionShoppingList_Settings["includeHigher"] = 2 end
-			ProfessionShoppingList_Settings["midClean1"] = true
+		if not app.Settings["midClean1"] then
+			if app.Settings["reagentQuality"] == 3 then app.Settings["reagentQuality"] = 2 end
+			if app.Settings["includeHigher"] == 2 then app.Settings["includeHigher"] = 1 end
+			if app.Settings["includeHigher"] == 3 then app.Settings["includeHigher"] = 2 end
+			app.Settings["midClean1"] = true
 		end
 	end
 end)
-
------------
--- RESET --
------------
-
--- Reset SavedVariables
-function app:Reset(arg)
-	if arg == "settings" then
-		ProfessionShoppingList_Settings = {}
-		app:Print(L.RESET_DONE, L.REQUIRES_RELOAD)
-	elseif arg == "library" then
-		ProfessionShoppingList_Library = {}
-		app:Print(L.RESET_DONE)
-	elseif arg == "cache" then
-		app:Clear()
-		ProfessionShoppingList_Cache = nil
-		app:Print(L.RESET_DONE, L.REQUIRES_RELOAD)
-	elseif arg == "character" then
-		ProfessionShoppingList_CharacterData = nil
-		app:Print(L.RESET_DONE, L.REQUIRES_RELOAD)
-	elseif arg == "all" then
-		app:Clear()
-		ProfessionShoppingList_Settings = nil
-		ProfessionShoppingList_Data = nil
-		ProfessionShoppingList_Library = nil
-		ProfessionShoppingList_Cache = nil
-		ProfessionShoppingList_CharacterData = nil
-		app:Print(L.RESET_DONE, L.REQUIRES_RELOAD)
-	elseif arg == "pos" then
-		-- Set the window size and position back to default
-		ProfessionShoppingList_Settings["windowPosition"] = { ["left"] = GetScreenWidth()/2-100, ["bottom"] = GetScreenHeight()/2-100, ["width"] = 200, ["height"] = 200, }
-		ProfessionShoppingList_Settings["pcWindowPosition"] = ProfessionShoppingList_Settings["windowPosition"]
-
-		-- Show the window, which will also set its size and position
-		app:ShowWindow()
-	else
-		app:Print(L.INVALID_RESET_ARG .. "\n " .. app:Colour("settings") .. ", " .. app:Colour("library") .. ", " .. app:Colour("cache") .. ", " .. app:Colour("character") .. ", " .. app:Colour("all") .. ", " .. app:Colour("pos"))
-	end
-end
 
 --------------
 -- SETTINGS --
 --------------
 
--- Open settings
 function app:OpenSettings()
-	Settings.OpenToCategory(app.Settings:GetID())
+	Settings.OpenToCategory(app.SettingsCategory:GetID())
 end
 
--- Addon Compartment click
-function ProfessionShoppingList_Click(self, button)
-	if button == "LeftButton" then
-		api:ToggleWindow()
-	elseif button == "RightButton" then
-		app:OpenSettings()
-	end
-end
-
--- Addon Compartment enter
-function ProfessionShoppingList_Enter(self, button)
-	GameTooltip:ClearLines()
-	GameTooltip:SetOwner(type(self) ~= "string" and self or button, "ANCHOR_LEFT")
-	GameTooltip:AddLine(L.SETTINGS_TOOLTIP)
-	GameTooltip:Show()
-end
-
--- Addon Compartment leave
-function ProfessionShoppingList_Leave()
-	GameTooltip:Hide()
-end
-
--- Settings and minimap icon
-function app:CreateSettings()
-	-- Minimap button
+function app:CreateMinimapButton()
 	local miniButton = LibStub("LibDataBroker-1.1"):NewDataObject(app.NameLong, {
 		type = "data source",
 		text = app.NameLong,
-		icon = "Interface\\AddOns\\ProfessionShoppingList\\assets\\icon.png",
+		icon = app.Icon,
 
-		OnClick = function(self, button)
-			if button == "LeftButton" then
-				api:ToggleWindow()
-			elseif button == "RightButton" then
-				app:OpenSettings()
-			end
-		end,
+		OnClick = ProfessionShoppingList_Click,
 
 		OnTooltipShow = function(tooltip)
 			if not tooltip or not tooltip.AddLine then return end
@@ -133,41 +65,47 @@ function app:CreateSettings()
 		end,
 	})
 
-	local icon = LibStub("LibDBIcon-1.0", true)
-	icon:Register(appName, miniButton, ProfessionShoppingList_Settings)
+	app.MinimapIcon = LibStub("LibDBIcon-1.0", true)
+	app.MinimapIcon:Register(appName, miniButton, app.Settings)
 
-	if ProfessionShoppingList_Settings["minimapIcon"] then
-		ProfessionShoppingList_Settings["hide"] = false
-		icon:Show(appName)
-	else
-		ProfessionShoppingList_Settings["hide"] = true
-		icon:Hide(appName)
+	function app:ToggleMinimapIcon()
+		if app.Settings["minimapIcon"] then
+			app.Settings["hide"] = false
+			app.MinimapIcon:Show(appName)
+		else
+			app.Settings["hide"] = true
+			app.MinimapIcon:Hide(appName)
+		end
 	end
+	app:ToggleMinimapIcon()
+end
 
-	-- Settings page
-	local category, layout = Settings.RegisterVerticalLayoutCategory(app.Name)
-	Settings.RegisterAddOnCategory(category)
-	app.Settings = category
+function app:CreateSettings()
+	-- Helper functions
+	app.LinkCopiedFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+	app.LinkCopiedFrame:SetPoint("CENTER")
+	app.LinkCopiedFrame:SetFrameStrata("TOOLTIP")
+	app.LinkCopiedFrame:SetHeight(1)
+	app.LinkCopiedFrame:SetWidth(1)
+	app.LinkCopiedFrame:Hide()
 
-	ProfessionShoppingList_SettingsTextMixin = {}
-	function ProfessionShoppingList_SettingsTextMixin:Init(initializer)
-		local data = initializer:GetData()
-		self.LeftText:SetTextToFit(data.leftText)
-		self.MiddleText:SetTextToFit(data.middleText)
-		self.RightText:SetTextToFit(data.rightText)
-	end
+	local text = app.LinkCopiedFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+	text:SetPoint("CENTER", app.LinkCopiedFrame, "CENTER", 0, 0)
+	text:SetPoint("TOP", app.LinkCopiedFrame, "TOP", 0, 0)
+	text:SetJustifyH("CENTER")
+	text:SetText(app.IconReady .. " " .. L.SETTINGS_URL_COPIED)
 
-	local data = { leftText = L.SETTINGS_VERSION .. " |cffFFFFFF" .. C_AddOns.GetAddOnMetadata(appName, "Version") }
-	local text = layout:AddInitializer(Settings.CreateElementInitializer("ProfessionShoppingList_SettingsText", data))
-	function text:GetExtent()
-		return 14
-	end
-
-	local data = { leftText = L.SETTINGS_SUPPORT_TEXTLONG }
-	local text = layout:AddInitializer(Settings.CreateElementInitializer("ProfessionShoppingList_SettingsText", data))
-	function text:GetExtent()
-		return 28 + select(2, string.gsub(data.leftText, "\n", "")) * 12
-	end
+	app.LinkCopiedFrame.animation = app.LinkCopiedFrame:CreateAnimationGroup()
+	local fadeOut = app.LinkCopiedFrame.animation:CreateAnimation("Alpha")
+	fadeOut:SetFromAlpha(1)
+	fadeOut:SetToAlpha(0)
+	fadeOut:SetDuration(1)
+	fadeOut:SetStartDelay(1)
+	fadeOut:SetSmoothing("IN_OUT")
+	app.LinkCopiedFrame.animation:SetToFinalAlpha(true)
+	app.LinkCopiedFrame.animation:SetScript("OnFinished", function()
+		app.LinkCopiedFrame:Hide()
+	end)
 
 	StaticPopupDialogs["PROFESSIONSHOPPINGLIST_URL"] = {
 		text = L.SETTINGS_URL_COPY,
@@ -211,15 +149,14 @@ function app:CreateSettings()
 			editBox:SetText("")
 		end,
 	}
-	local function onSupportButtonClick()
-		StaticPopup_Show("PROFESSIONSHOPPINGLIST_URL", nil, nil, "https://buymeacoffee.com/Slackluster")
-	end
-	layout:AddInitializer(CreateSettingsButtonInitializer(L.SETTINGS_SUPPORT_TEXT, L.SETTINGS_SUPPORT_BUTTON, onSupportButtonClick, L.SETTINGS_SUPPORT_DESC, true))
 
-	local function onHelpButtonClick()
-		StaticPopup_Show("PROFESSIONSHOPPINGLIST_URL", nil, nil, "https://discord.gg/hGvF59hstx")
+	ProfessionShoppingList_SettingsTextMixin = {}
+	function ProfessionShoppingList_SettingsTextMixin:Init(initializer)
+		local data = initializer:GetData()
+		self.LeftText:SetTextToFit(data.leftText)
+		self.MiddleText:SetTextToFit(data.middleText)
+		self.RightText:SetTextToFit(data.rightText)
 	end
-	layout:AddInitializer(CreateSettingsButtonInitializer(L.SETTINGS_HELP_TEXT, L.SETTINGS_HELP_BUTTON, onHelpButtonClick, L.SETTINGS_HELP_DESC, true))
 
 	ProfessionShoppingList_SettingsExpandMixin = CreateFromMixins(SettingsExpandableSectionMixin)
 
@@ -249,7 +186,64 @@ function app:CreateSettings()
 		end
 	end
 
-	local function createExpandableSection(layout, name)
+	local category, layout
+
+	local function button(name, buttonName, description, func)
+		layout:AddInitializer(CreateSettingsButtonInitializer(name, buttonName, func, description, true))
+	end
+
+	local function checkbox(variable, name, description, default, callback, parentSetting, parentCheckbox)
+		local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, app.Settings, type(default), name, default)
+		local checkbox = Settings.CreateCheckbox(category, setting, description)
+
+		if parentSetting and parentCheckbox then
+			checkbox:SetParentInitializer(parentCheckbox, function() return parentSetting:GetValue() end)
+			if callback then
+				parentSetting:SetValueChangedCallback(callback)
+			end
+		elseif callback then
+			setting:SetValueChangedCallback(callback)
+		end
+
+		return setting, checkbox
+	end
+
+	local function checkboxDropdown(cbVariable, cbName, description, cbDefaultValue, ddVariable, ddDefaultValue, options, callback)
+		local cbSetting = Settings.RegisterAddOnSetting(category, appName.."_"..cbVariable, cbVariable, app.Settings, type(cbDefaultValue), cbName, cbDefaultValue)
+		local ddSetting = Settings.RegisterAddOnSetting(category, appName.."_"..ddVariable, ddVariable, app.Settings, type(ddDefaultValue), "", ddDefaultValue)
+		local function GetOptions()
+			local container = Settings.CreateControlTextContainer()
+			for _, option in ipairs(options) do
+				container:Add(option.value, option.name, option.description)
+			end
+			return container:GetData()
+		end
+
+		local initializer = CreateSettingsCheckboxDropdownInitializer(cbSetting, cbName, description, ddSetting, GetOptions, "")
+		layout:AddInitializer(initializer)
+
+		if callback then
+			cbSetting:SetValueChangedCallback(callback)
+			ddSetting:SetValueChangedCallback(callback)
+		end
+	end
+
+	local function dropdown(variable, name, description, default, options, callback)
+		local setting = Settings.RegisterAddOnSetting(category, appName.."_"..variable, variable, app.Settings, type(default), name, default)
+		local function GetOptions()
+			local container = Settings.CreateControlTextContainer()
+			for _, option in ipairs(options) do
+				container:Add(option.value, option.name, option.description)
+			end
+			return container:GetData()
+		end
+		Settings.CreateDropdown(category, setting, GetOptions, description)
+		if callback then
+			setting:SetValueChangedCallback(callback)
+		end
+	end
+
+	local function expandableHeader(name)
 		local initializer = CreateFromMixins(SettingsExpandableSectionInitializer)
 		local data = { name = name, expanded = false }
 
@@ -263,189 +257,114 @@ function app:CreateSettings()
 		end
 	end
 
-	local expandInitializer, isExpanded = createExpandableSection(layout, L.SETTINGS_KEYSLASH_TITLE .. app.IconNew)
+	local function header(name)
+		layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(name))
+	end
 
-		local action = "PSL_TOGGLEWINDOW"
+	local function keybind(name, isExpanded)
+		local action = name
 		local bindingIndex = C_KeyBindings.GetBindingIndex(action)
 		local initializer = CreateKeybindingEntryInitializer(bindingIndex, true)
 		local keybind = layout:AddInitializer(initializer)
-		keybind:AddShownPredicate(isExpanded)
+		if isExpanded ~= nil then keybind:AddShownPredicate(isExpanded) end
+	end
 
-		local data = { leftText = "|cffFFFFFF"
-			.. "/psl" .. "\n\n"
-			.. "/psl reset pos" .. "\n\n"
-			.. "/psl reset " .. app:Colour("arg") .. "\n\n"
-			.. "/psl settings" .. "\n\n"
-			.. "/psl clear" .. "\n\n"
-			.. "/psl track " .. app:Colour(L.SETTINGS_SLASH_RECIPEID .. " " .. L.SETTINGS_SLASH_QUANTITY) .. "\n\n"
-			.. "/psl untrack " .. app:Colour(L.SETTINGS_SLASH_RECIPEID .. " " .. L.SETTINGS_SLASH_QUANTITY) .. "\n\n"
-			.. "/psl untrack " .. app:Colour(L.SETTINGS_SLASH_RECIPEID) .. "\n\n"
-			.. "/psl " .. app:Colour("[" .. L.SETTINGS_SLASH_CRAFTINGACHIE .. "]"),
-		middleText =
-			L.SETTINGS_SLASH_TOGGLE .. "\n\n" ..
-			L.SETTINGS_SLASH_RESETPOS .. "\n\n" ..
-			L.SETTINGS_SLASH_RESET .. "\n\n" ..
-			L.WINDOW_BUTTON_SETTINGS .. "\n\n" ..
-			L.WINDOW_BUTTON_CLEAR .. "\n\n" ..
-			L.SETTINGS_SLASH_TRACK .. "\n\n" ..
-			L.SETTINGS_SLASH_UNTRACK .. "\n\n" ..
-			L.SETTINGS_SLASH_UNTRACKALL .. "\n\n" ..
-			L.SETTINGS_SLASH_TRACKACHIE
-		}
+	local function text(leftText, middleText, rightText, customExtent, isExpanded)
+		local data = { leftText = leftText, middleText = middleText, rightText = rightText }
 		local text = layout:AddInitializer(Settings.CreateElementInitializer("ProfessionShoppingList_SettingsText", data))
 		function text:GetExtent()
+			if customExtent then return customExtent end
 			return 28 + select(2, string.gsub(data.leftText, "\n", "")) * 12
 		end
-		text:AddShownPredicate(isExpanded)
-
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.GENERAL))
-
-	local variable, name, tooltip = "minimapIcon", L.SETTINGS_MINIMAP_TITLE, L.SETTINGS_MINIMAP_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
-	setting:SetValueChangedCallback(function()
-		if ProfessionShoppingList_Settings["minimapIcon"] then
-			ProfessionShoppingList_Settings["hide"] = false
-			icon:Show(appName)
-		else
-			ProfessionShoppingList_Settings["hide"] = true
-			icon:Hide(appName)
-		end
-	end)
-
-	local variable, name, tooltip = "showRecipeCooldowns", L.SETTINGS_COOLDOWNS_TITLE, L.SETTINGS_COOLDOWNS_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, true)
-	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
-	setting:SetValueChangedCallback(function()
-		app:UpdateRecipes()
-	end)
-
-	local variable, name, tooltip = "showWindowCooldown", L.SETTINGS_COOLDOWNSWINDOW_TITLE, L.SETTINGS_COOLDOWNSWINDOW_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, false)
-	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
-	subSetting:SetParentInitializer(parentSetting, function() return ProfessionShoppingList_Settings["showRecipeCooldowns"] end)
-
-	local variable, name, tooltip = "showTooltip", L.SETTINGS_TOOLTIP_TITLE, L.SETTINGS_TOOLTIP_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, true)
-	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
-
-	local variable, name, tooltip = "showCraftTooltip", L.SETTINGS_CRAFTTOOLTIP_TITLE, L.SETTINGS_CRAFTTOOLTIP_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, true)
-	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
-	subSetting:SetParentInitializer(parentSetting, function() return ProfessionShoppingList_Settings["showTooltip"] end)
-
-	local variable, name, tooltip = "reagentQuality", L.SETTINGS_REAGENTQUALITY_TITLE, L.SETTINGS_REAGENTQUALITY_DESC
-	local function GetOptions()
-		local container = Settings.CreateControlTextContainer()
-		container:Add(1, "|A:Professions-ChatIcon-Quality-12-Tier1:24:24::1|a|A:Professions-ChatIcon-Quality-Tier1:20:18::1|a  " .. L.LOW)
-		container:Add(2, "|A:Professions-ChatIcon-Quality-12-Tier2:24:24::1|a|A:Professions-ChatIcon-Quality-Tier3:20:18::1|a  " .. L.HIGH)
-		return container:GetData()
+		if isExpanded ~= nil then text:AddShownPredicate(isExpanded) end
 	end
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Number, name, 1)
-	Settings.CreateDropdown(category, setting, GetOptions, tooltip)
-	setting:SetValueChangedCallback(function()
-		C_Timer.After(0.5, function() app:UpdateRecipes() end) -- Toggling this setting seems buggy? This fixes it. :)
-	end)
 
-	local variable, name, tooltip = "includeHigher", L.SETTINGS_INCLUDEHIGHER_TITLE, L.SETTINGS_INCLUDEHIGHER_DESC
-	local function GetOptions()
-		local container = Settings.CreateControlTextContainer()
-		container:Add(1, L.SETTINGS_INCLUDE)
-		container:Add(2, L.SETTINGS_DONT_INCLUDE)
-		return container:GetData()
-	end
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Number, name, 1)
-	Settings.CreateDropdown(category, setting, GetOptions, tooltip)
-	setting:SetValueChangedCallback(function()
-		C_Timer.After(0.5, function() app:UpdateRecipes() end) -- Toggling this setting seems buggy? This fixes it. :)
-	end)
+	-- Settings
+	category, layout = Settings.RegisterVerticalLayoutCategory(app.Name)
+	Settings.RegisterAddOnCategory(category)
+	app.SettingsCategory = category
 
-	local variable, name, tooltip = "collectMode", L.SETTINGS_COLLECTMODE_TITLE, L.SETTINGS_COLLECTMODE_DESC
-	local function GetOptions()
-		local container = Settings.CreateControlTextContainer()
-		container:Add(1, L.SETTINGS_APPEARANCES_TITLE, L.SETTINGS_APPEARANCES_TEXT)
-		container:Add(2, L.SETTINGS_SOURCES_TITLE, L.SETTINGS_SOURCES_TEXT)
-		return container:GetData()
-	end
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Number, name, 1)
-	Settings.CreateDropdown(category, setting, GetOptions, tooltip)
+	text(L.SETTINGS_VERSION .. " |cffFFFFFF" .. C_AddOns.GetAddOnMetadata(appName, "Version"), nil, nil, 14)
+	text(L.SETTINGS_SUPPORT_TEXTLONG)
+	button(L.SETTINGS_SUPPORT_TEXT, L.SETTINGS_SUPPORT_BUTTON, L.SETTINGS_SUPPORT_DESC, function() StaticPopup_Show("PROFESSIONSHOPPINGLIST_URL", nil, nil, "https://buymeacoffee.com/Slackluster") end)
+	button(L.SETTINGS_HELP_TEXT, L.SETTINGS_HELP_BUTTON, L.SETTINGS_HELP_DESC, function() StaticPopup_Show("PROFESSIONSHOPPINGLIST_URL", nil, nil, "https://discord.gg/hGvF59hstx") end)
 
-	local variable, name, tooltip = "spendToNextPerk", L.SETTINGS_SPENDTOPERK_TITLE, L.SETTINGS_SPENDTOPERK_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
+	local _, isExpanded = expandableHeader(L.SETTINGS_KEYSLASH_TITLE)
 
-	local variable, name, tooltip = "enhancedOrders", L.SETTINGS_ENHANCEDORDERS_TITLE, L.SETTINGS_ENHANCEDORDERS_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
+		keybind("PSL_TOGGLEWINDOW", isExpanded)
 
-	local variable, name, tooltip = "quickOrderDuration", L.SETTINGS_QUICKORDER_TITLE, L.SETTINGS_QUICKORDER_DESC
-	local function GetOptions()
-		local container = Settings.CreateControlTextContainer()
-		container:Add(0, L.SETTINGS_DURATION_SHORT)
-		container:Add(1, L.SETTINGS_DURATION_MEDIUM)
-		container:Add(2, L.SETTINGS_DURATION_LONG)
-		return container:GetData()
-	end
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Number, name, 0)
-	Settings.CreateDropdown(category, setting, GetOptions, tooltip)
+		local leftText = { "|cffFFFFFF" ..
+			"/psl",
+			"/psl reset pos",
+			"/psl reset " .. app:Colour("arg"),
+			"/psl settings",
+			"/psl clear",
+			"/psl track " .. app:Colour(L.SETTINGS_SLASH_RECIPEID .. " " .. L.SETTINGS_SLASH_QUANTITY),
+			"/psl untrack " .. app:Colour(L.SETTINGS_SLASH_RECIPEID .. " " .. L.SETTINGS_SLASH_QUANTITY),
+			"/psl untrack " .. app:Colour(L.SETTINGS_SLASH_RECIPEID),
+			"/psl " .. app:Colour("[" .. L.SETTINGS_SLASH_CRAFTINGACHIE .. "]") }
+		local middleText = {
+			L.SETTINGS_SLASH_TOGGLE,
+			L.SETTINGS_SLASH_RESETPOS,
+			L.SETTINGS_SLASH_RESET,
+			L.WINDOW_BUTTON_SETTINGS,
+			L.WINDOW_BUTTON_CLEAR,
+			L.SETTINGS_SLASH_TRACK,
+			L.SETTINGS_SLASH_UNTRACK,
+			L.SETTINGS_SLASH_UNTRACKALL,
+			L.SETTINGS_SLASH_TRACKACHIE }
+		leftText = table.concat(leftText, "\n\n")
+		middleText = table.concat(middleText, "\n\n")
+		text(leftText, middleText, nil, nil, isExpanded)
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.SETTINGS_HEADER_TRACK))
+	header(L.GENERAL)
 
-	local variable, name, tooltip = "helpTooltips", L.SETTINGS_HELPTOOLTIP_TITLE, L.SETTINGS_HELPTOOLTIP_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("minimapIcon", L.SETTINGS_MINIMAP_TITLE, L.SETTINGS_MINIMAP_DESC, true, function() app:ToggleMinimapIcon() end)
 
-	local variable, name, tooltip = "pcWindows", L.SETTINGS_PERSONALWINDOWS_TITLE, L.SETTINGS_PERSONALWINDOWS_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, false)
-	Settings.CreateCheckbox(category, setting, tooltip)
+	local parentSetting, parentCheckbox = checkbox("showRecipeCooldowns", L.SETTINGS_COOLDOWNS_TITLE, L.SETTINGS_COOLDOWNS_DESC, true, function() app:UpdateRecipes() end)
 
-	local variable, name, tooltip = "pcRecipes", L.SETTINGS_PERSONALRECIPES_TITLE, L.SETTINGS_PERSONALRECIPES_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, false)
-	Settings.CreateCheckbox(category, setting, tooltip)
-	setting:SetValueChangedCallback(function()
-		app:UpdateRecipes()
-	end)
+	checkbox("showWindowCooldown", L.SETTINGS_COOLDOWNSWINDOW_TITLE, L.SETTINGS_COOLDOWNSWINDOW_DESC, false, nil, parentSetting, parentCheckbox)
 
-	local variable, name, tooltip = "showRemaining", L.SETTINGS_SHOWREMAINING_TITLE, L.SETTINGS_SHOWREMAINING_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, false)
-	Settings.CreateCheckbox(category, setting, tooltip)
-	setting:SetValueChangedCallback(function()
-		C_Timer.After(0.5, function() app:UpdateRecipes() end) -- Toggling this setting seems buggy? This fixes it. :)
-	end)
+	local parentSetting, parentCheckbox = checkbox("showTooltip", L.SETTINGS_TOOLTIP_TITLE, L.SETTINGS_TOOLTIP_DESC, true)
 
-	local variable, name, tooltip = "removeCraft", L.SETTINGS_REMOVECRAFT_TITLE, L.SETTINGS_REMOVECRAFT_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, true)
-	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("showCraftTooltip", L.SETTINGS_CRAFTTOOLTIP_TITLE, L.SETTINGS_CRAFTTOOLTIP_DESC, true, nil, parentSetting, parentCheckbox)
 
-	local variable, name, tooltip = "closeWhenDone", L.SETTINGS_CLOSEWHENDONE_TITLE, L.SETTINGS_CLOSEWHENDONE_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, ProfessionShoppingList_Settings, Settings.VarType.Boolean, name, false)
-	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
-	subSetting:SetParentInitializer(parentSetting, function() return ProfessionShoppingList_Settings["removeCraft"] end)
-end
+	dropdown("reagentQuality", L.SETTINGS_REAGENTQUALITY_TITLE, L.SETTINGS_REAGENTQUALITY_DESC, 1, {
+		{ value = 1, name = "|A:Professions-ChatIcon-Quality-12-Tier1:24:24::1|a|A:Professions-ChatIcon-Quality-Tier1:20:18::1|a  " .. L.LOW, description = nil },
+		{ value = 2, name = "|A:Professions-ChatIcon-Quality-12-Tier2:24:24::1|a|A:Professions-ChatIcon-Quality-Tier3:20:18::1|a  " .. L.HIGH, description = nil },
+	}, function() C_Timer.After(0.5, function() app:UpdateRecipes() end) end)
 
-function app:CreateLinkCopiedFrame()
-	app.LinkCopiedFrame= CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-	app.LinkCopiedFrame:SetPoint("CENTER")
-	app.LinkCopiedFrame:SetFrameStrata("TOOLTIP")
-	app.LinkCopiedFrame:SetHeight(1)
-	app.LinkCopiedFrame:SetWidth(1)
-	app.LinkCopiedFrame:Hide()
+	dropdown("includeHigher", L.SETTINGS_INCLUDEHIGHER_TITLE, L.SETTINGS_INCLUDEHIGHER_DESC, 1, {
+		{ value = 1, name = L.SETTINGS_INCLUDE, description = nil },
+		{ value = 2, name = L.SETTINGS_DONT_INCLUDE, description = nil },
+	}, function() C_Timer.After(0.5, function() app:UpdateRecipes() end) end)
 
-	local string = app.LinkCopiedFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-	string:SetPoint("CENTER", app.LinkCopiedFrame, "CENTER", 0, 0)
-	string:SetPoint("TOP", app.LinkCopiedFrame, "TOP", 0, 0)
-	string:SetJustifyH("CENTER")
-	string:SetText(app.IconReady .. " " .. L.SETTINGS_URL_COPIED)
+	dropdown("collectMode", L.SETTINGS_COLLECTMODE_TITLE, L.SETTINGS_COLLECTMODE_DESC, 1, {
+		{ value = 1, name = L.SETTINGS_APPEARANCES_TITLE, description = L.SETTINGS_APPEARANCES_TEXT },
+		{ value = 2, name = L.SETTINGS_SOURCES_TITLE, description = L.SETTINGS_SOURCES_TEXT },
+	})
 
-	app.LinkCopiedFrame.animation = app.LinkCopiedFrame:CreateAnimationGroup()
-	local fadeOut = app.LinkCopiedFrame.animation:CreateAnimation("Alpha")
-	fadeOut:SetFromAlpha(1)
-	fadeOut:SetToAlpha(0)
-	fadeOut:SetDuration(1)
-	fadeOut:SetStartDelay(1)
-	fadeOut:SetSmoothing("IN_OUT")
-	app.LinkCopiedFrame.animation:SetToFinalAlpha(true)
-	app.LinkCopiedFrame.animation:SetScript("OnFinished", function()
-		app.LinkCopiedFrame:Hide()
-	end)
+	checkbox("spendToNextPerk", L.SETTINGS_SPENDTOPERK_TITLE, L.SETTINGS_SPENDTOPERK_DESC, true)
+
+	checkbox("enhancedOrders", L.SETTINGS_ENHANCEDORDERS_TITLE, L.SETTINGS_ENHANCEDORDERS_DESC, true)
+
+	dropdown("quickOrderDuration", L.SETTINGS_QUICKORDER_TITLE, L.SETTINGS_QUICKORDER_DESC, 0, {
+		{ value = 0, name = L.SETTINGS_DURATION_SHORT, description = nil },
+		{ value = 1, name = L.SETTINGS_DURATION_MEDIUM, description = nil },
+		{ value = 2, name = L.SETTINGS_DURATION_LONG, description = nil },
+	})
+
+	header(L.SETTINGS_HEADER_TRACK)
+
+	checkbox("helpTooltips", L.SETTINGS_HELPTOOLTIP_TITLE, L.SETTINGS_HELPTOOLTIP_DESC, true)
+
+	checkbox("pcWindows", L.SETTINGS_PERSONALWINDOWS_TITLE, L.SETTINGS_PERSONALWINDOWS_DESC, false)
+
+	checkbox("pcRecipes", L.SETTINGS_PERSONALRECIPES_TITLE, L.SETTINGS_PERSONALRECIPES_DESC, false, function() app:UpdateRecipes() end)
+
+	checkbox("showRemaining", L.SETTINGS_SHOWREMAINING_TITLE, L.SETTINGS_SHOWREMAINING_DESC, false, function() C_Timer.After(0.5, function() app:UpdateRecipes() end) end)
+
+	local parentSetting, parentCheckbox = checkbox("removeCraft", L.SETTINGS_REMOVECRAFT_TITLE, L.SETTINGS_REMOVECRAFT_DESC, true)
+
+	checkbox("closeWhenDone", L.SETTINGS_CLOSEWHENDONE_TITLE, L.SETTINGS_CLOSEWHENDONE_DESC, false, nil, parentSetting, parentCheckbox)
 end

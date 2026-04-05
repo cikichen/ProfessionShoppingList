@@ -24,7 +24,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 		if not ProfessionShoppingList_CharacterData.Recipes then ProfessionShoppingList_CharacterData.Recipes = {} end
 		if not ProfessionShoppingList_CharacterData.Orders then ProfessionShoppingList_CharacterData.Orders = {} end
 
-		if ProfessionShoppingList_Settings["pcRecipes"] then
+		if app.Settings["pcRecipes"] then
 			ProfessionShoppingList_Data.Recipes = ProfessionShoppingList_CharacterData.Recipes
 		end
 
@@ -56,7 +56,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 		end
 
 		-- Midnight cleanup
-		ProfessionShoppingList_Settings["tabOpened"] = nil
+		app.Settings["tabOpened"] = nil
 	end
 end)
 
@@ -137,7 +137,7 @@ function app:CreateWindow()
 		app.Window.Corner:Hide()
 		app.LockButton:Hide()
 		app.UnlockButton:Show()
-		ProfessionShoppingList_Settings["windowLocked"] = true
+		app.Settings["windowLocked"] = true
 	end
 
 	app.LockButton = CreateFrame("Button", "", app.Window, "UIPanelCloseButton")
@@ -161,7 +161,7 @@ function app:CreateWindow()
 		app.Window.Corner:Show()
 		app.LockButton:Show()
 		app.UnlockButton:Hide()
-		ProfessionShoppingList_Settings["windowLocked"] = false
+		app.Settings["windowLocked"] = false
 	end
 
 	app.UnlockButton = CreateFrame("Button", "", app.Window, "UIPanelCloseButton")
@@ -180,7 +180,7 @@ function app:CreateWindow()
 		GameTooltip:Hide()
 	end)
 
-	if ProfessionShoppingList_Settings["windowLocked"] then
+	if app.Settings["windowLocked"] then
 		app:LockWindow()
 	else
 		app:UnlockWindow()
@@ -283,7 +283,7 @@ end
 
 -- Move the main window
 function app:MoveWindow()
-	if ProfessionShoppingList_Settings["windowLocked"] then
+	if app.Settings["windowLocked"] then
 		-- Highlight the Unlock button
 		app.UnlockButton:LockHighlight()
 	else
@@ -309,8 +309,8 @@ function app:SaveWindow()
 	local width, height = app.Window:GetSize()
 
 	-- Save the window position and size
-	ProfessionShoppingList_Settings["windowPosition"] = { ["left"] = left, ["bottom"] = bottom, ["width"] = width, ["height"] = height, }
-	ProfessionShoppingList_Settings["pcWindowPosition"] = ProfessionShoppingList_Settings["windowPosition"]
+	app.Settings["windowPosition"] = { ["left"] = left, ["bottom"] = bottom, ["width"] = width, ["height"] = height, }
+	app.Settings["pcWindowPosition"] = app.Settings["windowPosition"]
 end
 
 -- Window tooltip show
@@ -327,16 +327,16 @@ function app:ShowWindowTooltip(text, hyperlink, secondary, position)
 		GameTooltip:SetPoint("BOTTOM", app.Window, "TOP", 0, 0)
 	elseif position and position == "bottom" then
 		GameTooltip:SetPoint("TOP", app.Window, "BOTTOM", 0, 0)
-	elseif (app.Tab and app.Tab.IsShown[0]) or GetScreenWidth()/2-ProfessionShoppingList_Settings["windowPosition"].width/2-app.Window:GetLeft() >= 0 then
+	elseif (app.Tab and app.Tab.IsShown[0]) or GetScreenWidth()/2-app.Settings["windowPosition"].width/2-app.Window:GetLeft() >= 0 then
 		GameTooltip:SetPoint("LEFT", app.Window, "RIGHT", 0, 0)
 	else
 		GameTooltip:SetPoint("RIGHT", app.Window, "LEFT", 0, 0)
 	end
 	GameTooltip:Show()
 
-	if secondary and ProfessionShoppingList_Settings["helpTooltips"] then
+	if secondary and app.Settings["helpTooltips"] then
 		ShoppingTooltip1:SetOwner(UIParent, "ANCHOR_NONE")
-		if (app.Tab and app.Tab.IsShown[0]) or GetScreenWidth()/2-ProfessionShoppingList_Settings["windowPosition"].width/2-app.Window:GetLeft() >= 0 then
+		if (app.Tab and app.Tab.IsShown[0]) or GetScreenWidth()/2-app.Settings["windowPosition"].width/2-app.Window:GetLeft() >= 0 then
 			ShoppingTooltip1:SetPoint("TOPLEFT", GameTooltip, "BOTTOMLEFT", 0, 0)
 		else
 			ShoppingTooltip1:SetPoint("TOPRIGHT", GameTooltip, "BOTTOMRIGHT", 0, 0)
@@ -409,7 +409,7 @@ function app:UpdateNumbers()
 			end
 
 			-- Set the displayed amount based on settings
-			if ProfessionShoppingList_Settings["showRemaining"] == false then
+			if app.Settings["showRemaining"] == false then
 				itemAmount = itemAmount .. reagentAmountHave .. "/" .. amount
 			else
 				itemAmount = itemAmount .. math.max(0,amount-reagentAmountHave)
@@ -425,7 +425,7 @@ function app:UpdateNumbers()
 			end
 
 			-- Set the displayed amount based on settings
-			if ProfessionShoppingList_Settings["showRemaining"] == false then
+			if app.Settings["showRemaining"] == false then
 				itemAmount = colour .. C_CurrencyInfo.GetCoinTextureString(amount)
 			else
 				itemAmount = colour .. C_CurrencyInfo.GetCoinTextureString(math.max(0,amount-GetMoney()))
@@ -448,7 +448,7 @@ function app:UpdateNumbers()
 			end
 
 			-- Set the displayed amount based on settings
-			if ProfessionShoppingList_Settings["showRemaining"] == false then
+			if app.Settings["showRemaining"] == false then
 				itemAmount = itemAmount .. quantity .. "/" .. amount
 			else
 				itemAmount = itemAmount .. math.max(0,amount-quantity)
@@ -1409,7 +1409,7 @@ function app:UpdateRecipes()
 		end
 
 		local next = next
-		if next(ProfessionShoppingList_Data.Cooldowns) == nil or ProfessionShoppingList_Settings["showRecipeCooldowns"] == false then
+		if next(ProfessionShoppingList_Data.Cooldowns) == nil or app.Settings["showRecipeCooldowns"] == false then
 			app.Window.Cooldowns:Hide()
 			showCooldowns = false
 		else
@@ -1544,7 +1544,7 @@ function app:UpdateRecipes()
 		function app:ResizeWindow(save)
 			local windowHeight = 62
 			local windowWidth = 0
-			if next(ProfessionShoppingList_Data.Cooldowns) == nil or ProfessionShoppingList_Settings["showRecipeCooldowns"] == false then
+			if next(ProfessionShoppingList_Data.Cooldowns) == nil or app.Settings["showRecipeCooldowns"] == false then
 				windowHeight = windowHeight - 16
 			elseif showCooldowns then
 				windowHeight = windowHeight + rowNo3 * 16
@@ -1585,12 +1585,12 @@ end
 function app:ShowWindow()
 	if not app.Window:IsShown() then
 		app.Window:ClearAllPoints()
-		if ProfessionShoppingList_Settings["pcWindows"] then
-			app.Window:SetSize(ProfessionShoppingList_Settings["pcWindowPosition"].width, ProfessionShoppingList_Settings["pcWindowPosition"].height)
-			app.Window:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", ProfessionShoppingList_Settings["pcWindowPosition"].left, ProfessionShoppingList_Settings["pcWindowPosition"].bottom)
+		if app.Settings["pcWindows"] then
+			app.Window:SetSize(app.Settings["pcWindowPosition"].width, app.Settings["pcWindowPosition"].height)
+			app.Window:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", app.Settings["pcWindowPosition"].left, app.Settings["pcWindowPosition"].bottom)
 		else
-			app.Window:SetSize(ProfessionShoppingList_Settings["windowPosition"].width, ProfessionShoppingList_Settings["windowPosition"].height)
-			app.Window:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", ProfessionShoppingList_Settings["windowPosition"].left, ProfessionShoppingList_Settings["windowPosition"].bottom)
+			app.Window:SetSize(app.Settings["windowPosition"].width, app.Settings["windowPosition"].height)
+			app.Window:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", app.Settings["windowPosition"].left, app.Settings["windowPosition"].bottom)
 		end
 
 		app.Window:Show()
@@ -1633,7 +1633,7 @@ app.Event:Register("BAG_UPDATE_DELAYED", function()
 		end
 
 		-- If the setting for split reagent bag count is enabled
-		if ProfessionShoppingList_Settings["backpackCount"] then
+		if app.Settings["backpackCount"] then
 			-- Get number of free bag slots
 			local freeSlots1 = C_Container.GetContainerNumFreeSlots(0) + C_Container.GetContainerNumFreeSlots(1) + C_Container.GetContainerNumFreeSlots(2) + C_Container.GetContainerNumFreeSlots(3) + C_Container.GetContainerNumFreeSlots(4)
 			local freeSlots2 = C_Container.GetContainerNumFreeSlots(5)
@@ -1683,7 +1683,7 @@ function app:CreateTab(frame, tabFrame)
 		app.Tab.IsShown[0] = true
 		app.Tab[frame]:SetChecked(true)
 
-		locked = ProfessionShoppingList_Settings["windowLocked"]
+		locked = app.Settings["windowLocked"]
 		app.CloseButton:Disable()
 		app.UnlockButton:Disable()
 		app:LockWindow()
@@ -1915,7 +1915,7 @@ function app:GetReagents(reagentVariable, recipeID, recipeQuantity, recraft)
 			if ProfessionShoppingList_Cache.ReagentTiers[0] then ProfessionShoppingList_Cache.ReagentTiers[0] = nil end
 
 			-- Check which quality reagent to use
-			if ProfessionShoppingList_Settings["reagentQuality"] == 2 and reagentID2 ~= 0 then
+			if app.Settings["reagentQuality"] == 2 and reagentID2 ~= 0 then
 				reagentID = reagentID2
 			else
 				reagentID = reagentID1
@@ -2004,9 +2004,9 @@ function app:GetReagentCount(reagentID)
 
 	local function tierTwo()
 		local reagentCount
-		if ProfessionShoppingList_Settings["includeHigher"] == 1 then
+		if app.Settings["includeHigher"] == 1 then
 			reagentCount = math.max(0, C_Item.GetItemCount(ProfessionShoppingList_Cache.ReagentTiers[reagentID].three, true, false, true, true) - (app.ReagentQuantities[ProfessionShoppingList_Cache.ReagentTiers[reagentID].three] or 0)) + C_Item.GetItemCount(ProfessionShoppingList_Cache.ReagentTiers[reagentID].two, true, false, true, true)
-		elseif ProfessionShoppingList_Settings["includeHigher"] == 2 then
+		elseif app.Settings["includeHigher"] == 2 then
 			reagentCount = C_Item.GetItemCount(ProfessionShoppingList_Cache.ReagentTiers[reagentID].two, true, false, true, true)
 		end
 		return reagentCount
@@ -2014,9 +2014,9 @@ function app:GetReagentCount(reagentID)
 
 	local function tierOne()
 		local reagentCount
-		if ProfessionShoppingList_Settings["includeHigher"] == 1 then
+		if app.Settings["includeHigher"] == 1 then
 			reagentCount = math.max(0, (math.max(0, C_Item.GetItemCount(ProfessionShoppingList_Cache.ReagentTiers[reagentID].three, true, false, true, true) - (app.ReagentQuantities[ProfessionShoppingList_Cache.ReagentTiers[reagentID].three] or 0)) + C_Item.GetItemCount(ProfessionShoppingList_Cache.ReagentTiers[reagentID].two, true, false, true, true)) - (app.ReagentQuantities[ProfessionShoppingList_Cache.ReagentTiers[reagentID].two] or 0)) + C_Item.GetItemCount(ProfessionShoppingList_Cache.ReagentTiers[reagentID].one, true, false, true, true)
-		elseif ProfessionShoppingList_Settings["includeHigher"] == 2 then
+		elseif app.Settings["includeHigher"] == 2 then
 			reagentCount = C_Item.GetItemCount(ProfessionShoppingList_Cache.ReagentTiers[reagentID].one, true, false, true, true)
 		end
 		return reagentCount
@@ -2036,9 +2036,9 @@ function app:GetReagentCount(reagentID)
 			reagentCount = C_Item.GetItemCount(reagentID, true, false, true, true)
 		end
 	-- Use our addon setting if there is no quality specified
-	elseif ProfessionShoppingList_Cache.ReagentTiers[reagentID].two ~= 0 and ProfessionShoppingList_Settings["reagentQuality"] == 2 then
+	elseif ProfessionShoppingList_Cache.ReagentTiers[reagentID].two ~= 0 and app.Settings["reagentQuality"] == 2 then
 		reagentCount = tierTwo()
-	elseif ProfessionShoppingList_Cache.ReagentTiers[reagentID].one ~= 0 and ProfessionShoppingList_Settings["reagentQuality"] == 1 then
+	elseif ProfessionShoppingList_Cache.ReagentTiers[reagentID].one ~= 0 and app.Settings["reagentQuality"] == 1 then
 		reagentCount = tierOne()
 	-- And use this fallback if nothing even matters anymore
 	else
@@ -2311,13 +2311,13 @@ end)
 app.Event:Register("UNIT_SPELLCAST_SUCCEEDED", function(unitTarget, castGUID, spellID)
 	if not InCombatLockdown() and unitTarget == "player" then
 		-- Run only when crafting a tracked recipe, and if the remove craft option is enabled
-		if ProfessionShoppingList_Data.Recipes[spellID] and ProfessionShoppingList_Settings["removeCraft"] then
+		if ProfessionShoppingList_Data.Recipes[spellID] and app.Settings["removeCraft"] then
 			-- Remove 1 tracked recipe when it has been crafted (if the option is enabled)
 			api:UntrackRecipe(spellID, 1)
 
 			-- Close window if no recipes are left and the option is enabled
 			local next = next
-			if next(ProfessionShoppingList_Data.Recipes) == nil and ProfessionShoppingList_Settings["closeWhenDone"] and not (app.Tab and app.Tab.IsShown[0]) then
+			if next(ProfessionShoppingList_Data.Recipes) == nil and app.Settings["closeWhenDone"] and not (app.Tab and app.Tab.IsShown[0]) then
 				app.Window:Hide()
 			end
 		end
@@ -2364,12 +2364,12 @@ app.Event:Register("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloading
 				end
 
 				-- If the option to show recipe cooldowns is enabled and all charges are full (or 0 = 0 for recipes without charges)
-				if ProfessionShoppingList_Settings["showRecipeCooldowns"] and ProfessionShoppingList_Data.Cooldowns[k].charges == ProfessionShoppingList_Data.Cooldowns[k].maxCharges then
+				if app.Settings["showRecipeCooldowns"] and ProfessionShoppingList_Data.Cooldowns[k].charges == ProfessionShoppingList_Data.Cooldowns[k].maxCharges then
 					-- Show the reminder
 					app:Print(recipeInfo.name .. " " .. L.READY_TO_CRAFT .. " " .. recipeInfo.user .. ".")
 
 					-- And open the window if that setting is enabled
-					if ProfessionShoppingList_Settings["showWindowCooldown"] then
+					if app.Settings["showWindowCooldown"] then
 						app:ShowWindow() -- This can run multiple times, but that doesn't do much harm
 					end
 				end

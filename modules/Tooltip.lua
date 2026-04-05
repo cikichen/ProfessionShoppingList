@@ -46,7 +46,7 @@ function app:AddTooltipInfo()
 		if not itemLink and itemID then return end
 		app.TooltipItemID = itemID
 
-		if ProfessionShoppingList_Settings["showTooltip"] then
+		if app.Settings["showTooltip"] then
 			local reagentID1 = 0
 			local reagentID2 = 0
 			local reagentID3 = 0
@@ -86,7 +86,7 @@ function app:AddTooltipInfo()
 				tooltip:AddLine(app.IconPSL .. " " .. reagentAmountHave .. "/" .. reagentAmountNeed .. " (" .. math.max(0,reagentAmountNeed-reagentAmountHave) .. " " .. L.MORE_NEEDED .. ")")
 			end
 
-			if ProfessionShoppingList_Settings["showCraftTooltip"] then
+			if app.Settings["showCraftTooltip"] then
 				for k, v in pairs(ProfessionShoppingList_Library) do
 					if type(v) ~= "number" and v.itemID == itemID then -- No clue why these non-table values are here, tbh
 						if emptyLine == false then
