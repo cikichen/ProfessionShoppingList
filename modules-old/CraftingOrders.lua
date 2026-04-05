@@ -2,7 +2,6 @@
 -- Profession Shopping List: CraftingOrders.lua --
 --------------------------------------------------
 
--- Initialisation
 local appName, app = ...
 local api = app.api
 local L = app.locales
