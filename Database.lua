@@ -2,10 +2,9 @@
 -- Profession Shopping List: Database.lua --
 --------------------------------------------
 
--- Initialisation
 local appName, app = ...
 
--- Used strings
+-- Strings
 app.Name = "Profession Shopping List"
 app.NameLong = app:Colour("Profession Shopping List")
 app.NameShort = app:Colour("PSL")
@@ -13,7 +12,7 @@ app.NamePrefix = "ProfShopList"
 _G["BINDING_NAME_PROFESSIONSHOPPINGLIST"] = app.Name
 _G["BINDING_NAME_SLACKWARE"] = "Slackware"
 
--- Used textures
+-- Textures
 app.Icon = "Interface\\AddOns\\ProfessionShoppingList\\assets\\icon.png"
 app.IconPSL = "|T" .. app.Icon .. ":0|t"
 app.IconWaiting = "|TInterface\\RaidFrame\\ReadyCheck-Waiting:0|t"
