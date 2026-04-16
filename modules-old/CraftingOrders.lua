@@ -367,41 +367,97 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 				local key = "order:" .. data.option.orderID .. ":" .. data.option.spellID
 
 				local function doTheThing()
+					-- Needed reagents
+					v.cells[4].Text:Hide()
+					v.cells[4]:EnableMouse(false)
+
+					local neededReagents = {}
+					local providedReagents = {}
+					for k, v in ipairs(data.option.reagents) do
+						if v.reagentInfo.reagent.itemID then
+							providedReagents[v.reagentInfo.reagent.itemID] = v.reagentInfo.quantity
+						end
+					end
+
+					for _, v in ipairs(C_TradeSkillUI.GetRecipeSchematic(data.option.spellID,false).reagentSlotSchematics) do
+						if v.required then
+							local provided = false
+							for _, j in ipairs(v.reagents) do
+								if providedReagents[j.itemID] then
+									provided = true
+									break
+								end
+							end
+
+							if not provided then
+								local _, itemLink, _, _, _, _, _, _, _, fileID, _, _, _, bindType = C_Item.GetItemInfo(v.reagents[1].itemID)
+								if not itemLink then
+									app:CacheItem(v.reagents[1].itemID)
+									C_Timer.After(0.1, doTheThing)
+									return
+								end
+								table.insert(neededReagents, { icon = fileID, link = itemLink, itemID = v.reagents[1].itemID, count = v.quantityRequired, bindType = bindType } )
+							end
+						end
+					end
+
+					if not app.OrderAdjustments[v].reagent then app.OrderAdjustments[v].reagent = {} end
+					for i, button in ipairs(app.OrderAdjustments[v].reagent) do
+						button:Hide()
+					end
+
+					for i, reagent in pairs(neededReagents) do
+						if not app.OrderAdjustments[v].reagent[i] then
+							app.OrderAdjustments[v].reagent[i] = CreateFrame("Button", "ReagentButton", v, "UIPanelButtonTemplate")
+							app.OrderAdjustments[v].reagent[i]:SetWidth(20)
+							app.OrderAdjustments[v].reagent[i]:SetHeight(20)
+							app.OrderAdjustments[v].reagent[i]:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square")
+							app.OrderAdjustments[v].reagent[i].Text = app.OrderAdjustments[v].reagent[i]:CreateFontString(nil, "ARTWORK", "GameFontNormalOutline")
+							app.OrderAdjustments[v].reagent[i].Text:SetJustifyH("RIGHT")
+							app.OrderAdjustments[v].reagent[i].Text:SetTextScale(0.9)
+						end
+						app.OrderAdjustments[v].reagent[i]:Show()
+						app.OrderAdjustments[v].reagent[i]:SetPoint("BOTTOMLEFT", v.cells[4], "BOTTOMLEFT", -26+i*22, 0)
+						app.OrderAdjustments[v].reagent[i]:SetScript("OnEnter", function(self)
+							GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
+							GameTooltip:SetHyperlink(reagent.link)
+							GameTooltip:Show()
+						end)
+						app.OrderAdjustments[v].reagent[i]:SetScript("OnLeave", function()
+							GameTooltip:Hide()
+						end)
+						app.OrderAdjustments[v].reagent[i]:SetNormalTexture(reagent.icon)
+						app.OrderAdjustments[v].reagent[i].Text:SetPoint("BOTTOMRIGHT", app.OrderAdjustments[v].reagent[i], "BOTTOMRIGHT", 0, 0)
+						if reagent.count and reagent.count > 1 then
+							app.OrderAdjustments[v].reagent[i].Text:SetText("|cffFFFFFF" .. reagent.count)
+						else
+							app.OrderAdjustments[v].reagent[i].Text:SetText("")
+						end
+					end
+
+					-- Nudge duration to the right
+					v.cells[5].Text:SetPoint("BOTTOMRIGHT", v.cells[5], -20, 0)
+
 					-- Order profit
 					if C_AddOns.IsAddOnLoaded("Auctionator") then -- Requires Auctionator
 						v.cells[3].TipMoneyDisplayFrame:Hide()
 
 						local calculations = {}
-						local reagents = {}
-
-						ProfessionShoppingList_Cache.FakeRecipes[key] = {
-							["spellID"] = data.option.spellID,
-							["tradeskillID"] = 1, -- Crafting order
-							["reagents"] = data.option.reagents
-						}
-						app:GetReagents(reagents, key, 1, false)
 
 						-- Grab the costs for crafting this order
 						local needScan = false
-						for reagentID, quantity in pairs(reagents) do
-							if quantity > 0 then
+						for _, reagent in pairs(neededReagents) do
+							if reagent.count > 0 then
 								local prices = {}
-								table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, reagentID))
-								if ProfessionShoppingList_Cache.ReagentTiers[reagentID].one then
-									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagentID].one))
+								table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, reagent.itemID))
+								if ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].one then
+									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].one))
 								end
-								if ProfessionShoppingList_Cache.ReagentTiers[reagentID].two then
-									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagentID].two))
+								if ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].two then
+									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].two))
 								end
-								if ProfessionShoppingList_Cache.ReagentTiers[reagentID].three then
-									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagentID].three))
-								end
-
-								local _, itemLink, _, _, _, _, _, _, _, fileID, _, _, _, bindType = C_Item.GetItemInfo(reagentID)
-								if not itemLink then
-									app:CacheItem(reagentID)
-									C_Timer.After(0.1, doTheThing)
-									return
+								if ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].three then
+									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].three))
 								end
 
 								local min = 10000000000
@@ -411,11 +467,11 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 									end
 								end
 
-								if bindType ~= 0 then min = 0 end
+								if reagent.bindType ~= 0 then min = 0 end
 								if min == 10000000000 then needScan = true end
 
-								itemLink = itemLink:gsub("%s*|A:.-|a%s*", "")
-								table.insert(calculations, {type = "cost", icon = fileID, link = itemLink, quantity = quantity, amount = min * quantity})
+								local itemLink = reagent.link:gsub("%s*|A:.-|a%s*", "")
+								table.insert(calculations, {type = "cost", icon = reagent.icon, link = itemLink, quantity = reagent.count, amount = min * reagent.count})
 							end
 						end
 
@@ -569,77 +625,6 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 							app.OrderAdjustments[v].reward[i].Text:SetText("")
 						end
 					end
-
-					-- Needed reagents
-					v.cells[4].Text:Hide()
-					v.cells[4]:EnableMouse(false)
-
-					local neededReagents = {}
-					local providedReagents = {}
-					for k, v in ipairs(data.option.reagents) do
-						if v.reagentInfo.reagent.itemID then
-							providedReagents[v.reagentInfo.reagent.itemID] = v.reagentInfo.quantity
-						end
-					end
-
-					for _, v in ipairs(C_TradeSkillUI.GetRecipeSchematic(data.option.spellID,false).reagentSlotSchematics) do
-						if v.required then
-							local provided = false
-							for _, j in ipairs(v.reagents) do
-								if providedReagents[j.itemID] then
-									provided = true
-									break
-								end
-							end
-
-							if not provided then
-								local _, itemLink, _, _, _, _, _, _, _, fileID = C_Item.GetItemInfo(v.reagents[1].itemID)
-								if not itemLink then
-									app:CacheItem(v.reagents[1].itemID)
-									C_Timer.After(0.1, doTheThing)
-									return
-								end
-								table.insert(neededReagents, { icon = fileID, link = itemLink, count = v.quantityRequired } )
-							end
-						end
-					end
-
-					if not app.OrderAdjustments[v].reagent then app.OrderAdjustments[v].reagent = {} end
-					for i, button in ipairs(app.OrderAdjustments[v].reagent) do
-						button:Hide()
-					end
-
-					for i, reagent in pairs(neededReagents) do
-						if not app.OrderAdjustments[v].reagent[i] then
-							app.OrderAdjustments[v].reagent[i] = CreateFrame("Button", "ReagentButton", v, "UIPanelButtonTemplate")
-							app.OrderAdjustments[v].reagent[i]:SetWidth(20)
-							app.OrderAdjustments[v].reagent[i]:SetHeight(20)
-							app.OrderAdjustments[v].reagent[i]:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square")
-							app.OrderAdjustments[v].reagent[i].Text = app.OrderAdjustments[v].reagent[i]:CreateFontString(nil, "ARTWORK", "GameFontNormalOutline")
-							app.OrderAdjustments[v].reagent[i].Text:SetJustifyH("RIGHT")
-							app.OrderAdjustments[v].reagent[i].Text:SetTextScale(0.9)
-						end
-						app.OrderAdjustments[v].reagent[i]:Show()
-						app.OrderAdjustments[v].reagent[i]:SetPoint("BOTTOMLEFT", v.cells[4], "BOTTOMLEFT", -26+i*22, 0)
-						app.OrderAdjustments[v].reagent[i]:SetScript("OnEnter", function(self)
-							GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
-							GameTooltip:SetHyperlink(reagent.link)
-							GameTooltip:Show()
-						end)
-						app.OrderAdjustments[v].reagent[i]:SetScript("OnLeave", function()
-							GameTooltip:Hide()
-						end)
-						app.OrderAdjustments[v].reagent[i]:SetNormalTexture(reagent.icon)
-						app.OrderAdjustments[v].reagent[i].Text:SetPoint("BOTTOMRIGHT", app.OrderAdjustments[v].reagent[i], "BOTTOMRIGHT", 0, 0)
-						if reagent.count and reagent.count > 1 then
-							app.OrderAdjustments[v].reagent[i].Text:SetText("|cffFFFFFF" .. reagent.count)
-						else
-							app.OrderAdjustments[v].reagent[i].Text:SetText("")
-						end
-					end
-
-					-- Nudge duration to the right
-					v.cells[5].Text:SetPoint("BOTTOMRIGHT", v.cells[5], -20, 0)
 
 					-- Recipe icons
 					if not app.OrderAdjustments[v].tracked then
