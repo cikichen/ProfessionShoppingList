@@ -276,12 +276,19 @@ function app:CreateProfessionsOrdersAssets()
 		app.TrackOrdersButton = app:MakeButton(ProfessionsFrame.OrdersPage.BrowseFrame, L.TRACK)
 		app.TrackOrdersButton:SetPoint("LEFT", ProfessionsFrame.OrdersPage.BrowseFrame.PersonalOrdersButton, "RIGHT", 6, 0)
 		app.TrackOrdersButton:SetScript("OnClick", function()
+			if not app.OrderInfo then return end
+			if app.Flag.ProcessingOrders and app.Flag.ProcessingOrders ~= 0 then
+				C_Timer.After(0.1, function()
+					app.TrackOrdersButton:Click()
+				end)
+			end
+
 			local skillLineID = C_TradeSkillUI.GetProfessionChildSkillLineID()
 			if ProfessionsFrame.OrdersPage.BrowseFrame.NpcOrdersButton.isSelected then
 				for key, orderInfo in pairs(app.OrderInfo) do
 					if orderInfo.learned and not ProfessionShoppingList_Data.Recipes[key] and skillLineID == orderInfo.skillLineID and orderInfo.view.orderType == Enum.CraftingOrderType.Npc then
 						local profit = 1
-						if C_AddOns.IsAddOnLoaded("Auctionator") then
+						if app.Flag.IsAuctionAddonLoaded then
 							profit = orderInfo.profit
 							for tradeSkillLineID, knowledge in pairs(orderInfo.knowledge) do
 								if ProfessionShoppingList_CharacterData.Queue.Knowledge[tradeSkillLineID] then
@@ -297,7 +304,7 @@ function app:CreateProfessionsOrdersAssets()
 						end
 					end
 				end
-				if app.OrdersQueue and app.OrdersQueue:IsShown() then
+				if app.OrdersQueueFrame and app.OrdersQueueFrame:IsVisible() then
 					app:UpdateOrdersQueue()
 				end
 			elseif ProfessionsFrame.OrdersPage.BrowseFrame.PersonalOrdersButton.isSelected then
@@ -324,7 +331,7 @@ function app:CreateProfessionsOrdersAssets()
 			app.TrackOrdersSettingsButton:SetPoint("LEFT", app.TrackOrdersButton, "RIGHT", 2, 0)
 		end)
 		app.TrackOrdersSettingsButton:SetScript("OnClick", function()
-			if not app.TrackOrdersSettings:IsShown() then
+			if not app.TrackOrdersSettings:IsVisible() then
 				app.TrackOrdersSettings:Show()
 				app.TrackOrdersSettings:SetToplevel(true)
 			else
@@ -344,7 +351,7 @@ function app:CreateProfessionsOrdersAssets()
 				end
 
 				app.Flag.ReloadingOrders = app.Flag.ReloadingOrders + 1
-				if (ProfessionsFrame.OrdersPage.BrowseFrame.OrderList.LoadingSpinner:IsShown() or ProfessionsFrame.OrdersPage.BrowseFrame.OrderList.ResultsText:IsShown()) and app.Flag.ReloadingOrders < 6 then
+				if (ProfessionsFrame.OrdersPage.BrowseFrame.OrderList.LoadingSpinner:IsVisible() or ProfessionsFrame.OrdersPage.BrowseFrame.OrderList.ResultsText:IsVisible()) and app.Flag.ReloadingOrders < 6 then
 					sortOrders()
 				else
 					app.Flag.ReloadingOrders = 0
@@ -389,7 +396,7 @@ function app:CreateProfessionsOrdersAssets()
 		local text0 = app.TrackOrdersSettings:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 		text0:SetPoint("TOPLEFT", app.TrackOrdersSettings, "TOPLEFT", 10, -30)
 		text0:SetJustifyH("LEFT")
-		text0:SetText(L.ORDERS_SET_CRITERIA .. "\n" .. L.ORDERS_COST_NEED)
+		text0:SetText(L.ORDERS_SET_CRITERIA .. " " .. string.format(L.ORDERS_COST_NEED, "\n" .. L.AUCTION_ADDONS))
 
 		local text1 = app.TrackOrdersSettings:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 		text1:SetPoint("TOPLEFT", text0, "BOTTOMLEFT", 0, -10)
@@ -441,7 +448,7 @@ function app:CreateProfessionsOrdersAssets()
 					table.insert(professions, { tradeSkillLineID = tradeSkillLineID, professionName = professionInfo.professionName })
 				end
 			end
-			table.sort(professions, function(a, b) return a.tradeSkillLineID < b.tradeSkillLineID end)
+			table.sort(professions, function(a, b) return a.tradeSkillLineID > b.tradeSkillLineID end)
 			for _, profession in ipairs(professions) do
 				rootDescription:CreateCheckbox(profession.professionName, isSelected, setSelected, profession.tradeSkillLineID)
 			end
@@ -663,7 +670,7 @@ app.Event:Register("TRADE_SKILL_SHOW", function()
 end)
 
 app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numOrders)
-	if ProfessionsFrame.OrdersPage:IsShown() then
+	if ProfessionsFrame.OrdersPage:IsVisible() then
 		local skillLineID = C_TradeSkillUI.GetProfessionChildSkillLineID()
 		if skillLineID and not app.ProfessionKnowledge[skillLineID] then
 			local profInfo = C_TradeSkillUI.GetChildProfessionInfos()
@@ -677,12 +684,15 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 		app.OrderAdjustments = app.OrderAdjustments or {}
 		app.OrderIcons = app.OrderIcons or {}
 		app.OrderInfo = app.OrderInfo or {}
+		app.Flag.ProcessingOrders = app.Flag.ProcessingOrders or 0
 
 		local function OnFrameInitialized(_, v, data)
+			app.Flag.ProcessingOrders = app.Flag.ProcessingOrders + 1
+
 			if app.OrderState ~= app.Enum.OrderState.Idle then
 				app.OrderState = app.Enum.OrderState.Idle
 				app:Debug("app.Enum.OrderState.Idle 4")
-				if app.OrdersQueue and app.OrdersQueue:IsShown() then
+				if app.OrdersQueueFrame and app.OrdersQueueFrame:IsVisible() then
 					app:UpdateOrdersQueue()
 				end
 			end
@@ -818,7 +828,7 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 					v.cells[5].Text:SetPoint("BOTTOMRIGHT", v.cells[5], -15, 0)
 
 					-- Order profit
-					if C_AddOns.IsAddOnLoaded("Auctionator") then -- Requires Auctionator
+					if app.Flag.IsAuctionAddonLoaded then
 						v.cells[3].TipMoneyDisplayFrame:Hide()
 
 						local calculations = {}
@@ -828,20 +838,20 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 						for _, reagent in pairs(neededReagents) do
 							if reagent.count > 0 then
 								local prices = {}
-								table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, reagent.itemID))
+								table.insert(prices, app:ItemValue(reagent.itemID))
 								if ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID] and ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].one then
-									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].one))
+									table.insert(prices, app:ItemValue(ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].one))
 								end
 								if ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID] and ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].two then
-									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].two))
+									table.insert(prices, app:ItemValue(ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].two))
 								end
 								if ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID] and ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].three then
-									table.insert(prices, Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].three))
+									table.insert(prices, app:ItemValue(ProfessionShoppingList_Cache.ReagentTiers[reagent.itemID].three))
 								end
 
 								local min = 10000000000
 								for _, value in ipairs(prices) do
-									if value < min then
+									if value < min and value ~= 0 then
 										min = value
 									end
 								end
@@ -880,7 +890,7 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 									C_Timer.After(0.1, doTheThing)
 									return
 								end
-								table.insert(calculations, {type = "reward", icon = fileID, link = itemLink, quantity = 0, amount = Auctionator.API.v1.GetAuctionPriceByItemLink(app.Name, itemLink)})
+								table.insert(calculations, {type = "reward", icon = fileID, link = itemLink, quantity = 0, amount = app:ItemValue(itemID)})
 								local rewardItem = app.CraftingOrderRewards.items[itemID]
 								addRewards(rewardItem, reward)
 							elseif reward.currencyType then
@@ -916,7 +926,7 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 						app.OrderAdjustments[v].rewardText:SetPoint("BOTTOMRIGHT", v.cells[3], -10, 0)
 
 						if needScan then
-							app.OrderAdjustments[v].rewardText:SetText(app:Colour(L.ORDERS_SCAN_NEEDED))
+							app.OrderAdjustments[v].rewardText:SetText(app:Colour(L.ORDERS_PRICING_MISSING))
 						elseif roundedCommissionResult < 0 then
 							app.OrderAdjustments[v].rewardText:SetText("|cffFF0000- " .. C_CurrencyInfo.GetCoinTextureString(-roundedCommissionResult))
 						elseif allProvided then
@@ -929,7 +939,7 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 							GameTooltip:ClearLines()
 
 							if needScan then
-								GameTooltip:AddLine(L.ORDERS_DO_SCAN)
+								GameTooltip:AddLine(string.format(app:Colour(L.ORDERS_PRICING_UPDATE), L.AUCTION_ADDONS))
 							else
 								-- Header
 								if commissionResult >= 0 then
@@ -1059,6 +1069,8 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 						app.OrderAdjustments[v].firstCraft:Show()
 						app.OrderInfo[key].knowledge[app.OrderInfo[key].skillLineID] = (app.OrderInfo[key].knowledge[app.OrderInfo[key].skillLineID] or 0) + 1
 					end
+
+					app.Flag.ProcessingOrders = app.Flag.ProcessingOrders - 1
 				end
 				RunNextFrame(doTheThing)
 
@@ -1074,9 +1086,6 @@ app.Event:Register("CRAFTINGORDERS_UPDATE_ORDER_COUNT", function(orderType, numO
 						originalOnClick(self, button, down)
 					end
 				end)
-
-				-- Fix "attempted to iterate a forbidden table" error when PlayerCastingBarFrame:IsAttachedToPlayerFrame() is enabled (thank you AcidWeb and Foxlit!)
-				function ProfessionsFrame.OrdersPage.OrderView:SetOverrideCastBarActive() end
 			end
 		end
 

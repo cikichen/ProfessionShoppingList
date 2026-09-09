@@ -1,4 +1,4 @@
-## Interface: 120007
+## Interface: 120007, 120100
 ## Title: |cff3FC7EBProfession Shopping List|r
 ## Author: Slackluster
 ## Notes: Track recipes, reagents, cooldowns, patron orders, and more
@@ -40,8 +40,8 @@ modules-old\ProfessionKnowledge.lua
 modules-old\ProfessionWindow.lua
 modules-old\Tooltip.lua
 modules-old\TrackingWindow.lua
-modules-old\TrackNewMogs.lua
 modules\OrdersQueue.lua
+modules\TrackNewMogs.lua
 locales\enUS.lua
 locales\deDE.lua
 locales\esES.lua

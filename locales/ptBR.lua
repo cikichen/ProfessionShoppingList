@@ -125,17 +125,14 @@ local L = app.locales
 -- L.CURRENT_SETTING =                      "Current setting:"
 -- L.MODE_APPEARANCES =                     "new appearances"
 -- L.MODE_SOURCES =                         "new appearances and sources"
--- L.TRACK_NEW1 =                           "This will check the" -- Followed by a number
--- L.TRACK_NEW2 =                           "visible recipes for" -- Preceded by a number, followed by L.MODE_APPEARANCES or L.MODE_SOURCES
--- L.TRACK_NEW3 =                           "Your game may freeze for a few seconds."
--- L.ADDED_RECIPES1 =                       "Added" -- Followed by a number
--- L.ADDED_RECIPES2 =                       "eligible recipes" -- Preceded by a number
+-- L.ADDED_RECIPES =                        "Checked %d visible recipes for %s. Tracked %d recipes." -- %d becomes a number, %s becomes L.MODE_APPEARANCES or L.MODE_SOURCES
 
 -- Tooltip info
 -- L.MORE_NEEDED =                          "more needed" -- Preceded by a number
 -- L.MADE_WITH =                            "Made with" -- Followed by a profession name such as "Blacksmithing" or "Leatherworking"
 -- L.RECIPE_LEARNED =                       "recipe learned"
 -- L.RECIPE_UNLEARNED =                     "recipe not learned"
+-- L.CRAFTING_COST =                        "Crafting Cost"
 
 -- Profession knowledge
 -- L.PERKS_UNLOCKED =                       "perks unlocked"
@@ -151,10 +148,11 @@ local L = app.locales
 -- L.LOADING =                              SEARCH_LOADING_TEXT -- "Loading..."
 
 -- Order adjustments
--- L.ORDERS_SCAN_NEEDED =                   "Scan needed"
--- L.ORDERS_DO_SCAN =                       "Do a full scan with Auctionator for profit calculations."
+-- L.AUCTION_ADDONS =                       "Auctionator, Oribos Exchange, or TradeSkillMaster"
+-- L.ORDERS_PRICING_MISSING =               "Missing"
+-- L.ORDERS_PRICING_UPDATE =                "Update or scan with %s." -- %s becomes a list of addon names
 -- L.ORDERS_SET_CRITERIA =                  "Set the criteria to track orders."
--- L.ORDERS_COST_NEED =                     "Cost settings only work with Auctionator enabled."
+-- L.ORDERS_COST_NEED =                     "Cost settings only work with: %s." -- %s becomes a list of addon names
 -- L.ORDERS_MAX_COST_KNOWLEDGE =            "Maximum cost per knowledge point:"
 -- L.ORDERS_MAX_COST_ARTISAN =              "Maximum cost per artisan currency:" -- This refers to Artisan's Mettle, Artisan's Acuity, and Artisan's Moxie
 -- L.ORDERS_MAX_COST_PAYOUT =               "Maximum cost per reward bag:" -- This refers to Artisan's Payout bag
@@ -169,6 +167,8 @@ local L = app.locales
 -- L.ORDERSQUEUE_CRAFT =                    "Craft Order"
 -- L.ORDERSQUEUE_CRAFTING =                 "Crafting..."
 -- L.ORDERSQUEUE_COMPLETE =                 PROFESSIONS_COMPLETE_ORDER -- "Complete Order"
+-- L.ORDERSQUEUE_WARNING_QUEST =            "You have not picked up %s." -- %s becomes a quest name
+-- L.ORDERSQUEUE_WARNING_REAGENTS =         "You do not have enough reagents for all tracked recipes."
 
 -- Chat feedback
 -- L.INVALID_PARAMETERS =                   "Invalid parameters."
@@ -225,6 +225,8 @@ local L = app.locales
 -- L.SETTINGS_SLASH_CRAFTINGACHIE =         "crafting achievement"
 -- L.SETTINGS_SLASH_RECIPEID =              "recipeID"
 -- L.SETTINGS_SLASH_QUANTITY =              "quantity"
+-- L.SETTINGS_SLASH_REAGENT =               "itemLink or itemID"
+-- L.SETTINGS_SLASH_TRACKREAGENT =          "Track all recipes using this reagent"
 
 -- L.GENERAL =                              GENERAL -- "General"
 -- L.SETTINGS_MINIMAP_TITLE =               "Show Minimap Icon"
@@ -237,12 +239,18 @@ local L = app.locales
 -- L.SETTINGS_TOOLTIP_DESC =                "Show how many of a reagent you have/need on the item's tooltip."
 -- L.SETTINGS_CRAFTTOOLTIP_TITLE =          "Show Crafting Information"
 -- L.SETTINGS_CRAFTTOOLTIP_DESC =           "Show with which profession a piece of gear is made, and if the recipe is known on your account."
+-- L.SETTINGS_CRAFTCOSTTOOLTIP_TITLE =      "Show Crafting Cost"
+-- L.SETTINGS_CRAFTCOSTTOOLTIP_DESC =       "Show how much an item costs to craft, if that information is available."
 -- L.SETTINGS_REAGENTQUALITY_TITLE =        "Minimum Reagent Quality"
 -- L.SETTINGS_REAGENTQUALITY_DESC =         "Set the minimum quality reagents need to be before " .. app.NameShort .. " includes them in the item count. Simulated results will still override this."
 -- L.SETTINGS_INCLUDEHIGHER_TITLE =         "Include Higher Quality"
 -- L.SETTINGS_INCLUDEHIGHER_DESC =          "Whether or not to count higher quality reagents. (I.e. include owned tier 2 reagents when counting tier 1 reagents.)"
 -- L.SETTINGS_COLLECTMODE_TITLE =           "Collection Mode"
 -- L.SETTINGS_COLLECTMODE_DESC =            "Set which items are included when using the " .. app:Colour(L.BUTTON_TRACKNEW) .. " button."
+
+-- L.PROFESSION_WINDOW =                    "Profession Window"
+-- L.SETTINGS_FILTER_OPTREAGENTS =          "Filter Optional Reagents"
+-- L.SETTINGS_FILTER_OPTREAGENTS_DESC =     "When %s is checked for optional reagents, hide combinable items." -- %s becomes "Hide Unavailable"
 -- L.SETTINGS_SPENDTOPERK_TITLE =           "Spend to Next Perk"
 -- L.SETTINGS_SPENDTOPERK_DESC =            "Shift+clicking a profession knowledge node spends points until the next perk."
 -- L.SETTINGS_ENHANCEDORDERS_TITLE =        "Enhanced Orders"

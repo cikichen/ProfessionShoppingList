@@ -23,24 +23,16 @@ end)
 
 app.Event:Register("MERCHANT_SHOW", function()
 	app.Flag.MerchantOpen = true
-	local function TrackMerchantItem()
+
+	local function TrackMerchantItem(vendorIndex)
 		if IsAltKeyDown() then
 			local merchant = MerchantFrameTitleText:GetText()
 			if issecretvalue(merchant) then
 				merchant = "secret"
 			end
-			local itemID = app.TooltipItemID
-
-			local vendorIndex = 0
-			for index = 1, GetMerchantNumItems() do
-				if GetMerchantItemID(index) == itemID then
-					vendorIndex = index
-					break
-				end
-			end
-			if vendorIndex == 0 then return end
 
 			local itemLink = GetMerchantItemLink(vendorIndex)
+			local itemID = C_Item.GetItemInfoInstant(itemLink)
 			local itemPrice = C_MerchantFrame.GetItemInfo(vendorIndex).price
 
 			-- Add this as a fake recipe
@@ -97,7 +89,7 @@ app.Event:Register("MERCHANT_SHOW", function()
 		for i = 1, 99 do -- Works for addons that expand the vendor frame up to 99 slots
 			local itemButton = _G["MerchantItem" .. i .. "ItemButton"]
 			if itemButton then
-				itemButton:HookScript("OnClick", function() TrackMerchantItem() end)
+				itemButton:HookScript("OnClick", function() TrackMerchantItem(itemButton:GetID()) end)
 			end
 		end
 
@@ -149,6 +141,11 @@ app.Event:Register("MERCHANT_SHOW", function()
 			GameTooltip:Hide()
 		end)
 
+		if C_AddOns.IsAddOnLoaded("CompactVendor") and CompactVendorFilterButton then
+			CompactVendorFilterButton:ClearAllPoints()
+			CompactVendorFilterButton:SetPoint("TOPRIGHT", app.MerchantButton, "TOPLEFT", 0, 3)
+		end
+
 		app.Flag.MerchantAssets = true
 	end
 end)
@@ -170,7 +167,7 @@ app.Event:Register("CHAT_MSG_LOOT", function(text, playerName, languageName, cha
 	if issecretvalue(text) then return end
 	local trackingVendorRecipes = false
 	for key, _ in pairs(ProfessionShoppingList_Data.Recipes) do
-		if key:match("^vendor:") then
+		if type(key) == "string" and key:match("^vendor:") then
 			trackingVendorRecipes = true
 			break
 		end

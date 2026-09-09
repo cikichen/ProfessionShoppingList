@@ -51,6 +51,16 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	end
 end)
 
+app.Event:Register("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloadingUi)
+	if isInitialLogin or isReloadingUi then
+		if C_AddOns.IsAddOnLoaded("Auctionator") or C_AddOns.IsAddOnLoaded("OribosExchange") or C_AddOns.IsAddOnLoaded("TradeSkillMaster") then
+			app.Flag.IsAuctionAddonLoaded = true
+		else
+			app.Flag.IsAuctionAddonLoaded = false
+		end
+	end
+end)
+
 -------------------
 -- VERSION COMMS --
 -------------------
@@ -169,8 +179,9 @@ function app:CreateSlashCommands()
 		elseif command == "" then
 			api:ToggleWindow()
 		else
-			local _, check = string.find(command, "\124cffffff00\124Hachievement:")
-			if check ~= nil then
+			local _, achievement = string.find(command, "\124cffffff00\124Hachievement:")
+			local itemID = C_Item.GetItemInfoInstant(command)
+			if achievement ~= nil then
 				local achievementID = tonumber(string.match(string.sub(command, 25), "%d+"))
 				local numCriteria = GetAchievementNumCriteria(achievementID)
 				local _, criteriaType = GetAchievementCriteriaInfo(achievementID, 1, true)
@@ -215,6 +226,20 @@ function app:CreateSlashCommands()
 					end
 				else
 					app:Print(L.INVALID_ACHIEVEMENT)
+				end
+			elseif itemID then
+				for recipeID, recipeInfo in pairs(ProfessionShoppingList_Library) do
+					if recipeInfo.reagents then
+						for _, reagents in ipairs(recipeInfo.reagents) do
+							if reagents.reagents then
+								for _, reagent in ipairs(reagents.reagents) do
+									if reagent.itemID and reagent.itemID == itemID then
+										api:TrackRecipe(recipeID, 1)
+									end
+								end
+							end
+						end
+					end
 				end
 			else
 				app:Print(L.INVALID_COMMAND)
@@ -336,4 +361,44 @@ function app:FixTable(table)
 	end
 
 	return fixedTable
+end
+
+function app:GetTooltipItem(tooltip, itemData)
+	local _, itemID, itemLink
+	if itemData and itemData.id then
+		itemID = itemData.id
+		_, itemLink = C_Item.GetItemInfo(itemID)
+	elseif tooltip.GetItem then
+		_, itemLink, itemID = tooltip:GetItem()
+	else
+		_, itemLink, itemID = TooltipUtil.GetDisplayedItem(GameTooltip)
+	end
+	return itemID, itemLink
+end
+
+function app:ItemValue(itemID)
+	if not itemID or itemID == 0 then return 0 end
+
+	local price = {}
+	if C_AddOns.IsAddOnLoaded("TradeSkillMaster") then
+		table.insert(price, { price = TSM_API.GetCustomPriceValue("dbregionmarketavg", "i:" .. itemID) or 0, age = -1 })
+		table.insert(price, { price = TSM_API.GetCustomPriceValue("dbmarket", "i:" .. itemID) or 0, age = -2 })
+	end
+	if C_AddOns.IsAddOnLoaded("Auctionator") then
+		table.insert(price, { price = Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, itemID) or 0, age = Auctionator.API.v1.GetAuctionAgeByItemID(app.Name, itemID) or 99 })
+	end
+	if C_AddOns.IsAddOnLoaded("OribosExchange") then
+		local oeData = {}
+		OEMarketInfo(itemID, oeData)
+		table.insert(price, { price = oeData.region or 0, age = (oeData.age and oeData.age / 60 / 60 / 24) or 99 })
+		table.insert(price, { price = oeData.market or 0, age = (oeData.age and oeData.age / 60 / 60 / 24) or 99 })
+	end
+
+	table.sort(price, function(a, b) return a.age < b.age end)
+	for _, value in ipairs(price) do
+		if value.price > 0 then
+			return value.price
+		end
+	end
+	return 0
 end

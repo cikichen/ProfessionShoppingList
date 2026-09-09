@@ -125,17 +125,14 @@ L.BUTTON_TRACKNEW =                      "Suivre les apparences inconnues"
 L.CURRENT_SETTING =                      "Paramètre actuel :"
 L.MODE_APPEARANCES =                     "nouvelles apparences"
 L.MODE_SOURCES =                         "nouvelles apparences et sources"
-L.TRACK_NEW1 =                           "Cela va vérifier" -- Followed by a number
-L.TRACK_NEW2 =                           "recettes visibles pour les" -- Preceded by a number, followed by L.MODE_APPEARANCES or L.MODE_SOURCES
-L.TRACK_NEW3 =                           "Le jeu peut se bloquer pendant quelques secondes."
-L.ADDED_RECIPES1 =                       "Ajout de" -- Followed by a number
-L.ADDED_RECIPES2 =                       "recettes éligibles" -- Preceded by a number
+-- L.ADDED_RECIPES =                        "Checked %d visible recipes for %s. Tracked %d recipes." -- %d becomes a number, %s becomes L.MODE_APPEARANCES or L.MODE_SOURCES
 
 -- Tooltip info
 L.MORE_NEEDED =                          "de plus sont nécessaires" -- Preceded by a number
 L.MADE_WITH =                            "Fabriqué par" -- Followed by a profession name such as "Blacksmithing" or "Leatherworking"
 L.RECIPE_LEARNED =                       "recette apprise"
 L.RECIPE_UNLEARNED =                     "recette non apprise"
+-- L.CRAFTING_COST =                        "Crafting Cost"
 
 -- Profession knowledge
 L.PERKS_UNLOCKED =                       "avantages débloqués"
@@ -151,10 +148,11 @@ L.CATCHUP_KNOWLEDGE =                    "Connaissances de rattrapage disponible
 L.LOADING =                              SEARCH_LOADING_TEXT -- "Loading..."
 
 -- Order adjustments
-L.ORDERS_SCAN_NEEDED =                   "Analyse nécessaire"
-L.ORDERS_DO_SCAN =                       "Effectuez une analyse complète avec Auctionator pour calculer les profits."
+-- L.AUCTION_ADDONS =                       "Auctionator, Oribos Exchange, or TradeSkillMaster"
+-- L.ORDERS_PRICING_MISSING =               "Missing"
+-- L.ORDERS_PRICING_UPDATE =                "Update or scan with %s." -- %s becomes a list of addon names
 L.ORDERS_SET_CRITERIA =                  "Définir les critères de suivi des commandes."
-L.ORDERS_COST_NEED =                     "Les paramètres de coût ne fonctionnent que si Auctionator est activé."
+-- L.ORDERS_COST_NEED =                     "Cost settings only work with: %s." -- %s becomes a list of addon names
 L.ORDERS_MAX_COST_KNOWLEDGE =            "Coût maximal par point de connaissance :"
 L.ORDERS_MAX_COST_ARTISAN =              "Coût maximal par unité de monnaie d'artisan :" -- This refers to Artisan's Mettle, Artisan's Acuity, and Artisan's Moxie
 L.ORDERS_MAX_COST_PAYOUT =               "Coût maximal par sac de récompense :" -- This refers to Artisan's Payout bag
@@ -169,6 +167,8 @@ L.ORDERSQUEUE_CLAIM =                    "Commencer la commande"
 L.ORDERSQUEUE_CRAFT =                    "Lancer la commande"
 L.ORDERSQUEUE_CRAFTING =                 "En cours..."
 L.ORDERSQUEUE_COMPLETE =                 PROFESSIONS_COMPLETE_ORDER -- "Complete Order"
+-- L.ORDERSQUEUE_WARNING_QUEST =            "You have not picked up %s." -- %s becomes a quest name
+-- L.ORDERSQUEUE_WARNING_REAGENTS =         "You do not have enough reagents for all tracked recipes."
 
 -- Chat feedback
 L.INVALID_PARAMETERS =                   "Paramètres non valides"
@@ -225,6 +225,8 @@ L.SETTINGS_SLASH_TRACKACHIE =            "Suivre les recettes nécessaires pour 
 L.SETTINGS_SLASH_CRAFTINGACHIE =         "haut fait de métier"
 L.SETTINGS_SLASH_RECIPEID =              "recipeID"
 L.SETTINGS_SLASH_QUANTITY =              "quantité"
+-- L.SETTINGS_SLASH_REAGENT =               "itemLink or itemID"
+-- L.SETTINGS_SLASH_TRACKREAGENT =          "Track all recipes using this reagent"
 
 L.GENERAL =                              GENERAL    -- "General"
 L.SETTINGS_MINIMAP_TITLE =               "Afficher le bouton de la mini-carte"
@@ -237,12 +239,18 @@ L.SETTINGS_TOOLTIP_TITLE =               "Afficher les informations de l’infob
 L.SETTINGS_TOOLTIP_DESC =                "Afficher la quantité de composants que vous possédez / avez besoin dans l’infobulle de l’objet."
 L.SETTINGS_CRAFTTOOLTIP_TITLE =          "Afficher les informations d’artisanat"
 L.SETTINGS_CRAFTTOOLTIP_DESC =           "Afficher avec quel métier une pièce d’équipement est fabriquée et si la recette est connue sur votre compte."
+-- L.SETTINGS_CRAFTCOSTTOOLTIP_TITLE =      "Show Crafting Cost"
+-- L.SETTINGS_CRAFTCOSTTOOLTIP_DESC =       "Show how much an item costs to craft, if that information is available."
 L.SETTINGS_REAGENTQUALITY_TITLE =        "Qualité minimale de composant"
 L.SETTINGS_REAGENTQUALITY_DESC =         "Définissez la qualité minimale requise pour les réactifs avant que " .. app.NameShort .. " ne les inclue dans le décompte des objets. Les résultats simulés prévaudront toutefois sur cette valeur."
 L.SETTINGS_INCLUDEHIGHER_TITLE =         "Inclure une qualité supérieure"
 L.SETTINGS_INCLUDEHIGHER_DESC =          "Faut-il inclure ou non les réactifs de qualité supérieure ? (Par exemple, faut-il inclure les réactifs de niveau 2 détenus lors du décompte des réactifs de niveau 1 ?)"
 L.SETTINGS_COLLECTMODE_TITLE =           "Mode de collection"
 L.SETTINGS_COLLECTMODE_DESC =            "Définir les objets à inclure lors de l’utilisation du bouton " .. app:Colour(L.BUTTON_TRACKNEW) .. "."
+
+-- L.PROFESSION_WINDOW =                    "Profession Window"
+-- L.SETTINGS_FILTER_OPTREAGENTS =          "Filter Optional Reagents"
+-- L.SETTINGS_FILTER_OPTREAGENTS_DESC =     "When %s is checked for optional reagents, hide combinable items." -- %s becomes "Hide Unavailable"
 L.SETTINGS_SPENDTOPERK_TITLE =           "Dépenser jusqu’au prochain palier"
 L.SETTINGS_SPENDTOPERK_DESC =            "Maj + Clic sur une spécialisation de métier dépense tous les points de connaissance jusqu’au prochain palier."
 L.SETTINGS_ENHANCEDORDERS_TITLE =        "Commandes améliorées"

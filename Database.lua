@@ -18,7 +18,7 @@ app.IconReady = CreateSimpleTextureMarkup("Interface\\RaidFrame\\ReadyCheck-Read
 app.IconNotReady = CreateSimpleTextureMarkup("Interface\\RaidFrame\\ReadyCheck-NotReady")
 app.IconLMB = CreateAtlasMarkup("housing-hotkey-icon-leftclick")
 app.IconRMB = CreateAtlasMarkup("housing-hotkey-icon-rightclick")
-app.IconNew = CreateAtlasMarkup("UI-Journeys-GreatVault-Tag-new")
+app.IconNew = CreateAtlasMarkup("UI-Journeys-GreatVault-Tag-new", 40, 30)
 app.IconArrow = CreateSimpleTextureMarkup("Interface\\AddOns\\ProfessionShoppingList\\assets\\UI-RaidFrame-Arrow-Cropped")
 app.IconProfession = {
 	[0] = CreateSimpleTextureMarkup("Interface\\MoneyFrame\\UI-GoldIcon"), -- Vendor
@@ -300,8 +300,9 @@ app.CraftingOrderRewards = {
 		[3266] = { type = "artisan", expansion = 11 },
 	},
 }
+-- L.CRAFTING_COST =                        "Crafting Cost"
 
--- Profession Knowledge
+-- Profession knowledge
 app.ProfessionKnowledge = {
 	[2823] = { -- Dragonflight Alchemy
 		-- Vendors
@@ -1048,6 +1049,7 @@ app.ProfessionKnowledge = {
 	[2906] = { -- Midnight Alchemy
 		-- Vendors
 		{ quest = 93794, type = "vendor", item = 262645, source = 2699, renown = 9 }, -- Beyond the Event Horizon: Alchemy
+		{ quest = 96459, type = "vendor", item = 274500, source = 2772, renown = 6 }, -- Demystifyin': Alchemy
 
 		-- Treasures
 		{ quest = 89118, type = "world", item = 238539, zone = 2405 }, -- Failed Experiment
@@ -1071,6 +1073,7 @@ app.ProfessionKnowledge = {
 	[2907] = { -- Midnight Blacksmithing
 		-- Vendors
 		{ quest = 93795, type = "vendor", item = 262644, source = 2699, renown = 9 }, -- Beyond the Event Horizon: Blacksmithing
+		{ quest = 96511, type = "vendor", item = 274515, source = 2772, renown = 6 }, -- Demystifyin': Blacksmithing
 
 		-- Treasures
 		{ quest = 89179, type = "world", item = 238542, zone = 2536 }, -- Carefully Racked Spear
@@ -1095,6 +1098,7 @@ app.ProfessionKnowledge = {
 		-- Vendors
 		{ quest = 92374, type = "vendor", item = 257600, source = 2710, renown = 6 }, -- Skill Issue: Enchanting
 		{ quest = 92186, type = "vendor", item = 250445, source = 3377, sourceType = "currency" }, -- Echo of Abundance: Enchanting
+		{ quest = 96512, type = "vendor", item = 274511, source = 2772, renown = 6 }, -- Demystifyin': Enchanting
 
 		-- Treasures
 		{ quest = 89100, type = "world", item = 238548, zone = 2536 }, -- Enchanted Amani Mask
@@ -1120,6 +1124,7 @@ app.ProfessionKnowledge = {
 	[2910] = { -- Midnight Engineering
 		-- Vendors
 		{ quest = 93796, type = "vendor", item = 262646, source = 2699, renown = 9 }, -- Beyond the Event Horizon: Engineering
+		{ quest = 96513, type = "vendor", item = 274516, source = 2772, renown = 6 }, -- Demystifyin': Engineering
 
 		-- Treasures
 		{ quest = 89137, type = "world", item = 238560, zone = 2444 }, -- Ethereal Stormwrench
@@ -1145,6 +1150,7 @@ app.ProfessionKnowledge = {
 		-- Vendors
 		{ quest = 93411, type = "vendor", item = 258410, source = 2704, renown = 5 }, -- Traditions of the Haranir: Herbalism
 		{ quest = 92174, type = "vendor", item = 250443, source = 3377, sourceType = "currency" }, -- Echo of Abundance: Herbalism
+		{ quest = 96514, type = "vendor", item = 274513, source = 2772, renown = 6 }, -- Demystifyin': Herbalism
 
 		-- Treasures
 		{ quest = 89162, type = "world", item = 238468, zone = 2413 }, -- Bloomed Bud
@@ -1167,6 +1173,7 @@ app.ProfessionKnowledge = {
 	[2913] = { -- Midnight Inscription
 		-- Vendors
 		{ quest = 93412, type = "vendor", item = 258411, source = 2704, renown = 5 }, -- Traditions of the Haranir: Inscription
+		{ quest = 96515, type = "vendor", item = 274514, source = 2772, renown = 6 }, -- Demystifyin': Inscription
 
 		-- Treasures
 		{ quest = 89072, type = "world", item = 238577, zone = 2395 }, -- Half-Baked Techniques
@@ -1190,6 +1197,7 @@ app.ProfessionKnowledge = {
 	[2914] = { -- Midnight Jewelcrafting
 		-- Vendors
 		{ quest = 93222, type = "vendor", item = 257599, source = 2710, renown = 6 }, -- Skill Issue: Jewelcrafting
+		{ quest = 96516, type = "vendor", item = 274510, source = 2772, renown = 6 }, -- Demystifyin': Jewelcrafting
 
 		-- Treasures
 		{ quest = 89124, type = "world", item = 238582, zone = 2393 }, -- Dual-Function Magnifiers
@@ -1213,6 +1221,7 @@ app.ProfessionKnowledge = {
 	[2915] = { -- Midnight Leatherworking
 		-- Vendors
 		{ quest = 92371, type = "vendor", item = 250922, source = 2696, renown = 6 }, -- Whisper of the Loa: Leatherworking
+		{ quest = 96517, type = "vendor", item = 274507, source = 2772, renown = 6 }, -- Demystifyin': Leatherworking
 
 		-- Treasures
 		{ quest = 89089, type = "world", item = 238588, zone = 2437 }, -- Amani Leatherworker's Tool
@@ -1238,6 +1247,7 @@ app.ProfessionKnowledge = {
 		-- Vendors
 		{ quest = 92372, type = "vendor", item = 250924, source = 2696, renown = 6 }, -- Whisper of the Loa: Mining
 		{ quest = 92187, type = "vendor", item = 250444, source = 3377, sourceType = "currency" }, -- Echo of Abundance: Mining
+		{ quest = 96518, type = "vendor", item = 274509, source = 2772, renown = 6 }, -- Demystifyin': Mining
 
 		-- Treasures
 		{ quest = 89149, type = "world", item = 238601, zone = 2536 }, -- Amani Expert's Chisel
@@ -1263,6 +1273,7 @@ app.ProfessionKnowledge = {
 		-- Vendors
 		{ quest = 92373, type = "vendor", item = 250923, source = 2696, renown = 6 }, -- Whisper of the Loa: Skinning
 		{ quest = 92188, type = "vendor", item = 250360, source = 3377, sourceType = "currency" }, -- Echo of Abundance: Skinning
+		{ quest = 96519, type = "vendor", item = 274508, source = 2772, renown = 6 }, -- Demystifyin': Skinning
 
 		-- Treasures
 		{ quest = 89172, type = "world", item = 238634, zone = 2437 }, -- Amani Skinning Knife
@@ -1286,6 +1297,7 @@ app.ProfessionKnowledge = {
 	[2918] = { -- Midnight Tailoring
 		-- Vendors
 		{ quest = 93201, type = "vendor", item = 257601, source = 2710, renown = 6 }, -- Skill Issue: Tailoring
+		{ quest = 96520, type = "vendor", item = 274512, source = 2772, renown = 6 }, -- Demystifyin': Tailoring
 
 		-- Treasures
 		{ quest = 89078, type = "world", item = 238612, zone = 2413 }, -- A Child's Stuffy

@@ -125,17 +125,14 @@ L.BUTTON_TRACKNEW =                      "追踪新外观"
 L.CURRENT_SETTING =                      "当前设置："
 L.MODE_APPEARANCES =                     "新外观"
 L.MODE_SOURCES =                         "新外观及来源"
-L.TRACK_NEW1 =                           "即将扫描" -- Followed by a number
-L.TRACK_NEW2 =                           "个可见配方中的" -- Preceded by a number, followed by L.MODE_APPEARANCES or L.MODE_SOURCES
-L.TRACK_NEW3 =                           "游戏可能会卡顿数秒。"
-L.ADDED_RECIPES1 =                       "已添加" -- Followed by a number
-L.ADDED_RECIPES2 =                       "个符合条件的配方" -- Preceded by a number
+-- L.ADDED_RECIPES =                        "Checked %d visible recipes for %s. Tracked %d recipes." -- %d becomes a number, %s becomes L.MODE_APPEARANCES or L.MODE_SOURCES
 
 -- Tooltip info
 L.MORE_NEEDED =                          "个仍需" -- Preceded by a number
 L.MADE_WITH =                            "制造专业：" -- Followed by a profession name such as "Blacksmithing" or "Leatherworking"
 L.RECIPE_LEARNED =                       "配方已学会"
 L.RECIPE_UNLEARNED =                     "配方未学会"
+-- L.CRAFTING_COST =                        "Crafting Cost"
 
 -- Profession knowledge
 L.PERKS_UNLOCKED =                       "特长已解锁"
@@ -151,10 +148,11 @@ L.CATCHUP_KNOWLEDGE =                    "可用追赶知识："
 L.LOADING =                              SEARCH_LOADING_TEXT -- "Loading..."
 
 -- Order adjustments
-L.ORDERS_SCAN_NEEDED =                   "需要扫描"
-L.ORDERS_DO_SCAN =                       "使用 Auctionator 进行完整扫描以计算利润。"
+-- L.AUCTION_ADDONS =                       "Auctionator, Oribos Exchange, or TradeSkillMaster"
+-- L.ORDERS_PRICING_MISSING =               "Missing"
+-- L.ORDERS_PRICING_UPDATE =                "Update or scan with %s." -- %s becomes a list of addon names
 L.ORDERS_SET_CRITERIA =                  "设置追踪订单的标准。"
-L.ORDERS_COST_NEED =                     "成本设置仅在启用 Auctionator 时有效。"
+-- L.ORDERS_COST_NEED =                     "Cost settings only work with: %s." -- %s becomes a list of addon names
 L.ORDERS_MAX_COST_KNOWLEDGE =            "每个知识点的最大成本："
 L.ORDERS_MAX_COST_ARTISAN =              "每份工匠货币的最大成本：" -- This refers to Artisan's Mettle, Artisan's Acuity, and Artisan's Moxie
 L.ORDERS_MAX_COST_PAYOUT =               "每个奖励袋的最大成本：" -- This refers to Artisan's Payout bag
@@ -169,6 +167,8 @@ L.ORDERSQUEUE_CLAIM =                    "开始接单"
 L.ORDERSQUEUE_CRAFT =                    "制作订单"
 L.ORDERSQUEUE_CRAFTING =                 "制作中..."
 L.ORDERSQUEUE_COMPLETE =                 PROFESSIONS_COMPLETE_ORDER -- "Complete Order"
+-- L.ORDERSQUEUE_WARNING_QUEST =            "You have not picked up %s." -- %s becomes a quest name
+-- L.ORDERSQUEUE_WARNING_REAGENTS =         "You do not have enough reagents for all tracked recipes."
 
 -- Chat feedback
 L.INVALID_PARAMETERS =                   "参数无效。"
@@ -225,6 +225,8 @@ L.SETTINGS_SLASH_TRACKACHIE =            "追踪链接成就所需配方"
 L.SETTINGS_SLASH_CRAFTINGACHIE =         "制造成就"
 L.SETTINGS_SLASH_RECIPEID =              "配方ID"
 L.SETTINGS_SLASH_QUANTITY =              "数量"
+-- L.SETTINGS_SLASH_REAGENT =               "itemLink or itemID"
+-- L.SETTINGS_SLASH_TRACKREAGENT =          "Track all recipes using this reagent"
 
 L.GENERAL =                              GENERAL -- "General"
 L.SETTINGS_MINIMAP_TITLE =               "显示小地图图标"
@@ -237,12 +239,18 @@ L.SETTINGS_TOOLTIP_TITLE =               "显示提示信息"
 L.SETTINGS_TOOLTIP_DESC =                "在物品提示中显示拥有/需要的材料数量。"
 L.SETTINGS_CRAFTTOOLTIP_TITLE =          "显示制造信息"
 L.SETTINGS_CRAFTTOOLTIP_DESC =           "在装备提示中显示制造专业及配方是否学会。"
+-- L.SETTINGS_CRAFTCOSTTOOLTIP_TITLE =      "Show Crafting Cost"
+-- L.SETTINGS_CRAFTCOSTTOOLTIP_DESC =       "Show how much an item costs to craft, if that information is available."
 L.SETTINGS_REAGENTQUALITY_TITLE =        "最低材料品质"
 L.SETTINGS_REAGENTQUALITY_DESC =         "设置材料所需的最低品质，" .. app.NameShort .. "才会将其计入物品数量统计。模拟结果仍会覆盖此设置。"
 L.SETTINGS_INCLUDEHIGHER_TITLE =         "包含更高品质"
 L.SETTINGS_INCLUDEHIGHER_DESC =          "是否统计高品质材料。（例如：在统计1级材料时包含拥有的2级材料。）"
 L.SETTINGS_COLLECTMODE_TITLE =           "收集模式"
 L.SETTINGS_COLLECTMODE_DESC =            "设置使用" .. app:Colour(L.BUTTON_TRACKNEW) .. "按钮时包含的物品类型。"
+
+-- L.PROFESSION_WINDOW =                    "Profession Window"
+-- L.SETTINGS_FILTER_OPTREAGENTS =          "Filter Optional Reagents"
+-- L.SETTINGS_FILTER_OPTREAGENTS_DESC =     "When %s is checked for optional reagents, hide combinable items." -- %s becomes "Hide Unavailable"
 L.SETTINGS_SPENDTOPERK_TITLE =           "花费至下一专精"
 L.SETTINGS_SPENDTOPERK_DESC =            "Shift+点击专业技能知识节点时，自动花费技能点直至获得下一个专精效果。"
 L.SETTINGS_ENHANCEDORDERS_TITLE =        "增强订单"

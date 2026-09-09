@@ -295,7 +295,8 @@ function app:CreateSettings()
 			"/psl track " .. app:Colour(L.SETTINGS_SLASH_RECIPEID .. " " .. L.SETTINGS_SLASH_QUANTITY),
 			"/psl untrack " .. app:Colour(L.SETTINGS_SLASH_RECIPEID .. " " .. L.SETTINGS_SLASH_QUANTITY),
 			"/psl untrack " .. app:Colour(L.SETTINGS_SLASH_RECIPEID),
-			"/psl " .. app:Colour("[" .. L.SETTINGS_SLASH_CRAFTINGACHIE .. "]") }
+			"/psl " .. app:Colour("[" .. L.SETTINGS_SLASH_CRAFTINGACHIE .. "]"),
+			"/psl " .. app:Colour("[" .. L.SETTINGS_SLASH_REAGENT .. "]") }
 		local middleText = {
 			L.SETTINGS_SLASH_TOGGLE,
 			L.SETTINGS_SLASH_RESETPOS,
@@ -322,6 +323,8 @@ function app:CreateSettings()
 
 	checkbox("showCraftTooltip", L.SETTINGS_CRAFTTOOLTIP_TITLE, L.SETTINGS_CRAFTTOOLTIP_DESC, true, nil, parentSetting, parentCheckbox)
 
+	checkbox("showCraftCostTooltip", L.SETTINGS_CRAFTCOSTTOOLTIP_TITLE .. app.IconNew, L.SETTINGS_CRAFTCOSTTOOLTIP_DESC, true, nil, parentSetting, parentCheckbox)
+
 	dropdown("reagentQuality", L.SETTINGS_REAGENTQUALITY_TITLE, L.SETTINGS_REAGENTQUALITY_DESC, 1, {
 		{ value = 1, name = "|A:Professions-ChatIcon-Quality-12-Tier1:24:24::1|a|A:Professions-ChatIcon-Quality-Tier1:20:18::1|a  " .. L.LOW, description = nil },
 		{ value = 2, name = "|A:Professions-ChatIcon-Quality-12-Tier2:24:24::1|a|A:Professions-ChatIcon-Quality-Tier3:20:18::1|a  " .. L.HIGH, description = nil },
@@ -336,6 +339,10 @@ function app:CreateSettings()
 		{ value = 1, name = L.SETTINGS_APPEARANCES_TITLE, description = L.SETTINGS_APPEARANCES_TEXT },
 		{ value = 2, name = L.SETTINGS_SOURCES_TITLE, description = L.SETTINGS_SOURCES_TEXT },
 	})
+
+	header(L.PROFESSION_WINDOW)
+
+	checkbox("filterOptionalReagents", L.SETTINGS_FILTER_OPTREAGENTS .. app.IconNew, string.format(L.SETTINGS_FILTER_OPTREAGENTS_DESC, "\"" .. PROFESSIONS_HIDE_UNOWNED_REAGENTS .. "\""), true)
 
 	checkbox("spendToNextPerk", L.SETTINGS_SPENDTOPERK_TITLE, L.SETTINGS_SPENDTOPERK_DESC, true)
 

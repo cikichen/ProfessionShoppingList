@@ -125,17 +125,14 @@ L.BUTTON_TRACKNEW =                      "Отслеживать новые об
 L.CURRENT_SETTING =                      "Текущая настройка:"
 L.MODE_APPEARANCES =                     "новые внешние виды"
 L.MODE_SOURCES =                         "новые внешние виды и источники"
-L.TRACK_NEW1 =                           "Это позволит проверить" -- Followed by a number
-L.TRACK_NEW2 =                           "видимые рецепты для" -- Preceded by a number, followed by L.MODE_APPEARANCES or L.MODE_SOURCES
-L.TRACK_NEW3 =                           "Ваша игра может зависнуть на несколько секунд."
-L.ADDED_RECIPES1 =                       "Добавлен" -- Followed by a number
-L.ADDED_RECIPES2 =                       "подходящие рецепты" -- Preceded by a number
+L.ADDED_RECIPES =                        "Проверено рецептов для %2$s: %1$d. Отслеживается рецептов: %3$d." -- %d becomes a number, %s becomes L.MODE_APPEARANCES or L.MODE_SOURCES
 
 -- Tooltip info
 L.MORE_NEEDED =                          "нужно больше" -- Preceded by a number
 L.MADE_WITH =                            "Сделано" -- Followed by a profession name such as "Blacksmithing" or "Leatherworking"
 L.RECIPE_LEARNED =                       "рецепт изучен"
 L.RECIPE_UNLEARNED =                     "рецепт не изучен"
+L.CRAFTING_COST =                        "Стоимость создания"
 
 -- Profession knowledge
 L.PERKS_UNLOCKED =                       "перки разблокированы"
@@ -151,10 +148,11 @@ L.CATCHUP_KNOWLEDGE =                    "Доступные дополните�
 L.LOADING =                              SEARCH_LOADING_TEXT -- "Loading..."
 
 -- Order adjustments
-L.ORDERS_SCAN_NEEDED =                   "Требуется сканирование"
-L.ORDERS_DO_SCAN =                       "Выполните полное сканирование с помощью Auctionator для расчета прибыли."
+L.AUCTION_ADDONS =                       "Auctionator, Oribos Exchange или TradeSkillMaster"
+L.ORDERS_PRICING_MISSING =               "Отсутствует"
+L.ORDERS_PRICING_UPDATE =                "Обновите или просканируйте с помощью %s." -- %s becomes a list of addon names
 L.ORDERS_SET_CRITERIA =                  "Задайте критерии для отслеживания заказов."
-L.ORDERS_COST_NEED =                     "Настройки стоимости работают только при включенном аддоне Auctionator."
+L.ORDERS_COST_NEED =                     "Настройки стоимости работают только с: %s." -- %s becomes a list of addon names
 L.ORDERS_MAX_COST_KNOWLEDGE =            "Макс. стоимость за одно очко знаний:"
 L.ORDERS_MAX_COST_ARTISAN =              "Макс. стоимость за ремесленную валюту:" -- This refers to Artisan's Mettle, Artisan's Acuity, and Artisan's Moxie
 L.ORDERS_MAX_COST_PAYOUT =               "Макс. стоимость за сумку с наградой:" -- This refers to Artisan's Payout bag
@@ -169,6 +167,8 @@ L.ORDERSQUEUE_CLAIM =                    "Принять заказ"
 L.ORDERSQUEUE_CRAFT =                    "Изготовить"
 L.ORDERSQUEUE_CRAFTING =                 "Изготовление..."
 L.ORDERSQUEUE_COMPLETE =                 PROFESSIONS_COMPLETE_ORDER -- "Complete Order"
+L.ORDERSQUEUE_WARNING_QUEST =            "Вы не взяли %s." -- %s becomes a quest name
+L.ORDERSQUEUE_WARNING_REAGENTS =         "У вас недостаточно реагентов для всех отслеживаемых рецептов."
 
 -- Chat feedback
 L.INVALID_PARAMETERS =                   "Неверные параметры."
@@ -225,6 +225,8 @@ L.SETTINGS_SLASH_TRACKACHIE =            "Отслеживайте рецепт�
 L.SETTINGS_SLASH_CRAFTINGACHIE =         "достижение профессий"
 L.SETTINGS_SLASH_RECIPEID =              "recipeID"
 L.SETTINGS_SLASH_QUANTITY =              "число"
+L.SETTINGS_SLASH_REAGENT =               "itemLink или itemID"
+L.SETTINGS_SLASH_TRACKREAGENT =          "Отслеживать все рецепты, использующие этот реагент"
 
 L.GENERAL =                              GENERAL -- "General"
 L.SETTINGS_MINIMAP_TITLE =               "Показать значок на миникарте"
@@ -237,14 +239,20 @@ L.SETTINGS_TOOLTIP_TITLE =               "Показывать информац�
 L.SETTINGS_TOOLTIP_DESC =                "Показывать, сколько реагентов у вас есть/нужно, на подсказке к предмету."
 L.SETTINGS_CRAFTTOOLTIP_TITLE =          "Показать информацию о изготовлении"
 L.SETTINGS_CRAFTTOOLTIP_DESC =           "Показывать, с помощью какой профессии сделана экипировка, и известен ли рецепт на вашем аккаунте."
+L.SETTINGS_CRAFTCOSTTOOLTIP_TITLE =      "Показывать стоимость создания"
+L.SETTINGS_CRAFTCOSTTOOLTIP_DESC =       "Показывать, сколько стоит изготовление предмета, если эта информация доступна."
 L.SETTINGS_REAGENTQUALITY_TITLE =        "Минимальное качество реагента"
 L.SETTINGS_REAGENTQUALITY_DESC =         "Установите минимальное качество реагентов, при котором " .. app.NameShort .. " будет учитывать их в общем количестве предметов. Результаты симуляции по-прежнему будут иметь приоритет над этой настройкой."
 L.SETTINGS_INCLUDEHIGHER_TITLE =         "Включить более высокое качество"
 L.SETTINGS_INCLUDEHIGHER_DESC =          "Учитывать ли реагенты более высокого качества. (Например, включать имеющиеся реагенты 2-го уровня при подсчете реагентов 1-го уровня.)"
-L.SETTINGS_SPENDTOPERK_TITLE =           "Тратить до ближайшего таланта"
-L.SETTINGS_SPENDTOPERK_DESC =            "Shift+клик по узлу специализации профессии тратит очки до достижения следующего бонуса."
 L.SETTINGS_COLLECTMODE_TITLE =           "Режим сбора"
 L.SETTINGS_COLLECTMODE_DESC =            "Установите, какие предметы будут включены при использовании " .. app:Colour(L.BUTTON_TRACKNEW) .. " кнопки."
+
+L.PROFESSION_WINDOW =                    "Окно профессий"
+L.SETTINGS_FILTER_OPTREAGENTS =          "Фильтр необязательных реагентов"
+L.SETTINGS_FILTER_OPTREAGENTS_DESC =     "Если для необязательных реагентов включена опция %s, объединяемые предметы будут скрыты." -- %s becomes "Hide Unavailable"
+L.SETTINGS_SPENDTOPERK_TITLE =           "Тратить до ближайшего таланта"
+L.SETTINGS_SPENDTOPERK_DESC =            "Shift+клик по узлу специализации профессии тратит очки до достижения следующего бонуса."
 L.SETTINGS_ENHANCEDORDERS_TITLE =        "Улучшенные заказы"
 L.SETTINGS_ENHANCEDORDERS_DESC =         "Улучшите предварительный просмотр наград за заказы и комиссионных, а также добавьте значки для первых созданных, неизученных рецептов и отслеживаемых рецептов.\n\n" .. L.REQUIRES_RELOAD
 L.SETTINGS_QUICKORDER_TITLE =            "Продолжительность быстрого заказа"
